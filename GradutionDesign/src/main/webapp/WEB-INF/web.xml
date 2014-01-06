@@ -6,12 +6,16 @@
 	<!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/applicationContext.xml</param-value>
+		<param-value>classpath:applicationContext.xml</param-value>
 	</context-param>
 	
 	<!-- Creates the Spring Container shared by all Servlets and Filters -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<listener>
+		<listener-class>com.sjw.utils.SessionListener</listener-class>
 	</listener>
 
 	<!-- Processes application requests -->
@@ -20,7 +24,7 @@
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/servlet-context.xml</param-value>
+			<param-value>classpath:servlet-context.xml</param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
@@ -30,8 +34,17 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<servlet-mapping>
+		<servlet-name>defaultDispatcher</servlet-name>
+		<url-pattern>/mainframework</url-pattern>
+	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>1500</session-timeout>
+	</session-config>
+	
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/views/login/login.jsp</welcome-file>
+		<welcome-file>mainframework</welcome-file>
 	</welcome-file-list>
 
 </web-app>

@@ -28,9 +28,14 @@
         <property name="configLocation" value="classpath:sqlMapConfig.xml" />
     </bean>
     
-<!--     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
-            <constructor-arg index="0" ref="sqlSessionFactory" />
-    </bean> -->
+    <!-- 增加tiles的支持 -->    
+    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    	<property name="definitions">
+       		<list>
+            	<value>/WEB-INF/tiles-defs.xml</value>
+        	</list>
+    	</property>
+	</bean>
     
     <!-- 将sqlSessionFactory注入到SqlSessionDaoSupport里 -->
 	<bean id="loginDao" class="com.sjw.daoImpl.LoginDaoImpl">
