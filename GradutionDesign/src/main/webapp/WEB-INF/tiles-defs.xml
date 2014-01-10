@@ -12,4 +12,8 @@
     	<put-attribute name="body" value="/WEB-INF/views/content/inbox.jsp" />
     </definition>
     
+    <definition name="mailcontent.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/content/mailcontent.jsp"></put-attribute>
+    </definition>
+    
 </tiles-definitions> 

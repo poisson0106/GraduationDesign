@@ -51,5 +51,5 @@
 		
 	</ul>
 </div>
-<input type="hidden" value="${allnum}" id="allnum" />
+<input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

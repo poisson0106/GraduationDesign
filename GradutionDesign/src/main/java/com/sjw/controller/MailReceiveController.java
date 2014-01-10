@@ -6,10 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Address;
+import javax.mail.BodyPart;
 import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,10 +47,11 @@ public class MailReceiveController {
          else{
         	 end=total-(pagenum-1)*10-9;
          }*/
-         for(int i=total;i>=total-10;i--){
+         for(int i=total;i>=total-9;i--){
         	 Message message = folder.getMessage(i);
         	 Map map = new HashMap();
-        	 map.put("date", DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
+        	 if(message.getSentDate()!=null)
+        		 map.put("date", DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
         	 map.put("subject", message.getSubject());
         	 map.put("content", message.getContent());
         	 map.put("messagenum", message.getMessageNumber());
@@ -56,13 +62,14 @@ public class MailReceiveController {
              else {    
                  map.put("flag", true);    
              }
-             String reply = message.getReplyTo()[0].toString();
-             reply = reply.substring(reply.indexOf("<") + 1, reply.indexOf(">"));
-             map.put("sender", reply);
+             String from = (message.getFrom()[0]).toString();
+              if(from.contains("<")&&from.contains(">"))
+            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
+             map.put("sender", from);
              requestedmail.add(map);
          }
          request.setAttribute("mail", requestedmail);
-         request.setAttribute("allnum", total/10+1);
+         request.setAttribute("allpagenum", total/10+1);
          request.setAttribute("page", 1);
          request.setAttribute("chosed", 2);
          
@@ -90,10 +97,11 @@ public class MailReceiveController {
          else{
         	 end=total-(pagenum-1)*10-9;
          }
-         for(int i=total;i>=total-10;i--){
+         for(int i=total-(pagenum-1)*10;i>=end;i--){
         	 Message message = folder.getMessage(i);
         	 Map map = new HashMap();
-        	 map.put("date", DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
+        	 if(message.getSentDate()!=null)
+        		 map.put("date", DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
         	 map.put("subject", message.getSubject());
         	 map.put("content", message.getContent());
         	 map.put("messagenum", message.getMessageNumber());
@@ -104,17 +112,47 @@ public class MailReceiveController {
              else {    
                  map.put("flag", true);    
              }
-             String reply = message.getReplyTo()[0].toString();
-             reply = reply.substring(reply.indexOf("<") + 1, reply.indexOf(">"));
-             map.put("sender", reply);
+             String from = (message.getFrom()[0]).toString();
+             if(from.contains("<")&&from.contains(">"))
+            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
+             map.put("sender", from);
              requestedmail.add(map);
          }
          request.setAttribute("mail", requestedmail);
-         request.setAttribute("allnum", total/10+1);
+         request.setAttribute("allpagenum", total/10+1);
          request.setAttribute("page", pagenum);
         /* request.setAttribute("chosed", 2);*/
          
         
          return "mailreceive.definition";
+	}
+	
+	@RequestMapping(value="showMailContent",method=RequestMethod.GET)
+	public String ShowMailContent(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int messagenum=Integer.parseInt(request.getParameter("thismessagenum"));
+		IMAPFolder folder=null;
+        if(MailConnection.getInboxFolder()==null){
+       	 	return "content/error";
+        }
+        else
+       	 	folder=MailConnection.getInboxFolder();
+        Message message = folder.getMessage(messagenum);
+        System.out.println(message.getContentType());
+        if(message.isMimeType("multipart/mixed")){
+        	MimeMultipart mt=(MimeMultipart)message.getContent();
+        	int bodyCounts = mt.getCount();  
+            for(int i = 0; i < bodyCounts; i++)  
+            {  
+                BodyPart bodypart = mt.getBodyPart(i);  
+                // 不是"mixed"型且不包含附件  
+                if(!bodypart.isMimeType("multipart/mixed")   
+                    && bodypart.getDisposition() == null)  
+                {  
+                	response.setContentType("message/rfc822");  
+                    bodypart.writeTo(System.out);                        
+                }  
+            }  
+        }
+        return "mailcontent.definition";
 	}
 }
