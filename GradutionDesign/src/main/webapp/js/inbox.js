@@ -73,3 +73,15 @@ $(function(){
 		window.history.back(-1);
 	});
 });
+
+$(function(){
+	var width=window.screen.width;
+	$("#maincontainer").css("width",width);
+	
+	var chosed=$("#chosed").val();
+	$("li.active").removeClass();
+	if(chosed=="1")
+		$("#homemenu").addClass("active");
+	else if(chosed=="2")
+		$("#inboxmenu").addClass("active");
+});

@@ -136,7 +136,7 @@ public class MailReceiveController {
          request.setAttribute("mail", requestedmail);
          request.setAttribute("allpagenum", total/10+1);
          request.setAttribute("page", pagenum);
-        /* request.setAttribute("chosed", 2);*/
+         request.setAttribute("chosed", 2);
          
         
          return "mailreceive.definition";
