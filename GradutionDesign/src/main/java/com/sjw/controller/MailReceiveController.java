@@ -12,6 +12,7 @@ import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletOutputStream;
@@ -62,10 +63,15 @@ public class MailReceiveController {
              else {    
                  map.put("flag", true);    
              }
-             String from = (message.getFrom()[0]).toString();
-              if(from.contains("<")&&from.contains(">"))
-            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
-             map.put("sender", from);
+             InternetAddress address[] = (InternetAddress[])message.getFrom();
+             String sender=address[0].getPersonal();
+             if(sender==null)
+            	 sender="ÄäÃû";
+             if(sender.contains("\""))
+            	 sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);
+            /*  if(from.contains("<")&&from.contains(">"))
+            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));*/
+             map.put("sender", sender);
              requestedmail.add(map);
          }
          request.setAttribute("mail", requestedmail);
@@ -112,10 +118,15 @@ public class MailReceiveController {
              else {    
                  map.put("flag", true);    
              }
-             String from = (message.getFrom()[0]).toString();
-             if(from.contains("<")&&from.contains(">"))
-            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));
-             map.put("sender", from);
+             InternetAddress address[] = (InternetAddress[])message.getFrom();
+             String sender=address[0].getPersonal();
+             if(sender==null)
+            	 sender="ÄäÃû";
+             if(sender.contains("\""))
+            	 sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);
+            /*  if(from.contains("<")&&from.contains(">"))
+            	 from = from.substring(from.indexOf("<") + 1, from.indexOf(">"));*/
+             map.put("sender", sender);
              requestedmail.add(map);
          }
          request.setAttribute("mail", requestedmail);
@@ -153,6 +164,7 @@ public class MailReceiveController {
                 }  
             }  
         }
+        
         return "mailcontent.definition";
 	}
 }
