@@ -3,8 +3,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
-			<li><a style="cursor:pointer" id="thispage">Inbox</a></li>
-			<li class="active">Data</li>
+			<li class="active">Inbox</li>
 		</ol>
 	</div>
 </div>

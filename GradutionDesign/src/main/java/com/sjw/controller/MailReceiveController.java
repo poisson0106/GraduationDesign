@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.mail.Address;
 import javax.mail.BodyPart;
@@ -12,6 +14,7 @@ import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Part;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
@@ -24,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sjw.utils.MailConnection;
+import com.sjw.utils.MailContentAnalysis;
 import com.sun.mail.imap.IMAPFolder;
 
 @Controller
@@ -148,23 +152,17 @@ public class MailReceiveController {
         else
        	 	folder=MailConnection.getInboxFolder();
         Message message = folder.getMessage(messagenum);
-        System.out.println(message.getContentType());
-        if(message.isMimeType("multipart/mixed")){
-        	MimeMultipart mt=(MimeMultipart)message.getContent();
-        	int bodyCounts = mt.getCount();  
-            for(int i = 0; i < bodyCounts; i++)  
-            {  
-                BodyPart bodypart = mt.getBodyPart(i);  
-                // 不是"mixed"型且不包含附件  
-                if(!bodypart.isMimeType("multipart/mixed")   
-                    && bodypart.getDisposition() == null)  
-                {  
-                	response.setContentType("message/rfc822");  
-                    bodypart.writeTo(System.out);                        
-                }  
-            }  
-        }
-        
+        MailContentAnalysis.setContent();
+        MailContentAnalysis.getMailContent((Part) message);
+        StringBuffer tempcontent=MailContentAnalysis.getContent();
+        String content=tempcontent.toString();
+        Pattern pattern=Pattern.compile("<style");
+        Matcher matcher=pattern.matcher(content.toString());
+        content=matcher.replaceFirst("<!-- <style");
+        pattern=Pattern.compile("</style>");
+        matcher=pattern.matcher(content);
+        content=matcher.replaceFirst("</style> -->");
+        request.setAttribute("content", content);
         return "mailcontent.definition";
 	}
 }
