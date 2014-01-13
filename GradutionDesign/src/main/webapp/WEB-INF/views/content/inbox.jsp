@@ -21,7 +21,7 @@
 		</c:if>
 		<c:forEach var="item" items="${mail }">
 			<c:choose>
-				<c:when test="${item.flag }">
+				<c:when test="${item.flags }">
 					<tr style="font-weight:bold;cursor:pointer">
 				</c:when>
 				<c:otherwise>

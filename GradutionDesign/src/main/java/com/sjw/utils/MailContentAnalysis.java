@@ -39,7 +39,6 @@ public class MailContentAnalysis {
 	}
 	
 	public static StringBuffer getContent(){
-		System.out.println(content);
 		return content;
 	}
 	

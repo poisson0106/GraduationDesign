@@ -41,5 +41,6 @@
 	<bean id="loginDao" class="com.sjw.daoImpl.LoginDaoImpl">
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
-		
+	
+	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>
 </beans>
