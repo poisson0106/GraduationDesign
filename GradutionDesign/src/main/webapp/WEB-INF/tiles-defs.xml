@@ -13,7 +13,10 @@
     </definition>
     
     <definition name="mailcontent.definition" extends="base.definition">
-    	<put-attribute name="body" value="/WEB-INF/views/content/mailcontent.jsp"></put-attribute>
+    	<put-attribute name="body" value="/WEB-INF/views/content/mailcontent.jsp" />
     </definition>
     
+    <definition name="mailsend.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/content/sendbox.jsp" />
+    </definition>
 </tiles-definitions> 

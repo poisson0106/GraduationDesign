@@ -7,6 +7,10 @@ $(function(){
 		$("#inboxbage").remove();
 		window.location="initialMailReceive";
 	});
+	
+	$("#sendbox").click(function(){
+		window.location="initialMailSend";
+	});
 });
 
 $(function(){
@@ -19,4 +23,6 @@ $(function(){
 		$("#homemenu").addClass("active");
 	else if(chosed=="2")
 		$("#inboxmenu").addClass("active");
+	else if(chosed=="3")
+		$("#sendboxmenu").addClass("active");
 });

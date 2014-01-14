@@ -5,6 +5,7 @@
    		<ul class="nav nav-pills nav-stacked">
   			<li class="active" id="homemenu"><a style="cursor:pointer" id="home">Welcome</a></li>
   			<li id="inboxmenu"><a style="cursor:pointer" id="inbox"><c:if test="${nummail ne 0}"><span class="badge pull-right" id="inboxbage">${nummail }</span></c:if>Inbox</a></li>
+  			<li id="sendboxmenu"><a style="cursor:pointer" id="sendbox">Send&nbspBox</a></li>
 		</ul>
 		<input type="hidden" value=${chosed } id="chosed">
   	</div>

@@ -88,8 +88,6 @@ public class MailReceiveController {
 		Mail mail=new Mail();
 		
 		mail=mailReceiveService.showMailContentService(messagenum);
-        /*request.setAttribute("content", mail.getContent());
-        request.setAttribute("sender", mail.getSender());*/
 		request.setAttribute("mail", mail);
         return "mailcontent.definition";
 	}
