@@ -94,7 +94,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
        	 	Mail mail = new Mail();
        	 	if(message.getSentDate()!=null)
        	 		mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
-       	 	mail.setSubject(message.getSubject());
+       	 	mail.setSubject(MimeUtility.decodeText(message.getSubject()));
        	 	mail.setMessagenum(message.getMessageNumber());
        	 	//mail.setReceivers(message.getAllRecipients());
        	 	Flags flags = message.getFlags();    
@@ -110,7 +110,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             else
             	if(sender.contains("\""))
             		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 
-            	mail.setSender(sender);
+            	mail.setSender(MimeUtility.decodeText(sender));
             requestedmail.add(mail);
         }
 		return requestedmail;
@@ -139,7 +139,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         pattern=Pattern.compile("</style>");
         matcher=pattern.matcher(content);
         content=matcher.replaceFirst("</style> -->");
-        content=content.replaceAll("\n", "<p> </p>");
+        //content=content.replaceAll("\n", "<p> </p>");
         pattern=Pattern.compile("<body style=\"(.*);\">");
         matcher=pattern.matcher(content);
         content=matcher.replaceFirst("<body>");

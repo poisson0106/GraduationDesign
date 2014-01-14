@@ -12,6 +12,7 @@
 <script type="text/javascript" src="js/framework.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<title>XXX Email System</title>
 </head>
 <body>
 <tiles:insertAttribute name="header" />  

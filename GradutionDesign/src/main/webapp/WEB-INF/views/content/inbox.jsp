@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/inbox.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
@@ -9,7 +10,8 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
-		<table class="table" id="inbox">
+	<div class="table-responsive">
+		<table class="table table-hover" id="inbox">
 		<c:if test="${not empty mail }">
 			<thead>
 				<tr>
@@ -28,9 +30,9 @@
 					<tr style="cursor:pointer;">
 				</c:otherwise>
 			</c:choose>
-			<td>${item.sender }</td>
-			<td>${item.subject }</td>
-			<td>${item.date }</td>
+			<td style="width:20%">${item.sender }</td>
+			<td style="width:80%">${item.subject }</td>
+			<td style="width:10%">${item.date }</td>
 			<td><input type="hidden" value=${item.messagenum } /></td>
 			<%-- <td>${item.content }</td>
 			<td>${item.messagenum }</td>
@@ -43,6 +45,7 @@
 		</tr>
 		</c:forEach>
 	</table>
+	</div>
 	</div>
 </div>
 <div class="row text-center">
