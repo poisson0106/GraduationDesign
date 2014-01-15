@@ -17,6 +17,6 @@
     </definition>
     
     <definition name="mailsend.definition" extends="base.definition">
-    	<put-attribute name="body" value="/WEB-INF/views/content/sendbox.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/content/sendemail.jsp" />
     </definition>
 </tiles-definitions> 

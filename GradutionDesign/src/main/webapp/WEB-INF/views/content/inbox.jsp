@@ -29,9 +29,9 @@
 					<tr style="cursor:pointer;">
 				</c:otherwise>
 			</c:choose>
-			<td style="width:20%">${item.sender }</td>
-			<td style="width:80%">${item.subject }</td>
-			<td style="width:10%">${item.date }</td>
+			<td>${item.sender }</td>
+			<td>${item.subject }</td>
+			<td>${item.date }</td>
 			<td><input type="hidden" value=${item.messagenum } /></td>
 			<%-- <td>${item.content }</td>
 			<td>${item.messagenum }</td>

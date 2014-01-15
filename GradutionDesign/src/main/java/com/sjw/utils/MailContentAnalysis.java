@@ -22,7 +22,7 @@ public class MailContentAnalysis {
 	        if (part.isMimeType("text/plain") && conName == false) {  
 	            // text/plain 类型  
 	        	String tempcontent=(String) part.getContent();
-	        	tempcontent=tempcontent.replaceAll("\n", "<p> </p>");
+	        	tempcontent=tempcontent.replaceAll("\n", "</br>");
 	            content.append(tempcontent);
 	        } else if (part.isMimeType("text/html") && conName == false) {  
 	            // text/html 类型  

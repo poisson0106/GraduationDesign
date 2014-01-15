@@ -8,7 +8,7 @@ $(function(){
 		window.location="initialMailReceive";
 	});
 	
-	$("#sendbox").click(function(){
+	$("#sendemail").click(function(){
 		window.location="initialMailSend";
 	});
 });
@@ -24,5 +24,5 @@ $(function(){
 	else if(chosed=="2")
 		$("#inboxmenu").addClass("active");
 	else if(chosed=="3")
-		$("#sendboxmenu").addClass("active");
+		$("#sendemail").addClass("active");
 });

@@ -2,6 +2,10 @@ $(function(){
 	$("#editor").wysiwyg();
 	
 	$("li.active").removeClass();
-	$("#sendboxmenu").addClass("active");
+	$("#sendemailmenu").addClass("active");
+	
+});
+
+$(function(){
 	
 });
