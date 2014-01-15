@@ -17,6 +17,7 @@ public class MailSendDaoImpl implements MailSendDao {
 		email.setSSL(true);
 		email.setFrom(mail.getSender());
 		email.setSubject(mail.getSubject());
+		email.setCharset("UTF-8");
 		email.setHtmlMsg(mail.getContent());
 		email.addTo(mail.getReceivers());
 		email.send();

@@ -96,10 +96,17 @@
 			</div>
 
 			<div class="btn-group">
+				<a type="button" class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"><span class="fa fa-picture-o"></span></a> 
+				<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" style="display:none" id="picup"/>
+			</div>
+
+			<div class="btn-group">
         			<button type="button" class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><span class="fa fa-undo"></span></button>
         			<button type="button" class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><span class="fa fa-repeat"></span></button>
       			</div>
 			</div>
+			
+			
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"></div>
 	</div>
 </div>

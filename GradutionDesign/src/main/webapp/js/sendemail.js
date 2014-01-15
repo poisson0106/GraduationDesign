@@ -15,4 +15,8 @@ $(function(){
 		$("#sender").val(sender);
 		$(".form-horizontal").submit();
 	});
+	
+	$("#pictureBtn").click(function(){
+		$("#picup").click();
+	});
 });
