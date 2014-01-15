@@ -33,12 +33,12 @@ public class MailReceiveController {
 		
 		total=mailReceiveService.getTotalMailCountService();
 		if(total==-1){
-			return "content/error";
+			return "message/error";
 		}
 		else{
 			mail=mailReceiveService.initialMailReceiveService();
 			if(mail==null){
-				return "content/error";
+				return "message/error";
 			}
 			else{
 				request.setAttribute("mail", mail);
@@ -61,7 +61,7 @@ public class MailReceiveController {
 		
 		total=mailReceiveService.getTotalMailCountService();
 		if(total==-1){
-			return "content/error";
+			return "message/error";
 		}
 		else {
 			if ((total-pagenum*10)<0) {
@@ -71,7 +71,7 @@ public class MailReceiveController {
 			}
 			mail = mailReceiveService.listOnePageEmailService(end, pagenum);
 			if(mail==null){
-				return "content/error";
+				return "message/error";
 			}
 			else{
 				request.setAttribute("mail", mail);

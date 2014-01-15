@@ -4,7 +4,6 @@ $(function(){
 	});
 	
 	$("#inbox").click(function(){
-		$("#inboxbage").remove();
 		window.location="initialMailReceive";
 	});
 	

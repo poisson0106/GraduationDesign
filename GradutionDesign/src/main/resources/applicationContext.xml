@@ -43,4 +43,5 @@
     </bean>
 	
 	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>
+	<bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl"></bean>
 </beans>

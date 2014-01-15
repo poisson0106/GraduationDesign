@@ -10,25 +10,27 @@
 		</ol>
 	</div>
 </div>
-<form class="form-horizontal" role="form">
+<form class="form-horizontal" role="form" method="post" action="sendOneEmail">
 	<div class="form-group">
 		<div class="col-sm-3">
-			<button type="button" class="btn btn-success">Send</button>
+			<input type="button" class="btn btn-success" id="send" value="Send" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputEmail3" class="col-sm-1 control-label" style="text-align:left;">Receiver:</label>
+		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;">Receiver:</label>
 		<div class="col-sm-11">
-			<input type="email" class="form-control" id="inputEmail3"
-				placeholder="Receiver">
+			<input type="text" class="form-control" id="receiver" placeholder="Receiver" name="receiver">
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="inputPassword3" class="col-sm-1 control-label" style="text-align:left;">Subject:</label>
+		<label for="subject" class="col-sm-1 control-label" style="text-align:left;">Subject:</label>
 		<div class="col-sm-11">
-			<input type="password" class="form-control" id="inputPassword3"
-				placeholder="Subject">
+			<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
 		</div>
+	</div>
+	<div class="form-group">
+		<input type="hidden" class="form-control" id="content" name="content">
+		<input type="hidden" class="form-control" id="sender" name="sender">
 	</div>
 </form>
 <div class="row">

@@ -13,7 +13,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li><a>Welcome XXX</a></li>
+      <li><a id="loginname">poisson0106@163.com</a></li>
       <li><a href="#">Logout</a></li>
     </ul>
   </div><!-- /.navbar-collapse -->
