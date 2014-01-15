@@ -31,6 +31,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-12">
+		
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"></div>
 		</div>
 	</div>

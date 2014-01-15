@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/inbox.js"></script>
 <script type="text/javascript" src="js/pagination.js"></script>
 <div class="row">
@@ -9,7 +10,6 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
-	<div class="table-responsive">
 		<table class="table table-hover" id="inbox">
 		<c:if test="${not empty mail }">
 			<thead>
@@ -44,7 +44,6 @@
 		</tr>
 		</c:forEach>
 	</table>
-	</div>
 	</div>
 </div>
 <div class="row text-center">
