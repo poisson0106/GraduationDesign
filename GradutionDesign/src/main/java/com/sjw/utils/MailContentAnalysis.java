@@ -23,7 +23,12 @@ public class MailContentAnalysis {
 	            // text/plain 类型  
 	        	String tempcontent=(String) part.getContent();
 	        	tempcontent=tempcontent.replaceAll("\n", "</br>");
-	            content.append(tempcontent);
+	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030"))
+	        		content.append(tempcontent);
+	        	else{
+	        		String changecode=new String(tempcontent.getBytes("ISO-8859-1"),"GBK");
+	        		content.append(changecode);
+	        	}
 	        } else if (part.isMimeType("text/html") && conName == false) {  
 	            // text/html 类型  
 	        	content.append((String) part.getContent());  
