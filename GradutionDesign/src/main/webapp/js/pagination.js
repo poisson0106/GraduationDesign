@@ -31,8 +31,6 @@ $(function(){
 	
 	$(".pagination").append("<li><a style='cursor:pointer;' id='next'>&gt;</a></li>");
 	$(".pagination").append("<li><a style='cursor:pointer;border-top-right-radius:4px;border-bottom-right-radius:4px;' id='last'>&raquo;</a></li>");
-	$(".pagination").append("<li><div class='input-group' style='width:100px;padding-left:10px;'><input type='text' class='form-control' id='gopagenum'><span class='input-group-btn'><button class='btn btn-default' type='button' id='go'>Go!</button></span></div></li>");
-	//$(".pagination").append("<li><div><p>Total Page"+pagenum+"</p></div></li>");
 	
 	
 });

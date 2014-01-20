@@ -10,10 +10,28 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" id="delete"><span class="fa fa-trash-o"></span></button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
+			<ul class="dropdown-menu">
+				<li><a style="cursor:pointer;">Change to readed</a></li>
+				<li><a style="cursor:pointer;">Change to unreaded</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" id="refresh"><span class="fa fa-refresh"></span></button>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
 		<table class="table table-hover" id="inbox">
 		<c:if test="${not empty mail }">
 			<thead>
 				<tr>
+					<th><input type="checkbox" id="selectall"></th>
 					<th>Sender</th>
 					<th>Subject</th>
 					<th>Send Date</th>
@@ -29,9 +47,10 @@
 					<tr style="cursor:pointer;">
 				</c:otherwise>
 			</c:choose>
-			<td>${item.sender }</td>
-			<td>${item.subject }</td>
-			<td>${item.date }</td>
+			<td><input type="checkbox" class="mailselected"></td>
+			<td class="mailcontent">${item.sender }</td>
+			<td class="mailcontent">${item.subject }</td>
+			<td class="mailcontent">${item.date }</td>
 			<td><input type="hidden" value=${item.messagenum } /></td>
 			<%-- <td>${item.content }</td>
 			<td>${item.messagenum }</td>
@@ -46,10 +65,26 @@
 	</table>
 	</div>
 </div>
-<div class="row text-center">
-	<ul class="pagination">
+<div class="row">
+	<div class="col-sm-6 text-right">
+		<ul class="pagination">
 		
-	</ul>
+		</ul>
+	</div>
+	<div class="col-sm-6 text-left">
+		<div class="col-sm-3">
+			<div class='input-group' style='width:100px;margin-top:20px;'>
+				<input type='text' class='form-control' id='gopagenum'>
+				<span class='input-group-btn'>
+					<button class='btn btn-default' type='button' id='go'>Go!</button>
+				</span>
+			</div>
+		</div>
+		<div class="col-sm-9 text-left" style="margin-top:25px;">
+			<strong>Total Page:</strong>
+			<span class="text-muted">${allpagenum}</span>
+		</div>
+	</div>
 </div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

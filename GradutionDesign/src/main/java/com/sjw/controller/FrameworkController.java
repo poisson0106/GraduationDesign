@@ -28,6 +28,8 @@ public class FrameworkController {
         unreadnum=folder.getUnreadMessageCount();  
         session.setAttribute("nummail", unreadnum);
 		request.setAttribute("chosed", 1);
+		MailConnection.closeInboxFolder();
+		MailConnection.closeConnection();
 		return "base.definition";
 	}
 }

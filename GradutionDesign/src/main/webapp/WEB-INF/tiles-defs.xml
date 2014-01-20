@@ -19,4 +19,12 @@
     <definition name="mailsend.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/sendemail.jsp" />
     </definition>
+    
+    <definition name="sendsuccess.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/message/sendsuccess.jsp" />
+    </definition>
+    
+    <definition name="senderror.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/message/senderror.jsp" />
+    </definition>
 </tiles-definitions> 

@@ -1,8 +1,6 @@
-<html>
 <script type="text/javascript" src="js/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="js/bootstrap-wysiwyg.js"></script>
 <script type="text/javascript" src="js/sendemail.js"></script>
-<link href="css/font-awesome.min.css" rel="stylesheet" />
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
@@ -110,4 +108,3 @@
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"></div>
 	</div>
 </div>
-</html>

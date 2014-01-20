@@ -58,6 +58,8 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             	
             requestedmail.add(mail);
         }
+        MailConnection.closeInboxFolder();
+        MailConnection.closeConnection();
         return requestedmail;
 	}
 
@@ -66,6 +68,8 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		int total = 0;
         
         IMAPFolder folder=null;
+        MailConnection.getConnection();
+        MailConnection.setIndoxFolder();
         if(MailConnection.getInboxFolder()==null){
         	return -1;
         }
@@ -113,6 +117,8 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             	mail.setSender(MimeUtility.decodeText(sender));
             requestedmail.add(mail);
         }
+        MailConnection.closeInboxFolder();
+        MailConnection.closeConnection();
 		return requestedmail;
 	}
 
@@ -121,6 +127,8 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		Mail mail=new Mail();
 		
 		IMAPFolder folder=null;
+		MailConnection.getConnection();
+        MailConnection.setIndoxFolder();
         if(MailConnection.getInboxFolder()==null){
        	 	return null;
         }
@@ -200,10 +208,13 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
                 }  
                 addresslist = addresslist.substring(1);
             }
-            mail.setReceivers(addresslist);
+       mail.setReceivers(addresslist);
             
-            //日期
-            mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
+       //日期
+       mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
+       
+       MailConnection.closeInboxFolder();
+       MailConnection.closeConnection();
        return mail;
 	}
 }

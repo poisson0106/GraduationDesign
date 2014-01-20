@@ -28,12 +28,16 @@ public class MailSendController {
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String sender=request.getParameter("sender");
+		Boolean issend=false;
 		Mail mail=new Mail();
 		mail.setReceivers(receiver);
 		mail.setSender(sender);
 		mail.setSubject(subject);
 		mail.setContent(content);
-		mailSendService.SendOneEmailService(mail);
-		return "message/sendsuccess";
+		issend=mailSendService.SendOneEmailService(mail);
+		if(issend)
+			return "sendsuccess.definition";
+		else
+			return "senderror.definition";
 	}
 }
