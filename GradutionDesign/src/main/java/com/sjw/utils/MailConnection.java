@@ -3,7 +3,6 @@ package com.sjw.utils;
 import java.util.Properties;
 
 import javax.mail.Folder;
-import javax.mail.MessagingException;
 import javax.mail.Session;
 
 import com.sun.mail.imap.IMAPFolder;
@@ -13,6 +12,7 @@ import com.sun.mail.imap.IMAPStore;
 public class MailConnection {
 	private static IMAPFolder folder=null;
 	private static IMAPStore store=null;
+	private static IMAPFolder folderDel=null;
 	
 	public static void getConnection() throws Exception{
 		String user = "username@163.com";// 邮箱的用户名    
@@ -29,18 +29,33 @@ public class MailConnection {
 	}
 	
 	public static void setIndoxFolder() throws Exception{
-		folder = (IMAPFolder) store.getFolder("INBOX"); // 收件箱    
+		folder = (IMAPFolder) store.getFolder("INBOX"); // 收件箱  
         folder.open(Folder.READ_WRITE);
 	}
 	
+	public static void setDelFolder() throws Exception{
+		folderDel = (IMAPFolder) store.getFolder("已删除");
+		folderDel.open(Folder.READ_WRITE);
+	}
+	
+	
 	public static IMAPFolder getInboxFolder() throws Exception{
 		return folder;
+	}
+	
+	public static IMAPFolder getDelFolder() throws Exception{
+		return folderDel;
 	}
 	
 	//Logout 时使用
 	public static void closeInboxFolder() throws Exception{
 		if (folder != null)    
             folder.close(true);
+	}
+	
+	public static void closeDelFolder() throws Exception{
+		if(folderDel!=null)
+			folderDel.close(true);
 	}
 	
 	public static void closeConnection() throws Exception{

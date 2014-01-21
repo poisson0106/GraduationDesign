@@ -1,7 +1,6 @@
 package com.sjw.daoImpl;
 
 import org.apache.commons.mail.DefaultAuthenticator;
-import org.apache.commons.mail.EmailException;
 import org.apache.commons.mail.HtmlEmail;
 
 import com.sjw.dao.MailSendDao;

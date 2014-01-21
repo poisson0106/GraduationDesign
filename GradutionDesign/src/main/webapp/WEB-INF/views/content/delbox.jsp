@@ -1,33 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="js/inbox.js"></script>
+<script type="text/javascript" src="js/delbox.js"></script>
 <script type="text/javascript" src="js/pagination.js"></script>
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
-			<li class="active">Inbox</li>
+			<li class="active">Deleted Box</li>
 		</ol>
 	</div>
 </div>
 <div class="row">
 	<div class="col-sm-12">
-		<div class="btn-group">
-			<button type="button" class="btn btn-default" id="delete"><span class="fa fa-trash-o"></span></button>
-		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
-			<ul class="dropdown-menu">
-				<li><a style="cursor:pointer;">Change to readed</a></li>
-				<li><a style="cursor:pointer;">Change to unreaded</a></li>
-			</ul>
-		</div>
-		<div class="btn-group">
-			<button type="button" class="btn btn-default" id="refresh"><span class="fa fa-refresh"></span></button>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-12">
-		<table class="table table-hover" id="inbox">
+		<table class="table table-hover" id="delbox">
 		<c:if test="${not empty mail }">
 			<thead>
 				<tr>

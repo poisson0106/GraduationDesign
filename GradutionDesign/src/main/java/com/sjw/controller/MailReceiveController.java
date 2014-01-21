@@ -2,11 +2,7 @@ package com.sjw.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import javax.mail.Message;
-import javax.mail.Part;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sjw.pojo.Mail;
 import com.sjw.service.MailReceiveService;
-import com.sjw.utils.MailConnection;
-import com.sjw.utils.MailContentAnalysis;
-import com.sun.mail.imap.IMAPFolder;
+
 
 @Controller
 public class MailReceiveController {
@@ -90,5 +84,15 @@ public class MailReceiveController {
 		mail=mailReceiveService.showMailContentService(messagenum);
 		request.setAttribute("mail", mail);
         return "mailcontent.definition";
+	}
+	
+	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
+	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String[] messagenum=request.getParameter("selected").split(",");
+		String result=mailReceiveService.deleteSelectedMailService(messagenum);
+		if(result=="success")
+			return null;
+		else
+			return "message/error";
 	}
 }

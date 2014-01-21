@@ -217,4 +217,43 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
        MailConnection.closeConnection();
        return mail;
 	}
+
+	@Override
+	public String deleteSelectedEmailDao(String[] messagenum) throws Exception {
+		int i=0;
+		Message[] messages=new Message[messagenum.length];
+		IMAPFolder folder=null;
+		IMAPFolder folderDel=null;
+	    MailConnection.getConnection();
+	    MailConnection.setIndoxFolder();
+	    if(MailConnection.getInboxFolder()==null){
+	       return "fail";
+	    }
+	    else{
+	    	MailConnection.setDelFolder();
+	    	if(MailConnection.getDelFolder()==null)
+	    		return "fail";
+	    	else{
+	    		folder=MailConnection.getInboxFolder();
+	    		folderDel=MailConnection.getDelFolder();
+	    	}  		
+	    }    
+	    for(String msg : messagenum){
+	       int msgnum=Integer.parseInt(msg);
+	       messages[i]=folder.getMessage(msgnum);
+	       i++;
+	    }
+	    folder.copyMessages(messages, folderDel);
+	    i=0;
+	    for(String msg : messagenum){
+		       int msgnum=Integer.parseInt(msg);
+		       messages[i]=folder.getMessage(msgnum);
+		       messages[i].setFlag(Flags.Flag.DELETED, true);
+		       i++;
+		}
+	    MailConnection.closeInboxFolder();
+	    MailConnection.closeDelFolder();
+	    MailConnection.closeConnection();
+	    return "success";
+	}
 }

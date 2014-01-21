@@ -23,11 +23,29 @@ $(function(){
 	
 	$("#delete").click(function(){
 		if(confirm("Are you sure to delete these emails")){
-			alert("Yes");
-		}
-		else{
-			alert("No");
-		}
+			var selected=null;
+			$(".mailselected:checked").each(function(){
+				if(selected==null)
+					selected=$(this).parent().parent().children("td:eq(4)").children().val()+",";
+				else
+					selected=selected+$(this).parent().parent().children("td:eq(4)").children().val()+",";
+			});
+			$.ajax({
+				type : "POST",
+				url : "deleteSelectedEmail",
+				data : {
+					selected : selected
+				},
+				dataType : "text",
+				success : function(data){
+					alert("delete successfully!");
+					window.location="initialMailReceive";
+				},
+				error : function(e) {
+					alert(e);
+				}
+			});
+		};
 	});
 });
 

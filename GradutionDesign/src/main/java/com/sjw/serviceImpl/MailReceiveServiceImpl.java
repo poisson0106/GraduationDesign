@@ -34,4 +34,9 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 		return mailReceiveDao.showMailContentDao(messagenum);
 	}
 
+	@Override
+	public String deleteSelectedMailService(String[] messagenum) throws Exception {
+		  return mailReceiveDao.deleteSelectedEmailDao(messagenum);
+	}
+
 }

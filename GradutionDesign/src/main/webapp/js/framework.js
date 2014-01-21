@@ -10,6 +10,10 @@ $(function(){
 	$("#sendemail").click(function(){
 		window.location="initialMailSend";
 	});
+	
+	$("#delbox").click(function(){
+		window.location="initialMailDeleted";
+	});
 });
 
 $(function(){
