@@ -1,4 +1,4 @@
-<script type="text/javascript" src="js/inbox.js"></script>
+<script type="text/javascript" src="js/operation/inbox.js"></script>
 <div class="col-sm-12">
 	<ol class="breadcrumb">
 		<li><a style="cursor:pointer" id="thispage">Inbox</a></li>

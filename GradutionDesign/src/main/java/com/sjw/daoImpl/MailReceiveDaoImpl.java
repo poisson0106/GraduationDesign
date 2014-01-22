@@ -223,28 +223,29 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
-		IMAPFolder folderDel=null;
+		//IMAPFolder folderDel=null;
 	    MailConnection.getConnection();
 	    MailConnection.setIndoxFolder();
 	    if(MailConnection.getInboxFolder()==null){
 	       return "fail";
 	    }
 	    else{
-	    	MailConnection.setDelFolder();
-	    	if(MailConnection.getDelFolder()==null)
+	    	//MailConnection.setDelFolder();
+	    	/*if(MailConnection.getDelFolder()==null)
 	    		return "fail";
 	    	else{
 	    		folder=MailConnection.getInboxFolder();
 	    		folderDel=MailConnection.getDelFolder();
-	    	}  		
+	    	}  		*/
+	    	folder=MailConnection.getInboxFolder();
 	    }    
-	    for(String msg : messagenum){
+	   /* for(String msg : messagenum){
 	       int msgnum=Integer.parseInt(msg);
 	       messages[i]=folder.getMessage(msgnum);
 	       i++;
 	    }
 	    folder.copyMessages(messages, folderDel);
-	    i=0;
+	    i=0;*/
 	    for(String msg : messagenum){
 		       int msgnum=Integer.parseInt(msg);
 		       messages[i]=folder.getMessage(msgnum);
@@ -252,7 +253,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		       i++;
 		}
 	    MailConnection.closeInboxFolder();
-	    MailConnection.closeDelFolder();
+	    //MailConnection.closeDelFolder();
 	    MailConnection.closeConnection();
 	    return "success";
 	}

@@ -1,6 +1,6 @@
-<script type="text/javascript" src="js/jquery.hotkeys.js"></script>
-<script type="text/javascript" src="js/bootstrap-wysiwyg.js"></script>
-<script type="text/javascript" src="js/sendemail.js"></script>
+<script type="text/javascript" src="js/tools/jquery.hotkeys.js"></script>
+<script type="text/javascript" src="js/tools/bootstrap-wysiwyg.js"></script>
+<script type="text/javascript" src="js/operation/sendemail.js"></script>
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
