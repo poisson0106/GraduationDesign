@@ -155,7 +155,6 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         content=content.replaceAll("</title>", "</title> -->");
         
         
-        System.out.print(content);
         mail.setContent(content);
         
         //取得收件人
