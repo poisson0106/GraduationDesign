@@ -34,7 +34,7 @@ public class MailConnection {
 	}
 	
 	public static void setDelFolder() throws Exception{
-		folderDel = (IMAPFolder) store.getFolder("已删除");
+		folderDel = (IMAPFolder) store.getFolder("客户端删信");
 		folderDel.open(Folder.READ_WRITE);
 	}
 	

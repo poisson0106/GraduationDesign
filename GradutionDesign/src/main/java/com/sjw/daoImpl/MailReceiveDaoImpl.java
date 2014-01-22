@@ -257,4 +257,6 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	    MailConnection.closeConnection();
 	    return "success";
 	}
+
+	
 }

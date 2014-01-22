@@ -14,4 +14,6 @@ public interface MailReceiveService {
 	public Mail showMailContentService(int messagenum) throws Exception;
 	
 	public String deleteSelectedMailService(String[] messagenum) throws Exception;
+	
+	
 }

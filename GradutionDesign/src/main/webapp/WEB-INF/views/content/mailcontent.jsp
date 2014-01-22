@@ -15,6 +15,9 @@
     		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>Receivers: ${mail.receivers }</h3>
     		<p> </p>
     		<h3 class="panel-title"><span class="glyphicon glyphicon-time">&nbsp</span>Date: ${mail.date }</h3>
+    		<!-- <div class="btn-group">
+    			<button type="button" class="btn btn-default" title="Forward"></button>
+    		</div> -->
   		</div>
   		<div class="panel-body">
    			${mail.content }

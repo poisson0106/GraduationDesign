@@ -28,6 +28,10 @@
     	<put-attribute name="body" value="/WEB-INF/views/message/senderror.jsp" />
     </definition>
     
+    <definition name="error.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/message/error.jsp" />
+    </definition>
+    
     <definition name="maildeleted.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/delbox.jsp" />
     </definition>

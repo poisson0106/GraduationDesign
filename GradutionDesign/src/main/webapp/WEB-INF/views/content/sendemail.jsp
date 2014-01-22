@@ -84,21 +84,21 @@
         			<button type="button" class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><span class="fa fa-align-justify"></span></button>
       			</div>
 
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" title="Hyperlink" id="hyperlink" data-toggle="dropdown"><span class="fa fa-link"></span></button>
-				<ul class="dropdown-menu">
-					<li><input class="col-sm-8" placeholder="URL" type="text" data-edit="createLink" />
-					<button class="btn btn-default" type="button">Add</button></li>
-				</ul>
-				<button type="button" class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><span class="fa fa-cut"></span></button>
-			</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default" title="Hyperlink" id="hyperlink" data-toggle="dropdown"><span class="fa fa-link"></span></button>
+					<ul class="dropdown-menu">
+						<li><input class="col-sm-8" placeholder="URL" type="text" data-edit="createLink" />
+						<button class="btn btn-default" type="button">Add</button></li>
+					</ul>
+					<button type="button" class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><span class="fa fa-cut"></span></button>
+				</div>
 
-			<div class="btn-group">
-				<a type="button" class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"><span class="fa fa-picture-o"></span></a> 
-				<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" style="display:none" id="picup"/>
-			</div>
+				<div class="btn-group">
+					<a type="button" class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"><span class="fa fa-picture-o"></span></a> 
+					<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" style="display:none" id="picup"/>
+				</div>
 
-			<div class="btn-group">
+				<div class="btn-group">
         			<button type="button" class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><span class="fa fa-undo"></span></button>
         			<button type="button" class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><span class="fa fa-repeat"></span></button>
       			</div>

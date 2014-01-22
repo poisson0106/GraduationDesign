@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/operation/inbox.js"></script>
 <script type="text/javascript" src="js/operation/pagination.js"></script>
+<script type="text/javascript" src="js/tools/jquery.blockUI.js"></script>
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
@@ -16,8 +17,8 @@
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
 			<ul class="dropdown-menu">
-				<li><a style="cursor:pointer;">Change to readed</a></li>
-				<li><a style="cursor:pointer;">Change to unreaded</a></li>
+				<li><a style="cursor:pointer;" id="readed">Change to readed</a></li>
+				<li><a style="cursor:pointer;" id="unreaded">Change to unreaded</a></li>
 			</ul>
 		</div>
 		<div class="btn-group">
@@ -78,5 +79,6 @@
 		</div>
 	</div>
 </div>
+<div id="deletesuccess" style="display: none; align: center;">Delete Success</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

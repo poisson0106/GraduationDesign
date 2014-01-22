@@ -45,4 +45,5 @@
 	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>
 	<bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl"></bean>
 	<bean id="mailDeletedDao" class="com.sjw.daoImpl.MailDeletedDaoImpl"></bean>
+	<bean id="toolBarDao" class="com.sjw.daoImpl.ToolBarDaoImpl"></bean>
 </beans>

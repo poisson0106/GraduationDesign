@@ -32,4 +32,9 @@ public class FrameworkController {
 		MailConnection.closeConnection();
 		return "base.definition";
 	}
+	
+	@RequestMapping(value="onerror",method=RequestMethod.GET)
+	public String OnError(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		return "error.definition";
+	}
 }
