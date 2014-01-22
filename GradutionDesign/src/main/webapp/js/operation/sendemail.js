@@ -16,6 +16,7 @@ $(function(){
 		$(".form-horizontal").submit();
 	});
 	
+	//用图片打开上传窗口
 	$("#pictureBtn").click(function(){
 		$("#picup").click();
 	});

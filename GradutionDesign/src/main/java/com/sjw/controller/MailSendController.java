@@ -40,4 +40,14 @@ public class MailSendController {
 		else
 			return "senderror.definition";
 	}
+	
+	@RequestMapping(value="replyOneEmail",method=RequestMethod.GET)
+	public String ReplyOneEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String receiver=request.getParameter("receiver");
+		String subject=request.getParameter("subject");
+		subject=new String(subject.getBytes("ISO-8859-1"),"UTF8");
+		request.setAttribute("receiver", receiver.substring(receiver.indexOf("[")+1, receiver.indexOf("]")));
+		request.setAttribute("subject", subject);
+		return "mailsend.definition";
+	}
 }

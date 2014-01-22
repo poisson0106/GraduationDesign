@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/tools/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="js/tools/bootstrap-wysiwyg.js"></script>
 <script type="text/javascript" src="js/operation/sendemail.js"></script>
@@ -17,13 +18,13 @@
 	<div class="form-group">
 		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;">Receiver:</label>
 		<div class="col-sm-11">
-			<input type="text" class="form-control" id="receiver" placeholder="Receiver" name="receiver">
+			<input type="text" class="form-control" id="receiver" placeholder="Receiver" name="receiver" value="${receiver }">
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="subject" class="col-sm-1 control-label" style="text-align:left;">Subject:</label>
 		<div class="col-sm-11">
-			<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject">
+			<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" value="${subject }">
 		</div>
 	</div>
 	<div class="form-group">
