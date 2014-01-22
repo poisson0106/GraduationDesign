@@ -26,9 +26,13 @@
 				<button type="button" class="btn btn-default" title="Reply" id="reply"><span class="fa fa-reply"></span></button>
     		</div>
     	</div>
-  		<div class="panel-body">
+  		<div class="panel-body" id="mailcontent">
    			${mail.content }
   		</div>
 	</div>
 </div>
 <input type="hidden" value="${page }" id="page" />
+<form id="forwardwithoutatch" method="post" action="forwardWithoutAttachment" style="display:none">
+	<input type="hidden" id="content" name="content" />
+	<input type="hidden" id="fwsubject" name="subject" />
+</form>

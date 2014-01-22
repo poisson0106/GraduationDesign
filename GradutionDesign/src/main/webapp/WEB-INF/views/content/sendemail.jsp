@@ -106,6 +106,6 @@
 			</div>
 			
 			
-			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"></div>
+			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
 	</div>
 </div>

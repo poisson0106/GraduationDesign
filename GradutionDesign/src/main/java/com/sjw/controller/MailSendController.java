@@ -50,4 +50,15 @@ public class MailSendController {
 		request.setAttribute("subject", subject);
 		return "mailsend.definition";
 	}
+	
+	@RequestMapping(value="forwardWithoutAttachment",method=RequestMethod.POST)
+	public String ForwardWithoutAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String content=request.getParameter("content");
+		String subject=request.getParameter("subject");
+		subject=new String(subject.getBytes("ISO-8859-1"),"UTF8");
+		content=new String(content.getBytes("ISO-8859-1"),"UTF8");
+		request.setAttribute("content", content);
+		request.setAttribute("subject", subject);
+		return "mailsend.definition";
+	}
 }
