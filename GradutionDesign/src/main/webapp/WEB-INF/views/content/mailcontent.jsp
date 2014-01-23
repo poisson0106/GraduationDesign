@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/operation/inbox.js"></script>
 <script type="text/javascript" src="js/operation/mailcontent.js"></script>
 <div class="col-sm-12">
@@ -23,8 +24,22 @@
 					<li><a style="cursor:pointer;" id="withatch">Forward with attachment</a></li>
 					<li><a style="cursor:pointer;" id="withoutatch">Forward without attachment</a></li>
 				</ul>
+			</div>
+			<div class="btn-group">
 				<button type="button" class="btn btn-default" title="Reply" id="reply"><span class="fa fa-reply"></span></button>
     		</div>
+    		<c:if test="${mail.withattach }">
+    			<div class="btn-group">
+    				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" title="Attachment"><span class="fa fa-paperclip"></span></button>
+    				<c:if test="${not empty mail.attachnames }">
+    					<ul class="dropdown-menu" id="attach">
+    						<c:forEach var="item" items="${mail.attachnames }">
+    							<li><a style="cursor:pointer;">${item }</a></li>
+    						</c:forEach>
+    					</ul>
+    				</c:if>
+    			</div>
+    		</c:if>
     	</div>
   		<div class="panel-body" id="mailcontent">
    			${mail.content }

@@ -95,4 +95,14 @@ public class MailReceiveController {
 		else
 			return "message/error";
 	}
+	
+	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.POST)
+	public String DownloadSelectedAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String fileName=request.getParameter("selected");
+		String result=mailReceiveService.downloadSelectedAttachmentService(fileName);
+		if(result=="success")
+			return null;
+		else
+			return "message/error";
+	}
 }

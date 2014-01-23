@@ -10,7 +10,15 @@ public class Mail {
 	private String receivers;
 	private boolean flags;
 	private String sender;
+	private boolean withattach;
+	private String[] attachnames;
 	
+	public boolean isWithattach() {
+		return withattach;
+	}
+	public void setWithattach(boolean withattach) {
+		this.withattach = withattach;
+	}
 	public int getUnreadnum() {
 		return unreadnum;
 	}
@@ -64,6 +72,12 @@ public class Mail {
 	}
 	public void setSender(String sender) {
 		this.sender = sender;
+	}
+	public String[] getAttachnames() {
+		return attachnames;
+	}
+	public void setAttachnames(String[] attachnames) {
+		this.attachnames = attachnames;
 	}
 	
 }

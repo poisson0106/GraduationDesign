@@ -212,6 +212,16 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
        //日期
        mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
        
+       //是否带有附件
+       mail.setWithattach(MailContentAnalysis.isContainAttach((Part) message));
+       
+       //获取附件名列表
+       if(mail.isWithattach()){
+    	   MailContentAnalysis.listAttachMentName((Part) message);
+    	   String filenamelist=MailContentAnalysis.getFileName();
+    	   mail.setAttachnames(filenamelist.split(","));
+       }
+       
        MailConnection.closeInboxFolder();
        MailConnection.closeConnection();
        return mail;
@@ -255,6 +265,13 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	    //MailConnection.closeDelFolder();
 	    MailConnection.closeConnection();
 	    return "success";
+	}
+
+	@Override
+	public String downloadSelectedAttachmentDao(String fileName)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

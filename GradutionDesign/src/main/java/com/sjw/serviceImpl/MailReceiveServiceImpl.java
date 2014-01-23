@@ -39,4 +39,9 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 		  return mailReceiveDao.deleteSelectedEmailDao(messagenum);
 	}
 
+	@Override
+	public String downloadSelectedAttachmentService(String fileName) throws Exception {
+		return mailReceiveDao.downloadSelectedAttachmentDao(fileName);
+	}
+
 }

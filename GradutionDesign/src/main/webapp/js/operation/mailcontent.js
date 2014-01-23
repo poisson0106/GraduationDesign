@@ -10,4 +10,21 @@ $(function(){
 		$("#fwsubject").val("Fw: "+$("#subject").html());
 		$("#forwardwithoutatch").submit();
 	});
+	
+	$("#attach").children().children().click(function(){
+		$.ajax({
+			type:POST,
+			url:"downloadSelectedAttachment",
+			data:{
+				selected:$(this).html()
+			},
+			dataType:"text",
+			success:function(data){
+				
+			},
+			error : function(e) {
+				window.location="onerror";
+			}
+		});
+	});
 });
