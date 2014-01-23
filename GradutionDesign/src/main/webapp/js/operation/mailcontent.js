@@ -12,15 +12,17 @@ $(function(){
 	});
 	
 	$("#attach").children().children().click(function(){
+		var messagenum=$("#messagenum").val();
 		$.ajax({
-			type:POST,
+			type:"POST",
 			url:"downloadSelectedAttachment",
 			data:{
-				selected:$(this).html()
+				selected:$(this).html(),
+				messagenum:messagenum
 			},
 			dataType:"text",
 			success:function(data){
-				
+				alert("success");
 			},
 			error : function(e) {
 				window.location="onerror";

@@ -15,7 +15,7 @@ public interface MailReceiveService {
 	
 	public String deleteSelectedMailService(String[] messagenum) throws Exception;
 	
-	public String downloadSelectedAttachmentService(String fileName) throws Exception;
+	public String downloadSelectedAttachmentService(String fileName,int messagenum) throws Exception;
 	
 	
 }

@@ -99,7 +99,8 @@ public class MailReceiveController {
 	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.POST)
 	public String DownloadSelectedAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String fileName=request.getParameter("selected");
-		String result=mailReceiveService.downloadSelectedAttachmentService(fileName);
+		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
+		String result=mailReceiveService.downloadSelectedAttachmentService(fileName,messagenum);
 		if(result=="success")
 			return null;
 		else

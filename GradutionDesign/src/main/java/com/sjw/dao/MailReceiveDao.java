@@ -15,5 +15,5 @@ public interface MailReceiveDao {
 	
 	public String deleteSelectedEmailDao(String[] messagenum) throws Exception;
 	
-	public String downloadSelectedAttachmentDao(String fileName) throws Exception;
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum) throws Exception;
 }

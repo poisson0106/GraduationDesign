@@ -40,8 +40,8 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 	}
 
 	@Override
-	public String downloadSelectedAttachmentService(String fileName) throws Exception {
-		return mailReceiveDao.downloadSelectedAttachmentDao(fileName);
+	public String downloadSelectedAttachmentService(String fileName,int messagenum) throws Exception {
+		return mailReceiveDao.downloadSelectedAttachmentDao(fileName,messagenum);
 	}
 
 }

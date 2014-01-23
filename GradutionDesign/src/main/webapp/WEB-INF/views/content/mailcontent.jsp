@@ -47,6 +47,7 @@
 	</div>
 </div>
 <input type="hidden" value="${page }" id="page" />
+<input type="hidden" value="${mail.messagenum }" id="messagenum" />
 <form id="forwardwithoutatch" method="post" action="forwardWithoutAttachment" style="display:none">
 	<input type="hidden" id="content" name="content" />
 	<input type="hidden" id="fwsubject" name="subject" />

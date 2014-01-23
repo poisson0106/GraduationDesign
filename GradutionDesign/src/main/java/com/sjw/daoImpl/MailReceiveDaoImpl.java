@@ -222,6 +222,9 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
     	   mail.setAttachnames(filenamelist.split(","));
        }
        
+       //ªÒ»°messagenum
+       mail.setMessagenum(messagenum);
+       
        MailConnection.closeInboxFolder();
        MailConnection.closeConnection();
        return mail;
@@ -268,9 +271,20 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	}
 
 	@Override
-	public String downloadSelectedAttachmentDao(String fileName)
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum)
 			throws Exception {
-		// TODO Auto-generated method stub
+		MailContentAnalysis.fileName=fileName;
+		
+		IMAPFolder folder=null;
+		MailConnection.getConnection();
+        MailConnection.setIndoxFolder();
+        if(MailConnection.getInboxFolder()==null){
+       	 	return null;
+        }
+        else
+       	 	folder=MailConnection.getInboxFolder();
+        Message message = folder.getMessage(messagenum);
+		MailContentAnalysis.saveAttachMent((Part) message);
 		return null;
 	}
 
