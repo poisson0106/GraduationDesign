@@ -76,32 +76,10 @@ public class MailReceiveController {
 		}
 	}
 	
-	@RequestMapping(value="showMailContent",method=RequestMethod.GET)
-	public String ShowMailContent(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		int messagenum=Integer.parseInt(request.getParameter("thismessagenum"));
-		Mail mail=new Mail();
-		
-		mail=mailReceiveService.showMailContentService(messagenum);
-		request.setAttribute("mail", mail);
-        return "mailcontent.definition";
-	}
-	
 	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
 	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
 		String result=mailReceiveService.deleteSelectedMailService(messagenum);
-		if(result=="success")
-			return null;
-		else
-			return "message/error";
-	}
-	
-	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.GET)
-	public String DownloadSelectedAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		String fileName=request.getParameter("selected");
-		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
-		fileName = new String(fileName.getBytes("ISO-8859-1"),"UTF-8");
-		String result=mailReceiveService.downloadSelectedAttachmentService(fileName,messagenum,response);
 		if(result=="success")
 			return null;
 		else

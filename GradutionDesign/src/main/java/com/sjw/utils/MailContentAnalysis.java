@@ -156,7 +156,6 @@ public class MailContentAnalysis {
     private static void saveFile(String fileName, InputStream in,HttpServletResponse response) throws Exception {
     	PrintWriter out = response.getWriter();  
     	//response.setContentType("text/html;charset=UTF-8");
-    	System.out.print(in.available()); 
     	response.setHeader("Content-Disposition","attachment;filename=" + new String(fileName.getBytes("UTF-8"),"iso8859-1"));
     	int temp = 0;  
         while((temp = in.read()) != -1)  

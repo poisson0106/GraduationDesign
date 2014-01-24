@@ -13,11 +13,6 @@ public interface MailReceiveService {
 	
 	public List<Mail> listOnePageEmailService(int end,int pagenum) throws Exception;
 	
-	public Mail showMailContentService(int messagenum) throws Exception;
-	
 	public String deleteSelectedMailService(String[] messagenum) throws Exception;
-	
-	public String downloadSelectedAttachmentService(String fileName,int messagenum,HttpServletResponse response) throws Exception;
-	
 	
 }

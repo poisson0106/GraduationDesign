@@ -31,19 +31,10 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 		return mailReceiveDao.listOnePageEmail(end,pagenum);
 	}
 
-	@Override
-	public Mail showMailContentService(int messagenum) throws Exception {
-		return mailReceiveDao.showMailContentDao(messagenum);
-	}
 
 	@Override
 	public String deleteSelectedMailService(String[] messagenum) throws Exception {
 		  return mailReceiveDao.deleteSelectedEmailDao(messagenum);
-	}
-
-	@Override
-	public String downloadSelectedAttachmentService(String fileName,int messagenum,HttpServletResponse response) throws Exception {
-		return mailReceiveDao.downloadSelectedAttachmentDao(fileName,messagenum,response);
 	}
 
 }
