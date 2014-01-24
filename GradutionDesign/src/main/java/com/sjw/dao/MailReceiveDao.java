@@ -2,6 +2,8 @@ package com.sjw.dao;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import com.sjw.pojo.Mail;
 
 public interface MailReceiveDao {
@@ -15,5 +17,5 @@ public interface MailReceiveDao {
 	
 	public String deleteSelectedEmailDao(String[] messagenum) throws Exception;
 	
-	public String downloadSelectedAttachmentDao(String fileName,int messagenum) throws Exception;
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum,HttpServletResponse response) throws Exception;
 }

@@ -1,5 +1,6 @@
 //事件处理
 $(function(){
+
 	
 });
 
@@ -10,9 +11,4 @@ $(function(){
 	
 	$("li.active").removeClass();
 	$("#delboxmenu").addClass("active");
-});
-
-//BlockUI
-$(function(){
-	
 });

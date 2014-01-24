@@ -96,11 +96,12 @@ public class MailReceiveController {
 			return "message/error";
 	}
 	
-	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.POST)
+	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.GET)
 	public String DownloadSelectedAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String fileName=request.getParameter("selected");
 		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
-		String result=mailReceiveService.downloadSelectedAttachmentService(fileName,messagenum);
+		fileName = new String(fileName.getBytes("ISO-8859-1"),"UTF-8");
+		String result=mailReceiveService.downloadSelectedAttachmentService(fileName,messagenum,response);
 		if(result=="success")
 			return null;
 		else

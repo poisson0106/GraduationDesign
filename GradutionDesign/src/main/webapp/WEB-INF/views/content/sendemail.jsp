@@ -105,6 +105,10 @@
         			<button type="button" class="btn btn-default" data-edit="undo" title="Undo (Ctrl/Cmd+Z)"><span class="fa fa-undo"></span></button>
         			<button type="button" class="btn btn-default" data-edit="redo" title="Redo (Ctrl/Cmd+Y)"><span class="fa fa-repeat"></span></button>
       			</div>
+      			
+      			<div class="btn-group">
+      			
+      			</div>
 			</div>
 			
 			

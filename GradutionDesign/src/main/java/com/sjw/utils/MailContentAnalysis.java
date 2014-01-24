@@ -1,16 +1,13 @@
 package com.sjw.utils;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.PrintWriter;
 
 import javax.mail.BodyPart;
 import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.internet.MimeUtility;
-import javax.swing.JFileChooser;
+import javax.servlet.http.HttpServletResponse;
 
 public class MailContentAnalysis {
 	public static void getMailContent(Part part) throws Exception{
@@ -117,7 +114,7 @@ public class MailContentAnalysis {
     }
 	
 	//待改，改法参见上面的方法
-	public static void saveAttachMent(Part part) throws Exception {  
+	public static void saveAttachMent(Part part,HttpServletResponse response) throws Exception {  
         String fileNameTemp = "";  
         if (part.isMimeType("multipart/*")) {  
             Multipart mp = (Multipart) part.getContent();  
@@ -132,10 +129,10 @@ public class MailContentAnalysis {
                     if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {  
                         fileNameTemp = MimeUtility.decodeText(fileNameTemp);
                         if(fileNameTemp.equals(fileName))
-                        	saveFile(fileName, mPart.getInputStream());
+                        	saveFile(fileName, mPart.getInputStream(),response);
                     }  
                 } else if (mPart.isMimeType("multipart/*")) {  
-                    saveAttachMent(mPart);  
+                    saveAttachMent(mPart,response);  
                 } else {  
                     fileNameTemp = mPart.getFileName();
                     if(fileNameTemp!=null)
@@ -144,44 +141,29 @@ public class MailContentAnalysis {
                             && (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030"))) {  
                         fileNameTemp = MimeUtility.decodeText(fileNameTemp);
                         if(fileNameTemp.equals(fileName))
-                        	saveFile(fileName, mPart.getInputStream());  
+                        	saveFile(fileName, mPart.getInputStream(),response);  
                     }  
                 }  
             }  
         } else if (part.isMimeType("message/rfc822")) {  
-            saveAttachMent((Part) part.getContent());  
+            saveAttachMent((Part) part.getContent(),response);  
         }  
     }
   
     /**  
      * 　*　真正的保存附件到指定目录里 　  
      */  
-    private static void saveFile(String fileName, InputStream in) throws Exception {  
-        JFileChooser chooser = new JFileChooser();
-        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        chooser.showOpenDialog(null);
-        String path = chooser.getSelectedFile().getPath();
-        
-        File storeFile = new File(path+'\\'+fileName);  
-        System.out.println("附件的保存地址:　" + storeFile.toString());
-        BufferedOutputStream bos = null;  
-        BufferedInputStream bis = null;  
-  
-        try {  
-            bos = new BufferedOutputStream(new FileOutputStream(storeFile));  
-            bis = new BufferedInputStream(in);  
-            int c;  
-            while ((c = bis.read()) != -1) {  
-                bos.write(c);  
-                bos.flush();  
-            }  
-        } catch (Exception exception) {  
-            exception.printStackTrace();  
-            throw new Exception("文件保存失败!");  
-        } finally {  
-            bos.close();  
-            bis.close();  
+    private static void saveFile(String fileName, InputStream in,HttpServletResponse response) throws Exception {
+    	PrintWriter out = response.getWriter();  
+    	//response.setContentType("text/html;charset=UTF-8");
+    	System.out.print(in.available()); 
+    	response.setHeader("Content-Disposition","attachment;filename=" + new String(fileName.getBytes("UTF-8"),"iso8859-1"));
+    	int temp = 0;  
+        while((temp = in.read()) != -1)  
+        {  
+            out.write(temp);  
         }  
+    	
     }  
 	
 	public static StringBuffer getContent(){

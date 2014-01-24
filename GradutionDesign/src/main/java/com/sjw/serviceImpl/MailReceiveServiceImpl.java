@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,8 +42,8 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 	}
 
 	@Override
-	public String downloadSelectedAttachmentService(String fileName,int messagenum) throws Exception {
-		return mailReceiveDao.downloadSelectedAttachmentDao(fileName,messagenum);
+	public String downloadSelectedAttachmentService(String fileName,int messagenum,HttpServletResponse response) throws Exception {
+		return mailReceiveDao.downloadSelectedAttachmentDao(fileName,messagenum,response);
 	}
 
 }

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<script type="text/javascript" src="js/operation/boxcommons.js"></script>
 <script type="text/javascript" src="js/operation/delbox.js"></script>
 <script type="text/javascript" src="js/operation/pagination.js"></script>
 <script type="text/javascript" src="js/tools/jquery.blockUI.js"></script>

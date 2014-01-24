@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script type="text/javascript" src="js/operation/inbox.js"></script>
+<script type="text/javascript" src="js/operation/boxcommons.js"></script>
 <script type="text/javascript" src="js/operation/mailcontent.js"></script>
 <div class="col-sm-12">
 	<ol class="breadcrumb">
-		<li><a style="cursor:pointer" id="thispage">Inbox</a></li>
+		<li><a style="cursor:pointer" id="thispage">Backward</a></li>
 		<li class="active">Content</li>
 	</ol>
 </div>

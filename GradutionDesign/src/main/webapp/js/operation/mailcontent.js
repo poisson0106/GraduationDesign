@@ -13,7 +13,7 @@ $(function(){
 	
 	$("#attach").children().children().click(function(){
 		var messagenum=$("#messagenum").val();
-		$.ajax({
+		/*$.ajax({
 			type:"POST",
 			url:"downloadSelectedAttachment",
 			data:{
@@ -27,6 +27,8 @@ $(function(){
 			error : function(e) {
 				window.location="onerror";
 			}
-		});
+		});*/
+		var selected=$(this).html();
+		window.open("downloadSelectedAttachment?selected="+selected+"&messagenum="+messagenum);
 	});
 });

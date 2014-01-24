@@ -11,6 +11,7 @@ import javax.mail.Message;
 import javax.mail.Part;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeUtility;
+import javax.servlet.http.HttpServletResponse;
 
 import com.sjw.dao.MailReceiveDao;
 import com.sjw.pojo.Mail;
@@ -271,7 +272,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	}
 
 	@Override
-	public String downloadSelectedAttachmentDao(String fileName,int messagenum)
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum,HttpServletResponse response)
 			throws Exception {
 		MailContentAnalysis.fileName=fileName;
 		
@@ -284,7 +285,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         else
        	 	folder=MailConnection.getInboxFolder();
         Message message = folder.getMessage(messagenum);
-		MailContentAnalysis.saveAttachMent((Part) message);
+		MailContentAnalysis.saveAttachMent((Part) message,response);
 		return null;
 	}
 
