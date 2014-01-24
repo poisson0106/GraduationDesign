@@ -85,11 +85,13 @@
         			<button type="button" class="btn btn-default" data-edit="justifyfull" title="Justify (Ctrl/Cmd+J)"><span class="fa fa-align-justify"></span></button>
       			</div>
 
-				<div class="btn-group">
-					<button type="button" class="btn btn-default" title="Hyperlink" id="hyperlink" data-toggle="dropdown"><span class="fa fa-link"></span></button>
+				<div class="btn-group" id="grouphyperlink">
+					<button type="button" class="btn btn-default" title="Hyperlink" id="hyperlink"><span class="fa fa-link"></span></button>
 					<ul class="dropdown-menu">
-						<li><input class="col-sm-8" placeholder="URL" type="text" data-edit="createLink" />
-						<button class="btn btn-default" type="button">Add</button></li>
+						<li>
+							<input class="col-sm-9" placeholder="URL" type="text" id="hyperlinktext" />
+							<button class="btn btn-default btn-xs" type="button" id="addhyperlink">Add</button>
+						</li>
 					</ul>
 					<button type="button" class="btn btn-default" data-edit="unlink" title="Remove Hyperlink"><span class="fa fa-cut"></span></button>
 				</div>

@@ -16,6 +16,17 @@ $(function(){
 		$(".form-horizontal").submit();
 	});
 	
+	$("#hyperlink").click(function(){
+		$("#grouphyperlink").addClass("dropdown open");
+	});
+	
+	$("#addhyperlink").click(function(){
+		var link=$("#hyperlinktext").val();
+		link="<a href='"+link+"'>"+link+"</a>";
+		$("#editor").append(link);
+		$("#grouphyperlink").removeClass("dropdown open");
+	});
+	
 	//用图片打开上传窗口
 	$("#pictureBtn").click(function(){
 		$("#picup").click();

@@ -163,10 +163,7 @@ public class MailContentAnalysis {
         String path = chooser.getSelectedFile().getPath();
         
         File storeFile = new File(path+'\\'+fileName);  
-        System.out.println("附件的保存地址:　" + storeFile.toString());  
-        // for(int　i=0;storefile.exists();i++){  
-        // storefile　=　new　File(storedir+separator+fileName+i);  
-        // }  
+        System.out.println("附件的保存地址:　" + storeFile.toString());
         BufferedOutputStream bos = null;  
         BufferedInputStream bis = null;  
   
