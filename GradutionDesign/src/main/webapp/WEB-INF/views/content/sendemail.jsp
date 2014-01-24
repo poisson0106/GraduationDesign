@@ -30,6 +30,7 @@
 	<div class="form-group">
 		<input type="hidden" class="form-control" id="content" name="content">
 		<input type="hidden" class="form-control" id="sender" name="sender">
+		<input type="file" name="attach" id="attach" style="display:none"/>
 	</div>
 </form>
 <div class="row">
@@ -97,7 +98,7 @@
 				</div>
 
 				<div class="btn-group">
-					<a type="button" class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"><span class="fa fa-picture-o"></span></a> 
+					<a type="button" class="btn btn-default" title="Insert picture (or just drag & drop)" id="pictureBtn"><span class="fa fa-picture-o"></span></a>
 					<input type="file" data-role="magic-overlay" data-target="#pictureBtn" data-edit="insertImage" style="display:none" id="picup"/>
 				</div>
 
@@ -107,7 +108,7 @@
       			</div>
       			
       			<div class="btn-group">
-      			
+      				<button type="button" class="btn btn-default" title="Attachment" id="addattch"><span class="fa fa-paperclip"></span></button>
       			</div>
 			</div>
 			

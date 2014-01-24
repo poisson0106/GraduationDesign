@@ -31,4 +31,8 @@ $(function(){
 	$("#pictureBtn").click(function(){
 		$("#picup").click();
 	});
+	
+	$("#addattch").click(function(){
+		$("#attach").click();
+	})
 });

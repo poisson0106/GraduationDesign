@@ -15,8 +15,8 @@ public class MailConnection {
 	private static IMAPFolder folderDel=null;
 	
 	public static void getConnection() throws Exception{
-		String user = "username@163.com";// 邮箱的用户名    
-        String password = "password"; // 邮箱的密码   
+		String user = "poisson0106@163.com";// 邮箱的用户名    
+        String password = "19910106sjw"; // 邮箱的密码   
         Properties prop = System.getProperties();
         prop.put("mail.store.protocol", "imap");    
         prop.put("mail.imap.host", "imap.163.com");
