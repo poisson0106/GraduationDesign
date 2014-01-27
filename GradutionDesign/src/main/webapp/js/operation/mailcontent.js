@@ -13,21 +13,6 @@ $(function(){
 	
 	$("#attach").children().children().click(function(){
 		var messagenum=$("#messagenum").val();
-		/*$.ajax({
-			type:"POST",
-			url:"downloadSelectedAttachment",
-			data:{
-				selected:$(this).html(),
-				messagenum:messagenum
-			},
-			dataType:"text",
-			success:function(data){
-				alert("success");
-			},
-			error : function(e) {
-				window.location="onerror";
-			}
-		});*/
 		var selected=$(this).html();
 		window.open("downloadSelectedAttachment?selected="+selected+"&messagenum="+messagenum);
 	});

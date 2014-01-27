@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.sjw.pojo.Mail;
 import com.sjw.service.MailSendService;
@@ -35,7 +34,8 @@ public class MailSendController {
 		mail.setSender(sender);
 		mail.setSubject(subject);
 		mail.setContent(content);
-		issend=mailSendService.SendOneEmailService(mail);
+		
+		issend=mailSendService.SendOneEmailService(mail,request);
 		if(issend)
 			return "sendsuccess.definition";
 		else

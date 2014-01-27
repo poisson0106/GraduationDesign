@@ -34,5 +34,5 @@ $(function(){
 	
 	$("#addattch").click(function(){
 		$("#attach").click();
-	})
+	});
 });

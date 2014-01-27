@@ -9,7 +9,7 @@
 		</ol>
 	</div>
 </div>
-<form class="form-horizontal" role="form" method="post" action="sendOneEmail">
+<form class="form-horizontal" role="form" method="post" action="sendOneEmail" enctype="multipart/form-data">
 	<div class="form-group">
 		<div class="col-sm-3">
 			<input type="button" class="btn btn-success" id="send" value="Send" />
