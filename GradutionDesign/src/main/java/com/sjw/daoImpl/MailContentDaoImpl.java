@@ -43,7 +43,7 @@ public class MailContentDaoImpl implements MailContentDao {
         matcher=pattern.matcher(content);
         content=matcher.replaceFirst("</style> -->");
         //content=content.replaceAll("\n", "<p> </p>");
-        pattern=Pattern.compile("<body style=\"(.*);\">");
+        pattern=Pattern.compile("<body .*>");
         matcher=pattern.matcher(content);
         content=matcher.replaceFirst("<body>");
         content=content.replaceAll("<title>", "<!-- <title>");

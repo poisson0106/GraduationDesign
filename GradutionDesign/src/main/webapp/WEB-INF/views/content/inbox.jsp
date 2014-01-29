@@ -60,12 +60,12 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-6 text-right">
+	<div class="col-sm-7 text-right">
 		<ul class="pagination">
 		
 		</ul>
 	</div>
-	<div class="col-sm-6 text-left">
+	<div class="col-sm-5 text-left">
 		<div class="col-sm-3">
 			<div class='input-group' style='width:100px;margin-top:20px;'>
 				<input type='text' class='form-control' id='gopagenum'>

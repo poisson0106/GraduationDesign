@@ -127,6 +127,3 @@
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
 	</div>
 </div>
-<!-- <div class="row">
-	<input type="file" name="uploadify" id="file_upload" />
-</div> -->
