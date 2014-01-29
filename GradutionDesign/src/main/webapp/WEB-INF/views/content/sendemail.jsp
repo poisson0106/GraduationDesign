@@ -1,7 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/tools/jquery.hotkeys.js"></script>
 <script type="text/javascript" src="js/tools/bootstrap-wysiwyg.js"></script>
+<script type="text/javascript" src="js/tools/jquery.uploadify.min.js"></script>
 <script type="text/javascript" src="js/operation/sendemail.js"></script>
+<link rel="stylesheet" type="text/css" href="css/uploadify.css" />
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
@@ -109,6 +111,15 @@
       			
       			<div class="btn-group">
       				<button type="button" class="btn btn-default" title="Attachment" id="addattch"><span class="fa fa-paperclip"></span></button>
+      				<ul class="dropdown-menu text-center">
+      					<li class="col-sm-12">Limited 5 Attachments</li>
+      					<li class="col-sm-12">
+      						<input type="file" name="uploadify" id="file_upload"/>
+      					</li>
+      					<li class="col-sm-12">
+      							<input type="button" id="uploadbtn" class="btn btn-primary" value="upload"/>
+      					</li>
+      				</ul>
       			</div>
 			</div>
 			
@@ -116,3 +127,6 @@
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
 	</div>
 </div>
+<!-- <div class="row">
+	<input type="file" name="uploadify" id="file_upload" />
+</div> -->

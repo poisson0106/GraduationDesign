@@ -171,21 +171,6 @@ public class MailContentAnalysis {
     	
     }
     
-    public static Boolean uploadAttachment(HttpServletRequest request,String foldername) throws Exception{
-    	String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
-    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
-    	MultipartFile attach=(MultipartFile)multipartRequest.getFile("attach");
-    	File dirPath = new File(uploadDir);
-        if (!dirPath.exists()) {
-            dirPath.mkdirs();
-        }
-        String attachname=new String(attach.getOriginalFilename().getBytes("ISO-8859-1"),"UTF-8");
-        File uploadedFile = new File(uploadDir+File.separator+attachname);
-        FileUtils.writeByteArrayToFile(uploadedFile, attach.getBytes());
-        
-    	return true;
-    }
-	
 	public static StringBuffer getContent(){
 		return content;
 	}

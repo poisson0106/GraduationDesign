@@ -4,6 +4,21 @@ $(function(){
 	$("li.active").removeClass();
 	$("#sendemailmenu").addClass("active");
 	
+	$("#file_upload").uploadify({
+        'buttonText'    : 'Add Attach',  
+        'swf'           : getRootPath()+'swf/uploadify.swf',  
+        'uploader'      : getRootPath()+'/uploadAttachment',  
+        'auto'          : false, 
+        'fileSizeLimit' : '30720KB', 
+        'fileTypeExts'  : '*.doc; *.jpg; *.rar; *.zip', 
+        'cancelImg' :  getRootPath()+'/img/uploadify-cancel.png',
+        'uploadLimit' : 5, 
+        'formData'      : {'foldername':$("#loginname").html()},
+        'onUploadComplete':function(){  
+        	$(this).parent().parent().removeClass("dropdown open");
+        }
+    });  
+	
 });
 
 $(function(){
@@ -17,7 +32,10 @@ $(function(){
 	});
 	
 	$("#hyperlink").click(function(){
-		$("#grouphyperlink").addClass("dropdown open");
+		if($(this).parent().prop("class")=="btn-group")
+			$("#grouphyperlink").addClass("dropdown open");
+		else
+			$("#grouphyperlink").removeClass("dropdown open");
 	});
 	
 	$("#addhyperlink").click(function(){
@@ -33,6 +51,28 @@ $(function(){
 	});
 	
 	$("#addattch").click(function(){
-		$("#attach").click();
+		//$("#attach").click();
+		if($(this).parent().prop("class")=="btn-group")
+			$(this).parent().addClass("dropdown open");
+		else
+			$(this).parent().removeClass("dropdown open");
+	});
+	
+	$("#uploadbtn").click(function(){
+		$('#file_upload').uploadify('upload','*');
 	});
 });
+
+function getRootPath(){
+    //获取当前网址，如： http://localhost:8083/uimcardprj/share/meun.jsp
+    var curWwwPath=window.document.location.href;
+    //获取主机地址之后的目录，如： uimcardprj/share/meun.jsp
+    var pathName=window.document.location.pathname;
+    var pos=curWwwPath.indexOf(pathName);
+    //获取主机地址，如： http://localhost:8083
+    var localhostPaht=curWwwPath.substring(0,pos);
+    //获取带"/"的项目名，如：/uimcardprj
+    var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+    projectName = "/design/";
+    return(localhostPaht+projectName);
+};

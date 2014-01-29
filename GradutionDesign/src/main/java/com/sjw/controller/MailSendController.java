@@ -35,9 +35,17 @@ public class MailSendController {
 		mail.setSubject(subject);
 		mail.setContent(content);
 		
-		issend=mailSendService.SendOneEmailService(mail,request);
+		issend=mailSendService.SendOneEmailService(mail);
 		if(issend)
 			return "sendsuccess.definition";
+		else
+			return "senderror.definition";
+	}
+	
+	@RequestMapping(value="uploadAttachment",method=RequestMethod.POST)
+	public String UploadAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		if(mailSendService.uploadAttachmentService(request))
+			return null;
 		else
 			return "senderror.definition";
 	}

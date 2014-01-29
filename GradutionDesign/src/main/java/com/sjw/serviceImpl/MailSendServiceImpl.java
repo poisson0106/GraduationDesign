@@ -16,8 +16,14 @@ public class MailSendServiceImpl implements MailSendService {
 	MailSendDao mailSendDao;
 	
 	@Override
-	public Boolean SendOneEmailService(Mail mail,HttpServletRequest request) throws Exception {
-		return mailSendDao.SendOneEmailDao(mail,request);
+	public Boolean SendOneEmailService(Mail mail) throws Exception {
+		return mailSendDao.SendOneEmailDao(mail);
+	}
+
+	@Override
+	public Boolean uploadAttachmentService(HttpServletRequest request)
+			throws Exception {
+		return mailSendDao.uploadAttachmentDao(request);
 	}
 	
 }
