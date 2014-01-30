@@ -35,4 +35,8 @@
     <definition name="maildeleted.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/delbox.jsp" />
     </definition>
+    
+    <definition name="maildraft.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/content/draftbox.jsp"/>
+    </definition>
 </tiles-definitions> 

@@ -7,6 +7,7 @@
   			<li id="sendemailmenu"><a style="cursor:pointer" id="sendemail">Send&nbspEmail</a></li>
   			<li id="inboxmenu"><a style="cursor:pointer" id="inbox"><c:if test="${nummail ne 0}"><span class="badge pull-right" id="inboxbage">${nummail }</span></c:if>Inbox</a></li>
   			<li id="delboxmenu"><a style="cursor:pointer" id="delbox">Deleted&nbspBox</a></li>
+  			<li id="draftboxmenu"><a style="cursor:pointer" id="draftbox">Draft&nbspBox</a></li>
 		</ul>
 		<input type="hidden" value=${chosed } id="chosed">
   	</div>
