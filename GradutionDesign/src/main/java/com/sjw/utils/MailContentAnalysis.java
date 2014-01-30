@@ -43,7 +43,6 @@ public class MailContentAnalysis {
 	        	}
 	        } else if (part.isMimeType("text/html") && conName == false) {  
 	            // text/html ¿‡–Õ  
-	        	System.out.println((String) part.getContent());
 	        	content.append((String) part.getContent());  
 	        } else if (part.isMimeType("multipart/*")) {  
 	            // multipart/*  

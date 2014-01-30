@@ -38,16 +38,17 @@ public class MailContentDaoImpl implements MailContentDao {
         String content=tempcontent.toString();
         Pattern pattern=Pattern.compile("<style");
         Matcher matcher=pattern.matcher(content.toString());
-        content=matcher.replaceFirst("<!-- <style");
+        content=matcher.replaceAll("<!-- <style");
         pattern=Pattern.compile("</style>");
         matcher=pattern.matcher(content);
-        content=matcher.replaceFirst("</style> -->");
+        content=matcher.replaceAll("</style> -->");
         //content=content.replaceAll("\n", "<p> </p>");
         pattern=Pattern.compile("<body .*>");
         matcher=pattern.matcher(content);
         content=matcher.replaceFirst("<body>");
         content=content.replaceAll("<title>", "<!-- <title>");
         content=content.replaceAll("</title>", "</title> -->");
+        System.out.println(content);
         
         
         mail.setContent(content);
