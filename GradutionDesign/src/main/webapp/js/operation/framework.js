@@ -14,6 +14,10 @@ $(function(){
 	$("#delbox").click(function(){
 		window.location="initialMailDeleted";
 	});
+	
+	$("#draftbox").click(function(){
+		window.location="initialDraftBox";
+	});
 });
 
 $(function(){

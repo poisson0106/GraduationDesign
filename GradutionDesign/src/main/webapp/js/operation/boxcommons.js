@@ -1,7 +1,7 @@
 $(function(){
 	$(".mailcontent").click(function(){
 		var messagenum=$(this).parent().children("td:eq(4)").children().val();
-		window.location="showMailContent?thismessagenum="+messagenum;
+		window.location="showMailContent?thismessagenum="+messagenum+"&from="+$("li.active").attr("id");
 	});
 	
 	$("#thispage").click(function(){

@@ -13,6 +13,7 @@ public class MailConnection {
 	private static IMAPFolder folder=null;
 	private static IMAPStore store=null;
 	private static IMAPFolder folderDel=null;
+	private static IMAPFolder folderDraft=null;
 	
 	public static void getConnection() throws Exception{
 		String user = "username@163.com";// 邮箱的用户名    
@@ -38,6 +39,10 @@ public class MailConnection {
 		folderDel.open(Folder.READ_WRITE);
 	}
 	
+	public static void setDraftFolder() throws Exception{
+		folderDraft = (IMAPFolder) store.getFolder("草稿箱");
+		folderDraft.open(Folder.READ_WRITE);
+	}
 	
 	public static IMAPFolder getInboxFolder() throws Exception{
 		return folder;
@@ -45,6 +50,10 @@ public class MailConnection {
 	
 	public static IMAPFolder getDelFolder() throws Exception{
 		return folderDel;
+	}
+	
+	public static IMAPFolder getDraftFolder() throws Exception{
+		return folderDraft;
 	}
 	
 	//Logout 时使用
@@ -56,6 +65,11 @@ public class MailConnection {
 	public static void closeDelFolder() throws Exception{
 		if(folderDel!=null)
 			folderDel.close(true);
+	}
+	
+	public static void closeDraftFolder() throws Exception{
+		if(folderDraft!=null)
+			folderDraft.close(true);
 	}
 	
 	public static void closeConnection() throws Exception{

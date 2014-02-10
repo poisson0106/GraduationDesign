@@ -18,17 +18,35 @@ import com.sun.mail.imap.IMAPFolder;
 
 public class MailContentDaoImpl implements MailContentDao {
 	@Override
-	public Mail showMailContentDao(int messagenum) throws Exception {
+	public Mail showMailContentDao(int messagenum,String frompage) throws Exception {
 		Mail mail=new Mail();
 		
 		IMAPFolder folder=null;
 		MailConnection.getConnection();
-        MailConnection.setIndoxFolder();
-        if(MailConnection.getInboxFolder()==null){
-       	 	return null;
-        }
-        else
-       	 	folder=MailConnection.getInboxFolder();
+		if("inboxmenu".equals(frompage)){
+			MailConnection.setIndoxFolder();
+			if(MailConnection.getInboxFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getInboxFolder();
+		}
+		else if("delboxmenu".equals(frompage)){
+			MailConnection.setDelFolder();
+			if(MailConnection.getDelFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDelFolder();
+		}
+		else if("draftboxmenu".equals(frompage)){
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDraftFolder();
+		}
         Message message = folder.getMessage(messagenum);
         
         //取得内容
@@ -106,7 +124,8 @@ public class MailContentDaoImpl implements MailContentDao {
        mail.setReceivers(addresslist);
             
        //日期
-       mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
+       if(!"draftboxmenu".equals(frompage))
+    	   mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
        
        //是否带有附件
        mail.setWithattach(MailContentAnalysis.isContainAttach((Part) message));
@@ -121,7 +140,13 @@ public class MailContentDaoImpl implements MailContentDao {
        //获取messagenum
        mail.setMessagenum(messagenum);
        
-       MailConnection.closeInboxFolder();
+       if("inboxmenu".equals(frompage))
+    	   MailConnection.closeInboxFolder();
+       else if("delboxmenu".equals(frompage))
+    	   MailConnection.closeDelFolder();
+       else if("draftboxmenu".equals(frompage))
+    	   MailConnection.closeDraftFolder();
+       
        MailConnection.closeConnection();
        return mail;
 	}

@@ -15,8 +15,8 @@ public class MailContentServiceImpl implements MailContentService {
 	MailContentDao mailContentDao;
 	
 	@Override
-	public Mail showMailContentService(int messagenum) throws Exception {
-		return mailContentDao.showMailContentDao(messagenum);
+	public Mail showMailContentService(int messagenum,String frompage) throws Exception {
+		return mailContentDao.showMailContentDao(messagenum,frompage);
 	}
 	
 	@Override

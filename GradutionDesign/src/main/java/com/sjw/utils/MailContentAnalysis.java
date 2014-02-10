@@ -98,10 +98,12 @@ public class MailContentAnalysis {
                         && ((disposition.equals(Part.ATTACHMENT)) || (disposition  
                                 .equals(Part.INLINE)))) {  
                     fileNameTemp = mPart.getFileName();
-                    fileNameTemp = new String(fileNameTemp.getBytes("ISO-8859-1"),"UTF-8");
-                    if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {
-                    	fileName = fileName+MimeUtility.decodeText(fileNameTemp)+",";  
-                    }  
+                    if(fileNameTemp!=null){
+                    	fileNameTemp = new String(fileNameTemp.getBytes("ISO-8859-1"),"UTF-8");
+                    	if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {
+                    		fileName = fileName+MimeUtility.decodeText(fileNameTemp)+",";  
+                    	}
+                    }
                 } else if (mPart.isMimeType("multipart/*")) {  
                     listAttachMentName(mPart);  
                 } else {  

@@ -19,9 +19,10 @@ public class MailContentController {
 	@RequestMapping(value="showMailContent",method=RequestMethod.GET)
 	public String ShowMailContent(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		int messagenum=Integer.parseInt(request.getParameter("thismessagenum"));
+		String frompage=request.getParameter("from");
 		Mail mail=new Mail();
 		
-		mail=mailContentService.showMailContentService(messagenum);
+		mail=mailContentService.showMailContentService(messagenum,frompage);
 		request.setAttribute("mail", mail);
         return "mailcontent.definition";
 	}
