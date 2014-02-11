@@ -32,7 +32,7 @@
 	<div class="form-group">
 		<input type="hidden" class="form-control" id="content" name="content">
 		<input type="hidden" class="form-control" id="sender" name="sender">
-		<input type="file" name="attach" id="attach" style="display:none"/>
+		<input type="hidden" class="form-control" id="filenamelist" name="filenamelist">
 	</div>
 </form>
 <div class="row">

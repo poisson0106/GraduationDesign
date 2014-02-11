@@ -20,7 +20,7 @@ public class MailContentServiceImpl implements MailContentService {
 	}
 	
 	@Override
-	public String downloadSelectedAttachmentService(String fileName,int messagenum,HttpServletResponse response) throws Exception {
-		return mailContentDao.downloadSelectedAttachmentDao(fileName,messagenum,response);
+	public String downloadSelectedAttachmentService(String fileName,int messagenum,String frompage,HttpServletResponse response) throws Exception {
+		return mailContentDao.downloadSelectedAttachmentDao(fileName,messagenum,frompage,response);
 	}
 }

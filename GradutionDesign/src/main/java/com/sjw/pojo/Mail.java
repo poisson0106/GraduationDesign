@@ -12,7 +12,14 @@ public class Mail {
 	private String sender;
 	private boolean withattach;
 	private String[] attachnames;
+	private String frompage;
 	
+	public String getFrompage() {
+		return frompage;
+	}
+	public void setFrompage(String frompage) {
+		this.frompage = frompage;
+	}
 	public boolean isWithattach() {
 		return withattach;
 	}

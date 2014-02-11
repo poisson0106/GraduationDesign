@@ -23,16 +23,24 @@ public class MailContentController {
 		Mail mail=new Mail();
 		
 		mail=mailContentService.showMailContentService(messagenum,frompage);
-		request.setAttribute("mail", mail);
-        return "mailcontent.definition";
+		//判断当为draftbox的时候跳转到发送页面，待加,未完成。
+		if("draftmenu".equals(frompage)){
+			return null;
+		}
+		else{
+			request.setAttribute("mail", mail);
+			return "mailcontent.definition";
+		}
+       
 	}
 	
 	@RequestMapping(value="downloadSelectedAttachment",method=RequestMethod.GET)
 	public String DownloadSelectedAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String fileName=request.getParameter("selected");
 		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
+		String frompage=request.getParameter("from");
 		fileName = new String(fileName.getBytes("ISO-8859-1"),"UTF-8");
-		String result=mailContentService.downloadSelectedAttachmentService(fileName,messagenum,response);
+		String result=mailContentService.downloadSelectedAttachmentService(fileName,messagenum,frompage,response);
 		if(result=="success")
 			return null;
 		else

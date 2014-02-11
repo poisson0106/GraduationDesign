@@ -140,30 +140,50 @@ public class MailContentDaoImpl implements MailContentDao {
        //获取messagenum
        mail.setMessagenum(messagenum);
        
+       //获取取得的盒子
+       mail.setFrompage(frompage);
+       
        if("inboxmenu".equals(frompage))
     	   MailConnection.closeInboxFolder();
        else if("delboxmenu".equals(frompage))
     	   MailConnection.closeDelFolder();
        else if("draftboxmenu".equals(frompage))
     	   MailConnection.closeDraftFolder();
-       
        MailConnection.closeConnection();
        return mail;
 	}
 	
 	@Override
-	public String downloadSelectedAttachmentDao(String fileName,int messagenum,HttpServletResponse response)
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum,String frompage,HttpServletResponse response)
 			throws Exception {
 		MailContentAnalysis.fileName=fileName;
 		
 		IMAPFolder folder=null;
 		MailConnection.getConnection();
-        MailConnection.setIndoxFolder();
-        if(MailConnection.getInboxFolder()==null){
-       	 	return null;
-        }
-        else
-       	 	folder=MailConnection.getInboxFolder();
+		if("inboxmenu".equals(frompage)){
+			MailConnection.setIndoxFolder();
+			if(MailConnection.getInboxFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getInboxFolder();
+		}
+		else if("delboxmenu".equals(frompage)){
+			MailConnection.setDelFolder();
+			if(MailConnection.getDelFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDelFolder();
+		}
+		else if("draftboxmenu".equals(frompage)){
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDraftFolder();
+		}
         Message message = folder.getMessage(messagenum);
 		MailContentAnalysis.saveAttachMent((Part) message,response);
 		return null;

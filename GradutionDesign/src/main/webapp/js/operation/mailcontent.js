@@ -14,6 +14,7 @@ $(function(){
 	$("#attach").children().children().click(function(){
 		var messagenum=$("#messagenum").val();
 		var selected=$(this).html();
-		window.open("downloadSelectedAttachment?selected="+selected+"&messagenum="+messagenum);
+		var from=$("#from").val();
+		window.open("downloadSelectedAttachment?selected="+selected+"&messagenum="+messagenum+"&from="+from);
 	});
 });
