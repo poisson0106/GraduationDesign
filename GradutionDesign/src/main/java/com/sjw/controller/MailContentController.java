@@ -23,9 +23,14 @@ public class MailContentController {
 		Mail mail=new Mail();
 		
 		mail=mailContentService.showMailContentService(messagenum,frompage);
-		//判断当为draftbox的时候跳转到发送页面，待加,未完成。
-		if("draftmenu".equals(frompage)){
-			return null;
+		//判断当为draftbox的时候跳转到发送页面， 附件名列表未完成。
+		if("draftboxmenu".equals(frompage)){
+			String subject=mail.getSubject();
+			String content=mail.getContent();
+			request.setAttribute("content", content);
+			request.setAttribute("subject", subject);
+			request.setAttribute("mail", mail);
+			return "mailsend.definition";
 		}
 		else{
 			request.setAttribute("mail", mail);

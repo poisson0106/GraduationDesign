@@ -33,6 +33,7 @@
 		<input type="hidden" class="form-control" id="content" name="content">
 		<input type="hidden" class="form-control" id="sender" name="sender">
 		<input type="hidden" class="form-control" id="filenamelist" name="filenamelist">
+		<!-- about how to deal with filenamelist is still ongoing-->
 	</div>
 </form>
 <div class="row">
@@ -121,6 +122,20 @@
       					</li>
       				</ul>
       			</div>
+      			
+      			<c:if test="${mail.withattach }">
+      				<div class="btn-group">
+      					<!-- need to add a filenamelist dropdown -->
+      					<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Attachment List"><span class="fa fa-bars"></span></button>
+      					<c:if test="${not empty mail.attachnames }">
+    						<ul class="dropdown-menu" id="fnamelist">
+    							<c:forEach var="item" items="${mail.attachnames }">
+    								<li>${item }</li>
+    							</c:forEach>
+    						</ul>
+    					</c:if>
+      				</div>
+      			</c:if>
 			</div>
 			
 			

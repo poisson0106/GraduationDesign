@@ -28,6 +28,14 @@ $(function(){
 		$("#content").val(content);
 		var sender=$("#loginname").html();
 		$("#sender").val(sender);
+		var filenamelist=null;
+		$("#fnamelist li").each(function(){
+			if(filenamelist==null)
+				filenamelist=$(this).html()+",";
+			else
+				filenamelist=filenamelist+$(this).html()+",";
+		});
+		$("#filenamelist").val(filenamelist);
 		$(".form-horizontal").submit();
 	});
 	
