@@ -11,6 +11,20 @@ $(function(){
 		$("#forwardwithoutatch").submit();
 	});
 	
+	$("#withatch").click(function(){
+		var filenamelist=null;
+		$("#acontent").val($("#mailcontent").html());
+		$("#afwsubject").val("Fw: "+$("#subject").html());
+		$("#attach li").each(function(){
+			if(filenamelist==null)
+				filenamelist=$(this).children().html()+",";
+			else
+				filenamelist=filenamelist+$(this).children().html()+",";
+		});
+		$("#fnamelist").val(filenamelist);
+		$("#forwardwithatch").submit();
+	});
+	
 	$("#attach").children().children().click(function(){
 		var messagenum=$("#messagenum").val();
 		var selected=$(this).html();

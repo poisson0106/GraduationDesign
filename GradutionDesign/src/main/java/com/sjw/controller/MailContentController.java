@@ -72,4 +72,21 @@ public class MailContentController {
 		request.setAttribute("subject", subject);
 		return "mailsend.definition";
 	}
+	
+	@RequestMapping(value="forwardWithAttachment",method=RequestMethod.POST)
+	public String ForwardWithAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String content=request.getParameter("acontent");
+		String subject=request.getParameter("asubject");
+		String filenamelist=request.getParameter("fnamelist");
+		Mail mail=new Mail();
+		subject=new String(subject.getBytes("ISO-8859-1"),"UTF8");
+		content=new String(content.getBytes("ISO-8859-1"),"UTF8");
+		filenamelist=new String(filenamelist.getBytes("ISO-8859-1"),"UTF-8");
+		mail.setAttachnames(filenamelist.split(","));
+		mail.setWithattach(true);
+		request.setAttribute("content", content);
+		request.setAttribute("subject", subject);
+		request.setAttribute("mail", mail);
+		return "mailsend.definition";
+	}
 }

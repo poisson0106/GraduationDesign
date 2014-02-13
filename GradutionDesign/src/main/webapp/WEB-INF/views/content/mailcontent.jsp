@@ -21,7 +21,9 @@
     		<div class="btn-group">
     			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Forward"><span class="fa fa-share"></span><span class="fa fa-sort-asc"></span></button>
     			<ul class="dropdown-menu">
-					<li><a style="cursor:pointer;" id="withatch">Forward with attachment</a></li>
+    				<c:if test="${mail.withattach }">
+						<li><a style="cursor:pointer;" id="withatch">Forward with attachment</a></li>
+					</c:if>
 					<li><a style="cursor:pointer;" id="withoutatch">Forward without attachment</a></li>
 				</ul>
 			</div>
@@ -52,4 +54,9 @@
 <form id="forwardwithoutatch" method="post" action="forwardWithoutAttachment" style="display:none">
 	<input type="hidden" id="content" name="content" />
 	<input type="hidden" id="fwsubject" name="subject" />
+</form>
+<form id="forwardwithatch" method="post" action="forwardWithAttachment" style="display:none">
+	<input type="hidden" id="acontent" name="acontent" />
+	<input type="hidden" id="afwsubject" name="asubject" />
+	<input type="hidden" id="fnamelist" name="fnamelist" />
 </form>
