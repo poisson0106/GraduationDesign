@@ -33,7 +33,6 @@
 		<input type="hidden" class="form-control" id="content" name="content">
 		<input type="hidden" class="form-control" id="sender" name="sender">
 		<input type="hidden" class="form-control" id="filenamelist" name="filenamelist">
-		<!-- about how to deal with filenamelist is still ongoing-->
 	</div>
 </form>
 <div class="row">

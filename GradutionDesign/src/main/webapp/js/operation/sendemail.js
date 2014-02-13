@@ -16,6 +16,9 @@ $(function(){
         'formData'      : {'foldername':$("#loginname").html()},
         'onUploadComplete':function(){  
         	$(this).parent().parent().removeClass("dropdown open");
+        },
+        'onUploadSuccess':function(file){
+        	
         }
     });  
 	
