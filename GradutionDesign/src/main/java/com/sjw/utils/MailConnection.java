@@ -16,31 +16,31 @@ public class MailConnection {
 	private static IMAPFolder folderDraft=null;
 	
 	public static void getConnection() throws Exception{
-		String user = "username@163.com";// ÓÊÏäµÄÓÃ»§Ãû    
-        String password = "password"; // ÓÊÏäµÄÃÜÂë   
+		String user = "username@163.com";// ç”¨æˆ·å
+        String password = "password"; // å¯†ç    
         Properties prop = System.getProperties();
         prop.put("mail.store.protocol", "imap");    
         prop.put("mail.imap.host", "imap.163.com");
      
         Session session = Session.getInstance(prop); 
         
-        store = (IMAPStore) session.getStore("imap"); // Ê¹ÓÃimap»á»°»úÖÆ£¬Á¬½Ó·şÎñÆ÷    
+        store = (IMAPStore) session.getStore("imap"); // imapæ–¹å¼è¿æ¥
         store.connect(user, password);
         
 	}
 	
 	public static void setIndoxFolder() throws Exception{
-		folder = (IMAPFolder) store.getFolder("INBOX"); // ÊÕ¼şÏä  
+		folder = (IMAPFolder) store.getFolder("INBOX"); // æ‰“å¼€æ”¶ä»¶ç®±
         folder.open(Folder.READ_WRITE);
 	}
 	
 	public static void setDelFolder() throws Exception{
-		folderDel = (IMAPFolder) store.getFolder("¿Í»§¶ËÉ¾ĞÅ");
+		folderDel = (IMAPFolder) store.getFolder("å®¢æˆ·ç«¯åˆ ä¿¡"); //æ‰“å¼€å·²åˆ é™¤
 		folderDel.open(Folder.READ_WRITE);
 	}
 	
 	public static void setDraftFolder() throws Exception{
-		folderDraft = (IMAPFolder) store.getFolder("²İ¸åÏä");
+		folderDraft = (IMAPFolder) store.getFolder("è‰ç¨¿ç®±"); //æ‰“å¼€è‰ç¨¿ç®±
 		folderDraft.open(Folder.READ_WRITE);
 	}
 	
@@ -56,7 +56,7 @@ public class MailConnection {
 		return folderDraft;
 	}
 	
-	//Logout Ê±Ê¹ÓÃ
+	//Logout Ê±Ê¹ï¿½ï¿½
 	public static void closeInboxFolder() throws Exception{
 		if (folder != null)    
             folder.close(true);
