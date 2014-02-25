@@ -14,6 +14,7 @@ public class MailConnection {
 	private static IMAPStore store=null;
 	private static IMAPFolder folderDel=null;
 	private static IMAPFolder folderDraft=null;
+	private static IMAPFolder folderSent=null;
 	
 	public static void getConnection() throws Exception{
 		String user = "username@163.com";// 用户名
@@ -44,12 +45,21 @@ public class MailConnection {
 		folderDraft.open(Folder.READ_WRITE);
 	}
 	
+	public static void setSentFolder() throws Exception{
+		folderSent = (IMAPFolder) store.getFolder("已发送"); //打开发件箱
+		folderSent.open(Folder.READ_WRITE);
+	}
+	
 	public static IMAPFolder getInboxFolder() throws Exception{
 		return folder;
 	}
 	
 	public static IMAPFolder getDelFolder() throws Exception{
 		return folderDel;
+	}
+	
+	public static IMAPFolder getSentFolder() throws Exception{
+		return folderSent;
 	}
 	
 	public static IMAPFolder getDraftFolder() throws Exception{
@@ -70,6 +80,11 @@ public class MailConnection {
 	public static void closeDraftFolder() throws Exception{
 		if(folderDraft!=null)
 			folderDraft.close(true);
+	}
+	
+	public static void closeSentFolder() throws Exception{
+		if(folderSent!=null)
+			folderSent.close(true);
 	}
 	
 	public static void closeConnection() throws Exception{
