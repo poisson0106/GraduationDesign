@@ -1,6 +1,5 @@
 package com.sjw.utils;
 
-import java.io.File;
 import java.io.InputStream;
 import java.io.PrintWriter;
 
@@ -8,12 +7,7 @@ import javax.mail.BodyPart;
 import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.internet.MimeUtility;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 public class MailContentAnalysis {
 	public static void getMailContent(Part part) throws Exception{
