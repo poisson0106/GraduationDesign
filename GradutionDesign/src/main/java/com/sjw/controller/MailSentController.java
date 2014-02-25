@@ -12,25 +12,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sjw.pojo.Mail;
-import com.sjw.service.MailSendedService;
+import com.sjw.service.MailSentService;
 
 @Controller
-public class MailSendedController {
+public class MailSentController {
 	@Autowired
-	MailSendedService mailSendedService;
+	MailSentService mailSentService;
 	
-	@RequestMapping(value="initialMailSended",method=RequestMethod.GET)
+	@RequestMapping(value="initialMailSent",method=RequestMethod.GET)
 	public String InitialMailSended(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		List<Mail> mail=new ArrayList<Mail>();
 		int total;
 		
-		total=mailSendedService.getTotalMailSendedCountService();
+		total=mailSentService.getTotalMailSentCountService();
 		
 		if(total==-1){
 			return "error.definition";
 		}
 		else{
-			mail=mailSendedService.initialMailSendedService();
+			mail=mailSentService.initialMailSentService();
 			if(mail==null){
 				return "error.definition";
 			}
@@ -39,7 +39,7 @@ public class MailSendedController {
 				request.setAttribute("allpagenum", total/10+1);
 				request.setAttribute("page", 1);
 	         
-	        return "mailsended.definition";
+	        return "mailsent.definition";
 			}
 		}
 	}

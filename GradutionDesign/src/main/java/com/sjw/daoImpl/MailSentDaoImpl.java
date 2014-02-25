@@ -2,19 +2,19 @@ package com.sjw.daoImpl;
 
 import java.util.List;
 
-import com.sjw.dao.MailSendedDao;
+import com.sjw.dao.MailSentDao;
 import com.sjw.pojo.Mail;
 
-public class MailSendedDaoImpl implements MailSendedDao {
+public class MailSentDaoImpl implements MailSentDao {
 
 	@Override
-	public int getMailSendedCountDao() throws Exception {
+	public int getMailSentCountDao() throws Exception {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public List<Mail> initialMailSendedDao() throws Exception {
+	public List<Mail> initialMailSentDao() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

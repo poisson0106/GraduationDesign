@@ -18,6 +18,10 @@ $(function(){
 	$("#draftbox").click(function(){
 		window.location="initialDraftBox";
 	});
+	
+	$("#sentbox").click(function(){
+		window.location="initialMailSent";
+	});
 });
 
 $(function(){
