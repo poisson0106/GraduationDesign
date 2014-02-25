@@ -32,7 +32,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         }
         else
        	 	folder=MailConnection.getInboxFolder();
-        // 获取总邮件数    
+        //鍙栧緱閭欢鎬绘暟 
         total = folder.getMessageCount();
         for(int i=total;i>=total-9;i--){
        	 	Message message = folder.getMessage(i);
@@ -51,7 +51,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             InternetAddress address[] = (InternetAddress[])message.getFrom();
             String sender=address[0].getPersonal();
             if(sender==null)
-           	 	sender="匿名";
+           	 	sender="锟斤拷锟斤拷";
             else
             	if(sender.contains("\""))
             		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 
@@ -76,7 +76,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         }
         else
        	 	folder=MailConnection.getInboxFolder();
-        // 获取总邮件数    
+        //鍙栧緱閭欢鎬绘暟  
         total = folder.getMessageCount();
 		return total;
 	}
@@ -92,7 +92,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         }
         else
        	 	folder=MailConnection.getInboxFolder();
-        // 获取总邮件数    
+        //鍙栧緱閭欢鎬绘暟
         total = folder.getMessageCount();
         for(int i=total-(pagenum-1)*10;i>=end;i--){
         	Message message = folder.getMessage(i);
@@ -111,7 +111,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             InternetAddress address[] = (InternetAddress[])message.getFrom();
             String sender=address[0].getPersonal();
             if(sender==null)
-           	 	sender="匿名";
+           	 	sender="鍖垮悕";
             else
             	if(sender.contains("\""))
             		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 

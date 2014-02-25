@@ -18,8 +18,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 public class MailContentAnalysis {
 	public static void getMailContent(Part part) throws Exception{
 		 String contentType = part.getContentType();  
-	        // »ñµÃÓÊ¼şµÄMimeTypeÀàĞÍ  
-	        System.out.println("ÓÊ¼şµÄMimeTypeÀàĞÍ: " + contentType);  
+		 	// è·å¾—é‚®ä»¶çš„MimeTypeç±»å‹  
+	        System.out.println("é‚®ä»¶çš„MimeTypeç±»å‹: " + contentType);  
 	  
 	        int nameIndex = contentType.indexOf("name");  
 	  
@@ -29,10 +29,10 @@ public class MailContentAnalysis {
 	            conName = true;  
 	        }  
 	  
-	        /*System.out.println("ÓÊ¼şÄÚÈİµÄÀàĞÍ:¡¡" + contentType);  */
+	        /*System.out.println("é‚®ä»¶å†…å®¹çš„ç±»å‹:ã€€" + contentType);  */
 	  
 	        if (part.isMimeType("text/plain") && conName == false) {  
-	            // text/plain ÀàĞÍ  
+	            // text/plain ç±»å‹
 	        	String tempcontent=(String) part.getContent();
 	        	tempcontent=tempcontent.replaceAll("\n", "</br>");
 	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030"))
@@ -42,7 +42,7 @@ public class MailContentAnalysis {
 	        		content.append(changecode);
 	        	}
 	        } else if (part.isMimeType("text/html") && conName == false) {  
-	            // text/html ÀàĞÍ  
+	            // text/html ç±»å‹
 	        	content.append((String) part.getContent());  
 	        } else if (part.isMimeType("multipart/*")) {  
 	            // multipart/*  
@@ -121,7 +121,6 @@ public class MailContentAnalysis {
         }  
     }
 	
-	//´ı¸Ä£¬¸Ä·¨²Î¼ûÉÏÃæµÄ·½·¨
 	public static void saveAttachMent(Part part,HttpServletResponse response) throws Exception {  
         String fileNameTemp = "";  
         if (part.isMimeType("multipart/*")) {  
@@ -158,8 +157,8 @@ public class MailContentAnalysis {
         }  
     }
   
-    /**  
-     * ¡¡*¡¡ÕæÕıµÄ±£´æ¸½¼şµ½Ö¸¶¨Ä¿Â¼Àï ¡¡  
+	 /**  
+	  	* ã€€*ã€€çœŸæ­£çš„ä¿å­˜é™„ä»¶åˆ°æŒ‡å®šç›®å½•é‡Œ ã€€  
      */  
     private static void saveFile(String fileName, InputStream in,HttpServletResponse response) throws Exception {
     	PrintWriter out = response.getWriter();  

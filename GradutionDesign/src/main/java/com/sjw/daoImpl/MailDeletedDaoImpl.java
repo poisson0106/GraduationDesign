@@ -28,7 +28,7 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
         }
         else
        	 	folder=MailConnection.getDelFolder();
-        // 获取总邮件数    
+        //鍙栧緱閭欢鎬绘暟
         total = folder.getMessageCount();
 		return total;
 	}
@@ -45,7 +45,7 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
         }
         else
        	 	folder=MailConnection.getDelFolder();
-        // 获取总邮件数    
+        //鍙栧緱閭欢鎬绘暟
         total = folder.getMessageCount();
         if(total>10){
         	end=total-9;
@@ -67,7 +67,7 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
             InternetAddress address[] = (InternetAddress[])message.getFrom();
             String sender=address[0].getPersonal();
             if(sender==null)
-           	 	sender="匿名";
+           	 	sender="鍖垮悕";
             else
             	if(sender.contains("\""))
             		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 

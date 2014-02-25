@@ -23,7 +23,7 @@ public class MailContentController {
 		Mail mail=new Mail();
 		
 		mail=mailContentService.showMailContentService(messagenum,frompage);
-		//ÅĞ¶Ïµ±ÎªdraftboxµÄÊ±ºòÌø×ªµ½·¢ËÍÒ³Ãæ£¬ ¸½¼şÃûÁĞ±íÎ´Íê³É¡£
+		//å°†draftboxçš„å†…å®¹è½¬åˆ°å‘é€é¡µé¢
 		if("draftboxmenu".equals(frompage)){
 			String subject=mail.getSubject();
 			String content=mail.getContent();

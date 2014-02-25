@@ -24,7 +24,7 @@ public class FrameworkController {
         }
         else
         	folder=MailConnection.getInboxFolder();
-        // 获取未读邮件数
+        // 鏈閭欢
         unreadnum=folder.getUnreadMessageCount();  
         session.setAttribute("nummail", unreadnum);
 		request.setAttribute("chosed", 1);

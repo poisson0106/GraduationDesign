@@ -49,7 +49,7 @@ public class MailContentDaoImpl implements MailContentDao {
 		}
         Message message = folder.getMessage(messagenum);
         
-        //È¡µÃÄÚÈİ
+        //È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         MailContentAnalysis.setContent();
         MailContentAnalysis.getMailContent((Part) message);
         StringBuffer tempcontent=MailContentAnalysis.getContent();
@@ -71,7 +71,7 @@ public class MailContentDaoImpl implements MailContentDao {
         
         mail.setContent(content);
         
-        //È¡µÃÊÕ¼şÈË
+        //å–å¾—å‘ä»¶äººä»¥åŠå§“å
         InternetAddress address[] = (InternetAddress[]) message.getFrom();  
         String from = address[0].getAddress();  
         if (from == null) {  
@@ -89,7 +89,7 @@ public class MailContentDaoImpl implements MailContentDao {
         }
         mail.setSender(fromAddr);
         
-        //»ñÈ¡Ö÷Ìâ
+        //å–å¾—ä¸»é¢˜
         String subject = "";  
         subject = MimeUtility.decodeText(message.getSubject());  
         if (subject == null) {  
@@ -97,7 +97,7 @@ public class MailContentDaoImpl implements MailContentDao {
         }
         mail.setSubject(subject);
         
-		//»ñÈ¡ÊÕ¼şµØÖ·
+		//å–å¾—æ”¶ä»¶äººåœ°å€åˆ—è¡¨
 		String addresslist = "";
 		address=null;
   
@@ -123,24 +123,24 @@ public class MailContentDaoImpl implements MailContentDao {
             }
        mail.setReceivers(addresslist);
             
-       //ÈÕÆÚ
+       //å–å¾—æ”¶ä»¶æ—¥æœŸ
        if(!"draftboxmenu".equals(frompage))
     	   mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
        
-       //ÊÇ·ñ´øÓĞ¸½¼ş
+       //å–å¾—é™„ä»¶æ˜¯å¦æœ‰é™„ä»¶
        mail.setWithattach(MailContentAnalysis.isContainAttach((Part) message));
        
-       //»ñÈ¡¸½¼şÃûÁĞ±í
+       //å–å¾—å…·ä½“é™„ä»¶å†…å®¹
        if(mail.isWithattach()){
     	   MailContentAnalysis.listAttachMentName((Part) message);
     	   String filenamelist=MailContentAnalysis.getFileName();
     	   mail.setAttachnames(filenamelist.split(","));
        }
        
-       //»ñÈ¡messagenum
+       //å–å¾—messagenum
        mail.setMessagenum(messagenum);
        
-       //»ñÈ¡È¡µÃµÄºĞ×Ó
+       //å–å¾—ä»å“ªä¸ªé¡µé¢è·³è½¬è¿‡æ¥
        mail.setFrompage(frompage);
        
        if("inboxmenu".equals(frompage))
