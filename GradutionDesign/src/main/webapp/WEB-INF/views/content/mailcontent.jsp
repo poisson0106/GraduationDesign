@@ -1,22 +1,24 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/operation/boxcommons.js"></script>
 <script type="text/javascript" src="js/operation/mailcontent.js"></script>
 <div class="col-sm-12">
 	<ol class="breadcrumb">
-		<li><a style="cursor:pointer" id="thispage">Backward</a></li>
-		<li class="active">Content</li>
+		<li><a style="cursor:pointer" id="thispage">后退</a></li>
+		<li class="active">邮件正文</li>
 	</ol>
 </div>
 <div class="col-sm-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title"><span class="glyphicon glyphicon-envelope">&nbsp</span>Subject: <span id="subject">${mail.subject }</span></h3>
+			<h3 class="panel-title"><span class="glyphicon glyphicon-envelope">&nbsp</span>主题: <span id="subject">${mail.subject }</span></h3>
 			<p> </p>
-    		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>Sender: <span id="sender">${mail.sender }</span></h3>
+    		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>发件人: <span id="sender">${mail.sender }</span></h3>
     		<p> </p>
-    		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>Receivers: ${mail.receivers }</h3>
+    		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>收件人: ${mail.receivers }</h3>
     		<p> </p>
-    		<h3 class="panel-title"><span class="glyphicon glyphicon-time">&nbsp</span>Date: ${mail.date }</h3>
+    		<h3 class="panel-title"><span class="glyphicon glyphicon-time">&nbsp</span>收件日期: ${mail.date }</h3>
     		<p> </p>
     		<div class="btn-group">
     			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Forward"><span class="fa fa-share"></span><span class="fa fa-sort-asc"></span></button>
