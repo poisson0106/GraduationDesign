@@ -29,7 +29,7 @@ public class MailContentAnalysis {
 	            // text/plain 类型
 	        	String tempcontent=(String) part.getContent();
 	        	tempcontent=tempcontent.replaceAll("\n", "</br>");
-	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030"))
+	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030")||contentType.contains("gb2312"))
 	        		content.append(tempcontent);
 	        	else{
 	        		String changecode=new String(tempcontent.getBytes("ISO-8859-1"),"GBK");
