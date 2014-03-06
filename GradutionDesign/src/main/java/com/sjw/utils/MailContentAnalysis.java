@@ -94,9 +94,9 @@ public class MailContentAnalysis {
                     fileNameTemp = mPart.getFileName();
                     if(fileNameTemp!=null){
                     	fileNameTemp = new String(fileNameTemp.getBytes("ISO-8859-1"),"UTF-8");
-                    	if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {
+                    	//if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {
                     		fileName = fileName+MimeUtility.decodeText(fileNameTemp)+",";  
-                    	}
+                    	//}
                     }
                 } else if (mPart.isMimeType("multipart/*")) {  
                     listAttachMentName(mPart);  
@@ -127,23 +127,28 @@ public class MailContentAnalysis {
                                 .equals(Part.INLINE)))) {  
                     fileNameTemp = mPart.getFileName();
                     fileNameTemp = new String(fileNameTemp.getBytes("ISO-8859-1"),"UTF-8");
-                    if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {  
+                    //if (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030")) {  
                         fileNameTemp = MimeUtility.decodeText(fileNameTemp);
                         if(fileNameTemp.equals(fileName))
                         	saveFile(fileName, mPart.getInputStream(),response);
-                    }  
+                    //}  
                 } else if (mPart.isMimeType("multipart/*")) {  
                     saveAttachMent(mPart,response);  
                 } else {  
                     fileNameTemp = mPart.getFileName();
                     if(fileNameTemp!=null)
                     	fileNameTemp = new String(fileNameTemp.getBytes("ISO-8859-1"),"UTF-8");
-                    if ((fileNameTemp != null)  
+                    /*if ((fileNameTemp != null)  
                             && (fileNameTemp.contains("charset=UTF-8")||fileNameTemp.contains("GBK")||fileNameTemp.contains("GB2312")||fileNameTemp.contains("utf-8")||fileNameTemp.contains("gb18030"))) {  
                         fileNameTemp = MimeUtility.decodeText(fileNameTemp);
                         if(fileNameTemp.equals(fileName))
                         	saveFile(fileName, mPart.getInputStream(),response);  
-                    }  
+                    }  */
+                    if (fileNameTemp != null){
+                    	fileNameTemp = MimeUtility.decodeText(fileNameTemp);
+                        if(fileNameTemp.equals(fileName))
+                        	saveFile(fileName, mPart.getInputStream(),response);  
+                    }
                 }  
             }  
         } else if (part.isMimeType("message/rfc822")) {  

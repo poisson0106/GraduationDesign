@@ -8,4 +8,6 @@ public interface MailDeletedService {
 	public int getTotalMailDeletedCountService() throws Exception;
 	
 	public List<Mail> initialMailDeletedService() throws Exception;
+	
+	public String deleteMailPavemently(String[] messagenum) throws Exception;
 }

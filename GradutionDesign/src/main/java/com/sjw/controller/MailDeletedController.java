@@ -43,4 +43,14 @@ public class MailDeletedController {
 			}
 		}
 	}
+	
+	@RequestMapping(value="deleteMailPavemently",method=RequestMethod.POST)
+	public String DeleteMailPavemently(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String[] messagenum=request.getParameter("selected").split(",");
+		String result=mailDeletedService.deleteMailPavemently(messagenum);
+		if(result=="success")
+			return null;
+		else
+			return "message/error";
+	}
 }

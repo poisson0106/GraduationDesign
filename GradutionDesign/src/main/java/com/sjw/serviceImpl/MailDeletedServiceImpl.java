@@ -25,4 +25,9 @@ public class MailDeletedServiceImpl implements MailDeletedService {
 		return mailDeletedDao.initialMailDeletedDao();
 	}
 
+	@Override
+	public String deleteMailPavemently(String[] messagenum) throws Exception {
+		return mailDeletedDao.deleteMailPavemently(messagenum);
+	}
+
 }

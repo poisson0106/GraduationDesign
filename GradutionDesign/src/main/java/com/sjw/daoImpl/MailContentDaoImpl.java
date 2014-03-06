@@ -47,6 +47,14 @@ public class MailContentDaoImpl implements MailContentDao {
 			else
        	 		folder=MailConnection.getDraftFolder();
 		}
+		else if("sentboxmenu".equals(frompage)){
+			MailConnection.setSentFolder();
+			if(MailConnection.getSentFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getSentFolder();
+		}
         Message message = folder.getMessage(messagenum);
         
         //ȡ������

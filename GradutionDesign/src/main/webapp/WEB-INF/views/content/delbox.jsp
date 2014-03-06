@@ -12,6 +12,23 @@
 </div>
 <div class="row">
 	<div class="col-sm-12">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" id="delete"><span class="fa fa-trash-o"></span></button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
+			<ul class="dropdown-menu">
+				<li><a style="cursor:pointer;" id="readed">Change to readed</a></li>
+				<li><a style="cursor:pointer;" id="unreaded">Change to unreaded</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default" id="refresh"><span class="fa fa-refresh"></span></button>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-12">
 		<table class="table table-hover" id="delbox">
 		<c:if test="${not empty mail }">
 			<thead>
@@ -63,5 +80,6 @@
 		</div>
 	</div>
 </div>
+<div id="deletesuccess" style="display: none; align: center;">Delete Success pavemently</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

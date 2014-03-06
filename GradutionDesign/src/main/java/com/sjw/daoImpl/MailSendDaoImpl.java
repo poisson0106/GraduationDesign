@@ -3,6 +3,7 @@ package com.sjw.daoImpl;
 import java.io.File;
 import java.util.Map;
 
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
@@ -19,19 +20,24 @@ import com.sjw.utils.MailContentAnalysis;
 public class MailSendDaoImpl implements MailSendDao {
 
 	@Override
-	public Boolean SendOneEmailDao(Mail mail) throws Exception {
+	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request) throws Exception {
 		HtmlEmail email = new HtmlEmail();
 		email.setHostName("smtp.163.com");
-		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "password"));
+		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "19910106sjw"));
 		email.setSSL(true);
 		email.setFrom(mail.getSender());
 		email.setSubject(mail.getSubject());
 		email.setCharset("UTF-8");
 		email.setHtmlMsg(mail.getContent());
 		email.addTo(mail.getReceivers());
+		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
+		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
 		for(int i=0;i<mail.getAttachnames().length;i++){
 			EmailAttachment attr=new EmailAttachment();
-			
+			attr.setPath(uploadDir+File.separator+mail.getAttachnames()[i]);
+			attr.setDescription(EmailAttachment.ATTACHMENT);
+			attr.setName(MimeUtility.encodeText(mail.getAttachnames()[i]));
+			email.attach(attr);
 		}
 		email.send();
 		return true;

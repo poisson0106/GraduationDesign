@@ -10,10 +10,13 @@ $(function(){
         'uploader'      : getRootPath()+'/uploadAttachment',  
         'auto'          : false, 
         'fileSizeLimit' : '30720KB', 
-        'fileTypeExts'  : '*.doc; *.jpg; *.rar; *.zip', 
+        'fileTypeExts'  : '*.doc; *.xls; *.rar; *.ppt', 
         'cancelImg' :  getRootPath()+'/img/uploadify-cancel.png',
         'uploadLimit' : 5, 
         'formData'      : {'foldername':$("#loginname").html()},
+        'onUploadStart' : function(file) {
+            $("#filenamelist").val($("#filenamelist").val()+file.name+",");
+        },
         'onUploadComplete':function(){  
         	$(this).parent().parent().removeClass("dropdown open");
         },
@@ -38,7 +41,8 @@ $(function(){
 			else
 				filenamelist=filenamelist+$(this).html()+",";
 		});
-		$("#filenamelist").val(filenamelist);
+		if(filenamelist !=''&&filenamelist!=null)
+			$("#filenamelist").val(filenamelist);
 		$(".form-horizontal").submit();
 	});
 	
@@ -56,7 +60,7 @@ $(function(){
 		$("#grouphyperlink").removeClass("dropdown open");
 	});
 	
-	//ÓÃÍ¼Æ¬´ò¿ªÉÏ´«´°¿Ú
+	//ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
 	$("#pictureBtn").click(function(){
 		$("#picup").click();
 	});
@@ -75,14 +79,14 @@ $(function(){
 });
 
 function getRootPath(){
-    //»ñÈ¡µ±Ç°ÍøÖ·£¬Èç£º http://localhost:8083/uimcardprj/share/meun.jsp
+    //ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ç£º http://localhost:8083/uimcardprj/share/meun.jsp
     var curWwwPath=window.document.location.href;
-    //»ñÈ¡Ö÷»úµØÖ·Ö®ºóµÄÄ¿Â¼£¬Èç£º uimcardprj/share/meun.jsp
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ö®ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½ç£º uimcardprj/share/meun.jsp
     var pathName=window.document.location.pathname;
     var pos=curWwwPath.indexOf(pathName);
-    //»ñÈ¡Ö÷»úµØÖ·£¬Èç£º http://localhost:8083
+    //ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ç£º http://localhost:8083
     var localhostPaht=curWwwPath.substring(0,pos);
-    //»ñÈ¡´ø"/"µÄÏîÄ¿Ãû£¬Èç£º/uimcardprj
+    //ï¿½ï¿½È¡ï¿½ï¿½"/"ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ç£º/uimcardprj
     var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
     projectName = "/design/";
     return(localhostPaht+projectName);

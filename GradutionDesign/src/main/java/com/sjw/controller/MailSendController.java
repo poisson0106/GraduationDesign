@@ -28,14 +28,15 @@ public class MailSendController {
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String sender=request.getParameter("sender");
+		String[] filenamelist=request.getParameter("filenamelist").split(",");
 		Boolean issend=false;
 		Mail mail=new Mail();
 		mail.setReceivers(receiver);
 		mail.setSender(sender);
 		mail.setSubject(subject);
 		mail.setContent(content);
-		
-		issend=mailSendService.SendOneEmailService(mail);
+		mail.setAttachnames(filenamelist);
+		issend=mailSendService.SendOneEmailService(mail,request);
 		if(issend)
 			return "sendsuccess.definition";
 		else

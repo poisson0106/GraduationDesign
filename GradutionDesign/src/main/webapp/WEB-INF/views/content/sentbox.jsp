@@ -6,7 +6,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
-			<li class="active">Deleted Box</li>
+			<li class="active">Sent Box</li>
 		</ol>
 	</div>
 </div>
