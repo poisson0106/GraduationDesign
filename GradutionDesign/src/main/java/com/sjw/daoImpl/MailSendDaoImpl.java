@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -21,13 +22,17 @@ public class MailSendDaoImpl implements MailSendDao {
 	public Boolean SendOneEmailDao(Mail mail) throws Exception {
 		HtmlEmail email = new HtmlEmail();
 		email.setHostName("smtp.163.com");
-		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "19910106sjw"));
+		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "password"));
 		email.setSSL(true);
 		email.setFrom(mail.getSender());
 		email.setSubject(mail.getSubject());
 		email.setCharset("UTF-8");
 		email.setHtmlMsg(mail.getContent());
 		email.addTo(mail.getReceivers());
+		for(int i=0;i<mail.getAttachnames().length;i++){
+			EmailAttachment attr=new EmailAttachment();
+			
+		}
 		email.send();
 		return true;
 	}
@@ -36,7 +41,7 @@ public class MailSendDaoImpl implements MailSendDao {
 	public Boolean uploadAttachmentDao(HttpServletRequest request)
 			throws Exception {
 		String foldername=request.getParameter("foldername").substring(0,request.getParameter("foldername").indexOf("@"));
-		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername; //poissonÖ®ºóÒª´ÓµÇÂ½½çÃæ¹ýÀ´µÄsessionÖÐÄÃ
+		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername; //poissonÖ®ï¿½ï¿½Òªï¿½Óµï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½
     	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
     	Map<String,MultipartFile> filemap=multipartRequest.getFileMap();
     	File dirPath = new File(uploadDir);
