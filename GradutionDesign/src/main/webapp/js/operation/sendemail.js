@@ -46,6 +46,10 @@ $(function(){
 		$(".form-horizontal").submit();
 	});
 	
+	$("#cancel").click(function(){
+		window.location="mainframework";
+	});
+	
 	$("#hyperlink").click(function(){
 		if($(this).parent().prop("class")=="btn-group")
 			$("#grouphyperlink").addClass("dropdown open");
@@ -60,7 +64,7 @@ $(function(){
 		$("#grouphyperlink").removeClass("dropdown open");
 	});
 	
-	//��ͼƬ���ϴ�����
+	//图片上传按钮点击
 	$("#pictureBtn").click(function(){
 		$("#picup").click();
 	});
