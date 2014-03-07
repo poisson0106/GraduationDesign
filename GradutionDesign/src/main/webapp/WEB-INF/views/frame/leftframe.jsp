@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div class="panel panel-default">
-  	<div class="panel-heading text-center">Main Menu</div>
+  	<div class="panel-heading text-center">功能导航</div>
  	<div class="panel-body">
    		<ul class="nav nav-pills nav-stacked">
   			<li class="active" id="homemenu"><a style="cursor:pointer" id="home">欢迎</a></li>

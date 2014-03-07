@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/operation/boxcommons.js"></script>
 <script type="text/javascript" src="js/operation/draftbox.js"></script>
@@ -6,7 +8,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
-			<li class="active">Draft Box</li>
+			<li class="active">草稿箱</li>
 		</ol>
 	</div>
 </div>
@@ -17,9 +19,9 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selectall"></th>
-					<th>Sender</th>
-					<th>Subject</th>
-					<th>Send Date</th>
+					<th>发件人</th>
+					<th>主题</th>
+					<th>发件日期</th>
 				</tr>
 			</thead>
 		</c:if>
@@ -58,7 +60,7 @@
 			</div>
 		</div>
 		<div class="col-sm-9 text-left" style="margin-top:25px;">
-			<strong>Total Page:</strong>
+			<strong>总页面数:</strong>
 			<span class="text-muted">${allpagenum}</span>
 		</div>
 	</div>

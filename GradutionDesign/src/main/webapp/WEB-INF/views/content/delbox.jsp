@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script type="text/javascript" src="js/operation/boxcommons.js"></script>
 <script type="text/javascript" src="js/operation/delbox.js"></script>
@@ -6,7 +8,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<ol class="breadcrumb">
-			<li class="active">Deleted Box</li>
+			<li class="active">已删除</li>
 		</ol>
 	</div>
 </div>
@@ -18,8 +20,8 @@
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
 			<ul class="dropdown-menu">
-				<li><a style="cursor:pointer;" id="readed">Change to readed</a></li>
-				<li><a style="cursor:pointer;" id="unreaded">Change to unreaded</a></li>
+				<li><a style="cursor:pointer;" id="readed">标记为已读</a></li>
+				<li><a style="cursor:pointer;" id="unreaded">标记为未读</a></li>
 			</ul>
 		</div>
 		<div class="btn-group">
@@ -34,9 +36,9 @@
 			<thead>
 				<tr>
 					<th><input type="checkbox" id="selectall"></th>
-					<th>Sender</th>
-					<th>Subject</th>
-					<th>Send Date</th>
+					<th>发件人</th>
+					<th>主题</th>
+					<th>发件日期</th>
 				</tr>
 			</thead>
 		</c:if>
@@ -75,11 +77,11 @@
 			</div>
 		</div>
 		<div class="col-sm-9 text-left" style="margin-top:25px;">
-			<strong>Total Page:</strong>
+			<strong>总页面数:</strong>
 			<span class="text-muted">${allpagenum}</span>
 		</div>
 	</div>
 </div>
-<div id="deletesuccess" style="display: none; align: center;">Delete Success pavemently</div>
+<div id="deletesuccess" style="display: none; align: center;">邮件已永久删除！</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />
