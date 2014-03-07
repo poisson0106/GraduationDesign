@@ -11,7 +11,5 @@ public interface MailReceiveDao {
 	
 	public int getTotalMailCountDao() throws Exception;
 	
-	public List<Mail> listOnePageEmail(int end,int pagenum) throws Exception;
-	
 	public String deleteSelectedEmailDao(String[] messagenum) throws Exception;
 }

@@ -38,11 +38,12 @@ $(function(){
 $(function(){
 	var pagenum=$("#allpagenum").val();
 	var thispagenum=$("#page").val();
+	var frompage=$("li.active").attr("id");
 	
 	$(".pagination").children().click(function(){
 		var thispage=$(this).children().html();
 		if(parseInt(thispage)>0)
-			window.location="listOnePageEmail?page="+thispage;
+			window.location="listOnePageEmail?page="+thispage+"&from="+frompage;
 	});
 	
 	$("#previous").click(function(){
@@ -62,7 +63,7 @@ $(function(){
 		  if(page<1)
 				alert("This is the first page");
 			else
-				window.location="listOnePageEmail?page="+page;
+				window.location="listOnePageEmail?page="+page+"&from="+frompage;
 		}
 		else
 		{
@@ -87,20 +88,20 @@ $(function(){
 		  if(page>parseInt($("#allpagenum").val()))
 				alert("This is the last page");
 			else
-				window.location="listOnePageEmail?page="+page;
+				window.location="listOnePageEmail?page="+page+"&from="+frompage;
 		}
 		else
 		{
-			window.location="listOnePageEmail?page=2";
+			window.location="listOnePageEmail?page=2"+"&from="+frompage;
 		}
 	});
 	
 	$("#first").click(function(){
-		window.location="listOnePageEmail?page=1";
+		window.location="listOnePageEmail?page=1"+"&from="+frompage;
 	});
 	
 	$("#last").click(function(){
-		window.location="listOnePageEmail?page="+pagenum;
+		window.location="listOnePageEmail?page="+pagenum+"&from="+frompage;
 	});
 	
 	$('#go').click(function(){
@@ -111,7 +112,7 @@ $(function(){
 			$("#gopagenum").focus();
 		}
 		else
-			window.location="listOnePageEmail?page="+gopagenum;
+			window.location="listOnePageEmail?page="+gopagenum+"&from="+frompage;
 		
-	})
+	});
 });

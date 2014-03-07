@@ -51,7 +51,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
             InternetAddress address[] = (InternetAddress[])message.getFrom();
             String sender=address[0].getPersonal();
             if(sender==null)
-           	 	sender="����";
+           	 	sender="匿名";
             else
             	if(sender.contains("\""))
             		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 
@@ -80,51 +80,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
         total = folder.getMessageCount();
 		return total;
 	}
-
-	@Override
-	public List<Mail> listOnePageEmail(int end,int pagenum) throws Exception {
-		List<Mail> requestedmail = new ArrayList<Mail>();
-		int total=0;
-		
-		IMAPFolder folder=null;
-        if(MailConnection.getInboxFolder()==null){
-        	return null;
-        }
-        else
-       	 	folder=MailConnection.getInboxFolder();
-        //取得邮件总数
-        total = folder.getMessageCount();
-        for(int i=total-(pagenum-1)*10;i>=end;i--){
-        	Message message = folder.getMessage(i);
-       	 	Mail mail = new Mail();
-       	 	if(message.getSentDate()!=null)
-       	 		mail.setDate(DateFormat.getDateInstance(DateFormat.MEDIUM).format(message.getSentDate()));
-       	 	mail.setSubject(MimeUtility.decodeText(message.getSubject()));
-       	 	mail.setMessagenum(message.getMessageNumber());
-       	 	//mail.setReceivers(message.getAllRecipients());
-       	 	Flags flags = message.getFlags();    
-       	 	if (flags.contains(Flags.Flag.SEEN))
-       	 		mail.setFlags(false);
-       	 	else {    
-       	 		mail.setFlags(true);
-       	 	}
-            InternetAddress address[] = (InternetAddress[])message.getFrom();
-            String sender=address[0].getPersonal();
-            if(sender==null)
-           	 	sender="匿名";
-            else
-            	if(sender.contains("\""))
-            		sender=sender.substring(sender.indexOf("\"")+1, sender.length()-1);	 
-            	mail.setSender(MimeUtility.decodeText(sender));
-            requestedmail.add(mail);
-        }
-        MailConnection.closeInboxFolder();
-        MailConnection.closeConnection();
-		return requestedmail;
-	}
-
 	
-
 	@Override
 	public String deleteSelectedEmailDao(String[] messagenum) throws Exception {
 		int i=0;

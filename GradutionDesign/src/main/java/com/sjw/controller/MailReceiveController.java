@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.sjw.pojo.Mail;
 import com.sjw.service.MailReceiveService;
+import com.sjw.utils.MailConnection;
 
 
 @Controller
@@ -46,35 +47,6 @@ public class MailReceiveController {
 		
 	}
 	
-	@RequestMapping(value="listOnePageEmail",method=RequestMethod.GET)
-	public String listOnePageEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		List<Mail> mail=new ArrayList<Mail>();
-		int pagenum=Integer.parseInt(request.getParameter("page"));
-		int total=0;
-		int end=0;
-		
-		total=mailReceiveService.getTotalMailCountService();
-		if(total==-1){
-			return "message/error";
-		}
-		else {
-			if ((total-pagenum*10)<0) {
-				end=1;
-			} else {
-				end=total-(pagenum-1)*10-9;
-			}
-			mail = mailReceiveService.listOnePageEmailService(end, pagenum);
-			if(mail==null){
-				return "message/error";
-			}
-			else{
-				request.setAttribute("mail", mail);
-				request.setAttribute("allpagenum", total / 10 + 1);
-				request.setAttribute("page", pagenum);
-				return "mailreceive.definition";
-			}
-		}
-	}
 	
 	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
 	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{

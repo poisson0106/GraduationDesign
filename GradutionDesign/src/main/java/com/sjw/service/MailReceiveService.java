@@ -11,8 +11,6 @@ public interface MailReceiveService {
 	
 	public int getTotalMailCountService() throws Exception;
 	
-	public List<Mail> listOnePageEmailService(int end,int pagenum) throws Exception;
-	
 	public String deleteSelectedMailService(String[] messagenum) throws Exception;
 	
 }

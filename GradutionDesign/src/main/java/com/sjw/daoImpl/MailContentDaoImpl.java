@@ -157,6 +157,8 @@ public class MailContentDaoImpl implements MailContentDao {
     	   MailConnection.closeDelFolder();
        else if("draftboxmenu".equals(frompage))
     	   MailConnection.closeDraftFolder();
+       else if("sentboxmenu".equals(frompage))
+    	   MailConnection.closeSentFolder();
        MailConnection.closeConnection();
        return mail;
 	}

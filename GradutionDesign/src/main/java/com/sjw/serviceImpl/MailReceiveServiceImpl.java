@@ -25,12 +25,6 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 	}
 
 	@Override
-	public List<Mail> listOnePageEmailService(int end,int pagenum) throws Exception {
-		return mailReceiveDao.listOnePageEmail(end,pagenum);
-	}
-
-
-	@Override
 	public String deleteSelectedMailService(String[] messagenum) throws Exception {
 		  return mailReceiveDao.deleteSelectedEmailDao(messagenum);
 	}
