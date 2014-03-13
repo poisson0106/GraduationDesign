@@ -13,7 +13,7 @@
 		</ol>
 	</div>
 </div>
-<form class="form-horizontal" role="form" method="post" action="sendOneEmail" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">
 		<div class="col-sm-3">
 			<input type="button" class="btn btn-primary" id="send" value="发送" />

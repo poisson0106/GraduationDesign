@@ -2,6 +2,8 @@ package com.sjw.utils;
 
 import java.util.Properties;
 
+import javax.mail.Flags;
+import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Session;
 
@@ -15,6 +17,7 @@ public class MailConnection {
 	private static IMAPFolder folderDel=null;
 	private static IMAPFolder folderDraft=null;
 	private static IMAPFolder folderSent=null;
+	private static Session session;
 	
 	public static void getConnection() throws Exception{
 		String user = "username@163.com";// 用户名
@@ -23,11 +26,19 @@ public class MailConnection {
         prop.put("mail.store.protocol", "imap");    
         prop.put("mail.imap.host", "imap.163.com");
      
-        Session session = Session.getInstance(prop); 
+        session = Session.getInstance(prop);
         
         store = (IMAPStore) session.getStore("imap"); // imap方式连接
         store.connect(user, password);
         
+	}
+	
+	public static Session getSession() throws Exception{
+		return session;
+	}
+	
+	public static void getConnectionPOP3() throws Exception{
+		
 	}
 	
 	public static void setIndoxFolder() throws Exception{

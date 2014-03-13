@@ -25,5 +25,10 @@ public class MailSendServiceImpl implements MailSendService {
 			throws Exception {
 		return mailSendDao.uploadAttachmentDao(request);
 	}
+
+	@Override
+	public Boolean saveOneEmailService(Mail mail) throws Exception {
+		return mailSendDao.saveOneEmailDao(mail);
+	}
 	
 }

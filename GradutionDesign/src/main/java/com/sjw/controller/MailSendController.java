@@ -50,4 +50,27 @@ public class MailSendController {
 		else
 			return "senderror.definition";
 	}
+	
+	@RequestMapping(value="saveOneEmail",method=RequestMethod.POST)
+	public String SaveOneEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		Mail mail=new Mail();
+		String receiver=request.getParameter("receiver");
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String sender=request.getParameter("sender");
+		String[] filenamelist=request.getParameter("filenamelist").split(",");
+		Boolean issaved=false;
+		mail.setReceivers(receiver);
+		mail.setSender(sender);
+		mail.setSubject(subject);
+		mail.setContent(content);
+		if(filenamelist!=null)
+			mail.setAttachnames(filenamelist);
+		issaved=mailSendService.saveOneEmailService(mail);
+		if(issaved)
+			return "sendsuccess.definition";
+		else
+			return "senderror.definition";
+		
+	}
 }

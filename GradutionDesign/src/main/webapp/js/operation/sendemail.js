@@ -43,11 +43,31 @@ $(function(){
 		});
 		if(filenamelist !=''&&filenamelist!=null)
 			$("#filenamelist").val(filenamelist);
+		$(".form-horizontal").attr("action","sendOneEmail");
 		$(".form-horizontal").submit();
 	});
 	
 	$("#cancel").click(function(){
 		window.location="mainframework";
+	});
+	
+	$("#save").click(function(){
+		var content=$("#editor").html();
+		content="<html><body><div>"+content+"</div></body></html>";
+		$("#content").val(content);
+		var sender=$("#loginname").html();
+		$("#sender").val(sender);
+		var filenamelist=null;
+		$("#fnamelist li").each(function(){
+			if(filenamelist==null)
+				filenamelist=$(this).html()+",";
+			else
+				filenamelist=filenamelist+$(this).html()+",";
+		});
+		if(filenamelist !=''&&filenamelist!=null)
+			$("#filenamelist").val(filenamelist);
+		$(".form-horizontal").attr("action","saveOneEmail");
+		$(".form-horizontal").submit();
 	});
 	
 	$("#hyperlink").click(function(){

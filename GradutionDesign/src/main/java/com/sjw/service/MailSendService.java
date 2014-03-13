@@ -8,4 +8,6 @@ public interface MailSendService {
 	public Boolean SendOneEmailService(Mail mail,HttpServletRequest request) throws Exception;
 	
 	public Boolean uploadAttachmentService(HttpServletRequest request) throws Exception;
+	
+	public Boolean saveOneEmailService(Mail mail) throws Exception;
 }

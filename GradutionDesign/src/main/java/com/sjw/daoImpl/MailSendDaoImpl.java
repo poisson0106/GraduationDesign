@@ -2,7 +2,11 @@ package com.sjw.daoImpl;
 
 import java.io.File;
 import java.util.Map;
+import java.util.Properties;
 
+import javax.mail.Flags;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +19,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sjw.dao.MailSendDao;
 import com.sjw.pojo.Mail;
+import com.sjw.utils.MailConnection;
 import com.sjw.utils.MailContentAnalysis;
+import com.sun.mail.imap.IMAPFolder;
 
 public class MailSendDaoImpl implements MailSendDao {
 
@@ -61,6 +67,29 @@ public class MailSendDaoImpl implements MailSendDao {
         	FileUtils.writeByteArrayToFile(uploadFile, attach.getBytes());
         }
     	return true;
+	}
+
+	@Override
+	public Boolean saveOneEmailDao(Mail mail) throws Exception {
+		//邮件建立成功但无法转到草稿箱，待加
+		MailConnection.getConnection();
+		Session session=MailConnection.getSession();
+		HtmlEmail email = new HtmlEmail();
+		email.setCharset("UTF-8");
+		email.setHostName("smtp.163.com");
+		email.setSmtpPort(25);
+		email.addTo(mail.getReceivers());
+		email.setSubject(mail.getSubject());
+		email.setFrom(mail.getSender());
+		email.setHtmlMsg(mail.getContent());
+		email.setMailSession(session);
+		email.buildMimeMessage();
+		MimeMessage message=email.getMimeMessage();
+		message.setFlag(Flags.Flag.DRAFT, true);
+		message.saveChanges();
+		MailConnection.closeConnection();
+		//message.setFlag(Flags.Flag.DRAFT, true);
+        return true;
 	}
 
 }
