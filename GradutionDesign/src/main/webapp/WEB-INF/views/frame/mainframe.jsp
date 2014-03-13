@@ -13,7 +13,7 @@
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
 <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
-<title>XXX Email System</title>
+<title>上海理工大学邮箱系统</title>
 </head>
 <body>
 <tiles:insertAttribute name="header" />  

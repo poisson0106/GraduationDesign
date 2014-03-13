@@ -31,6 +31,6 @@
     <session-timeout>1500</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>mainframework</welcome-file>
+    <welcome-file>/WEB-INF/views/login/login2.jsp</welcome-file>
   </welcome-file-list>
 </web-app>

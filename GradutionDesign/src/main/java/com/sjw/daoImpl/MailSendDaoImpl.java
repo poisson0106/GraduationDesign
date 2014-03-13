@@ -71,7 +71,6 @@ public class MailSendDaoImpl implements MailSendDao {
 
 	@Override
 	public Boolean saveOneEmailDao(Mail mail) throws Exception {
-		//邮件建立成功但无法转到草稿箱，待加
 		MailConnection.getConnection();
 		Session session=MailConnection.getSession();
 		IMAPFolder folderDraft;

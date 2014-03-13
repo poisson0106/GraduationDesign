@@ -1,5 +1,5 @@
 package com.sjw.service;
 
-public interface LoginService {
+public interface UserService {
 	public String LoginOneUserService(String username);
 }

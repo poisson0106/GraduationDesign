@@ -2,9 +2,9 @@ package com.sjw.daoImpl;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 
-import com.sjw.dao.LoginDao;
+import com.sjw.dao.UserDao;
 
-public class LoginDaoImpl extends SqlSessionDaoSupport implements LoginDao {
+public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 
 	@Override
 	public String LoginOneUserDao(String username) {

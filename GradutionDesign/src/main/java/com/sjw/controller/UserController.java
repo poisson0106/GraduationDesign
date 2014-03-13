@@ -9,24 +9,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sjw.service.LoginService;
+import com.sjw.service.UserService;
 
 @Controller
-public class LoginController {
+public class UserController {
 	@Autowired
-	private LoginService loginService;
-	
+	private UserService userService;
+		
 	@RequestMapping(value="loginOneUser",method=RequestMethod.POST)
-	public ModelAndView LoginOneUser(HttpServletRequest request,HttpServletResponse response){
-		ModelAndView mv=new ModelAndView();
-		String username=request.getParameter("username");
+	public String LoginOneUser(HttpServletRequest request,HttpServletResponse response){
+		/*String username=request.getParameter("username");
 		if(request.getParameter("password").equals(loginService.LoginOneUserService(username))){
 			mv.setViewName("home");
 		}
 		else{
 			mv.setViewName("/login/login");
-		}
-		return mv;
+		}*/
+		return "base.definition";
 		
 	}
 }
