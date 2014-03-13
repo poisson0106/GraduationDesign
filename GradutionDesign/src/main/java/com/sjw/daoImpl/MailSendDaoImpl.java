@@ -74,6 +74,12 @@ public class MailSendDaoImpl implements MailSendDao {
 		//邮件建立成功但无法转到草稿箱，待加
 		MailConnection.getConnection();
 		Session session=MailConnection.getSession();
+		IMAPFolder folderDraft;
+		MailConnection.setDraftFolder();
+		if(MailConnection.getDraftFolder()==null)
+			return false;
+		else
+			folderDraft=MailConnection.getDraftFolder();
 		HtmlEmail email = new HtmlEmail();
 		email.setCharset("UTF-8");
 		email.setHostName("smtp.163.com");
@@ -84,9 +90,10 @@ public class MailSendDaoImpl implements MailSendDao {
 		email.setHtmlMsg(mail.getContent());
 		email.setMailSession(session);
 		email.buildMimeMessage();
-		MimeMessage message=email.getMimeMessage();
-		message.setFlag(Flags.Flag.DRAFT, true);
-		message.saveChanges();
+		MimeMessage message[]=new MimeMessage[1];
+		message[0]=email.getMimeMessage();
+		folderDraft.appendMessages(message);
+		MailConnection.closeDraftFolder();
 		MailConnection.closeConnection();
 		//message.setFlag(Flags.Flag.DRAFT, true);
         return true;
