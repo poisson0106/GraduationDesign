@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sjw.pojo.User;
 import com.sjw.service.UserService;
 
 @Controller
@@ -27,5 +28,27 @@ public class UserController {
 		}*/
 		return "base.definition";
 		
+	}
+	
+	@RequestMapping(value="initialUserRegister",method=RequestMethod.GET)
+	public String initalUserRegister(HttpServletRequest request,HttpServletResponse response){
+		return "login/register";
+	}
+
+	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
+	public String registerOneUser(HttpServletRequest request,HttpServletResponse response){
+		String username=request.getParameter("username");
+		String password=request.getParameter("password");
+		String question=request.getParameter("question");
+		String answer=request.getParameter("answer");
+		User user=new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setQuestion(question);
+		user.setAnswer(answer);
+		//need add this user to the database through the server
+
+		
+		return "base.definition";
 	}
 }

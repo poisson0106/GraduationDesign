@@ -1,27 +1,11 @@
 package com.sjw.pojo;
 
 public class User {
-	private int id;
-	private String gender;
 	private String username;
 	private String password;
-	private String email;
-	private String role;
-	private String subject;
-	private String realname;
+	private String question;
+	private String answer;
 	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 	public String getUsername() {
 		return username;
 	}
@@ -34,30 +18,17 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getEmail() {
-		return email;
+	public String getQuestion() {
+		return question;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setQuestion(String question) {
+		this.question = question;
 	}
-	public String getRole() {
-		return role;
+	public String getAnswer(){
+		return answer;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setAnswer(String answer){
+		this.answer = answer;
 	}
-	public String getSubject() {
-		return subject;
-	}
-	public void setSubject(String subject) {
-		this.subject = subject;
-	}
-	public String getRealname() {
-		return realname;
-	}
-	public void setRealname(String realname) {
-		this.realname = realname;
-	}
-	
 	
 }

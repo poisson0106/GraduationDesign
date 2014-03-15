@@ -14,6 +14,11 @@
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap-theme.min.css">
 <title>登陆</title>
+<style type="text/css">
+body{
+	background-image:url(img/background3.jpg);
+}
+</style>
 </head>
 <body>
 	<div class="row">
@@ -74,7 +79,7 @@
 						<div class="form-group">
 							<div class="col-sm-12">
 								<span class="glyphicon glyphicon-log-in"> </span> <a
-									href="registerUser">Haven't authority? Click this to apply</a>
+									href="initialUserRegister">Haven't account? Click this to apply</a>
 							</div>
 						</div>
 					</form>

@@ -45,7 +45,7 @@
     </bean>
     
     <!-- 将sqlSessionFactory注入到SqlSessionDaoSupport里 -->
-	<bean id="loginDao" class="com.sjw.daoImpl.UserDaoImpl">
+	<bean id="userDao" class="com.sjw.daoImpl.UserDaoImpl">
             <property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 	
