@@ -2,6 +2,7 @@ package com.sjw.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +38,7 @@ public class UserController {
 
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
 	public String registerOneUser(HttpServletRequest request,HttpServletResponse response){
+		HttpSession session=request.getSession();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		String question=request.getParameter("question");
@@ -47,8 +49,11 @@ public class UserController {
 		user.setQuestion(question);
 		user.setAnswer(answer);
 		//need add this user to the database through the server
-
-		
-		return "base.definition";
+		Boolean flag=userService.registerOneUserService(user);
+		session.setAttribute("username", username+"@usstemail.com");
+		if(flag)
+			return "base.definition";
+		else
+			return "message/error";
 	}
 }

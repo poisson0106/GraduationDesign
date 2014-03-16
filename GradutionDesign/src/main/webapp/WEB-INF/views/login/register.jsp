@@ -29,9 +29,10 @@ body{
 		<form class="form-horizontal" action="registerOneUser" method="post" role="form">
 			<div class="form-group">
 				<label for="username" class="col-sm-2 control-label">用户名:</label>
-				<div class="col-sm-10">
-					<input type="email" class="form-control" id="username" name="username" placeholder="输入用户名" />
+				<div class="col-sm-6">
+					<input type="text" class="form-control" id="username" name="username" placeholder="输入用户名" />
 				</div>
+				<div class="col-sm-4">@usstemail.com</div>
 			</div>
 			<div class="form-group">
 				<label for="password" class="col-sm-2 control-label">密码:</label>

@@ -5,4 +5,8 @@
 	<select id="loginOneUser" parameterType="string" resultType="string">
 		SELECT PASSWORD FROM USERINFO WHERE USERNAME=#{username}
 	</select>
+	
+	<update id="registerOneUser" parameterType="User">
+		UPDATE jamesuser SET question=#{question},answer=#{answer} WHERE name=#{username}
+	</update>
 </mapper>

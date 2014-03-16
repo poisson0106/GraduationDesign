@@ -9,9 +9,9 @@
 	
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/test" />
-        <property name="username" value="JavaUser" />
-        <property name="password" value="123456" />
+        <property name="url" value="jdbc:mysql://localhost:3306/gdesign" />
+        <property name="username" value="javauser" />
+        <property name="password" value="javauser" />
     </bean>
  
     <!-- transaction manager, use JtaTransactionManager for global tx -->
