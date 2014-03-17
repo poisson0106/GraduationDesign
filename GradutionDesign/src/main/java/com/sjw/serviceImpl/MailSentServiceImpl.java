@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +18,13 @@ public class MailSentServiceImpl implements MailSentService {
 	MailSentDao mailSentDao;
 	
 	@Override
-	public int getTotalMailSentCountService() throws Exception {
-		return mailSentDao.getMailSentCountDao();
+	public int getTotalMailSentCountService(HttpSession session) throws Exception {
+		return mailSentDao.getMailSentCountDao(session);
 	}
 
 	@Override
-	public List<Mail> initialMailSentService() throws Exception {
-		return mailSentDao.initialMailSentDao();
+	public List<Mail> initialMailSentService(HttpSession session) throws Exception {
+		return mailSentDao.initialMailSentDao(session);
 	}
 
 }

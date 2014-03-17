@@ -24,13 +24,13 @@ public class MailDeletedController {
 		List<Mail> mail=new ArrayList<Mail>();
 		int total;
 		
-		total=mailDeletedService.getTotalMailDeletedCountService();
+		total=mailDeletedService.getTotalMailDeletedCountService(request.getSession());
 		
 		if(total==-1){
 			return "message/error";
 		}
 		else{
-			mail=mailDeletedService.initialMailDeletedService();
+			mail=mailDeletedService.initialMailDeletedService(request.getSession());
 			if(mail==null){
 				return "message/error";
 			}
@@ -47,7 +47,7 @@ public class MailDeletedController {
 	@RequestMapping(value="deleteMailPavemently",method=RequestMethod.POST)
 	public String DeleteMailPavemently(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=mailDeletedService.deleteMailPavemently(messagenum);
+		String result=mailDeletedService.deleteMailPavemently(messagenum,request.getSession());
 		if(result=="success")
 			return null;
 		else

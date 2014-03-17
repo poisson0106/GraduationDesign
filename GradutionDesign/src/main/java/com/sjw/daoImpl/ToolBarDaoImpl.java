@@ -10,6 +10,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,11 +22,11 @@ import com.sun.mail.imap.IMAPFolder;
 
 public class ToolBarDaoImpl implements ToolBarDao {
 	@Override
-	public String setMailSeenDao(String[] messagenum) throws Exception {
+	public String setMailSeenDao(String[] messagenum,HttpSession session) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
-		MailConnection.getConnection();
+		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 	    MailConnection.setIndoxFolder();
 	    if(MailConnection.getInboxFolder()==null){
 	       return "fail";
@@ -45,11 +46,11 @@ public class ToolBarDaoImpl implements ToolBarDao {
 	}
 
 	@Override
-	public String setMailUnSeenDao(String[] messagenum) throws Exception {
+	public String setMailUnSeenDao(String[] messagenum,HttpSession session) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
-		MailConnection.getConnection();
+		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 	    MailConnection.setIndoxFolder();
 	    if(MailConnection.getInboxFolder()==null){
 	       return "fail";
@@ -69,7 +70,7 @@ public class ToolBarDaoImpl implements ToolBarDao {
 	}
 	
 	@Override
-	public List<Mail> listOnePageEmail(int end,int pagenum,String frompage) throws Exception {
+	public List<Mail> listOnePageEmail(int end,int pagenum,String frompage,HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total=0;
 		
@@ -145,11 +146,11 @@ public class ToolBarDaoImpl implements ToolBarDao {
 	}
 
 	@Override
-	public int getOnePageEmailCountDao(String frompage) throws Exception {
+	public int getOnePageEmailCountDao(String frompage,HttpSession session) throws Exception {
 		int total=0;
 		
 		IMAPFolder folder=null;
-		MailConnection.getConnection();
+		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 		if("inboxmenu".equals(frompage)){
 			MailConnection.setIndoxFolder();
 			if(MailConnection.getInboxFolder()==null){

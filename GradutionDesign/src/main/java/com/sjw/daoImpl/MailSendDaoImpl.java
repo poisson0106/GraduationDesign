@@ -9,6 +9,7 @@ import javax.mail.Session;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
@@ -26,7 +27,7 @@ import com.sun.mail.imap.IMAPFolder;
 public class MailSendDaoImpl implements MailSendDao {
 
 	@Override
-	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request) throws Exception {
+	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request,HttpSession session) throws Exception {
 		HtmlEmail email = new HtmlEmail();
 		email.setHostName("smtp.163.com");
 		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "19910106sjw"));
@@ -50,7 +51,7 @@ public class MailSendDaoImpl implements MailSendDao {
 	}
 
 	@Override
-	public Boolean uploadAttachmentDao(HttpServletRequest request)
+	public Boolean uploadAttachmentDao(HttpServletRequest request,HttpSession session)
 			throws Exception {
 		String foldername=request.getParameter("foldername").substring(0,request.getParameter("foldername").indexOf("@"));
 		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername; //poisson֮��Ҫ�ӵ�½���������session����
@@ -70,8 +71,8 @@ public class MailSendDaoImpl implements MailSendDao {
 	}
 
 	@Override
-	public Boolean saveOneEmailDao(Mail mail) throws Exception {
-		MailConnection.getConnection();
+	public Boolean saveOneEmailDao(Mail mail,HttpSession httpsession) throws Exception {
+		MailConnection.getConnection(httpsession.getAttribute("username").toString(),httpsession.getAttribute("password").toString());
 		Session session=MailConnection.getSession();
 		IMAPFolder folderDraft;
 		MailConnection.setDraftFolder();

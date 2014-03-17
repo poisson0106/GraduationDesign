@@ -12,6 +12,7 @@ import javax.mail.Part;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sjw.dao.MailReceiveDao;
 import com.sjw.pojo.Mail;
@@ -22,7 +23,7 @@ import com.sun.mail.imap.IMAPFolder;
 public class MailReceiveDaoImpl implements MailReceiveDao {
 
 	@Override
-	public List<Mail> initialMailReceiveDao() throws Exception {
+	public List<Mail> initialMailReceiveDao(HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total = 0;
         
@@ -65,11 +66,11 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	}
 
 	@Override
-	public int getTotalMailCountDao() throws Exception {
+	public int getTotalMailCountDao(HttpSession session) throws Exception {
 		int total = 0;
         
         IMAPFolder folder=null;
-        MailConnection.getConnection();
+        MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
         MailConnection.setIndoxFolder();
         if(MailConnection.getInboxFolder()==null){
         	return -1;
@@ -82,12 +83,12 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	}
 	
 	@Override
-	public String deleteSelectedEmailDao(String[] messagenum) throws Exception {
+	public String deleteSelectedEmailDao(String[] messagenum,HttpSession session) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
 		//IMAPFolder folderDel=null;
-	    MailConnection.getConnection();
+	    MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 	    MailConnection.setIndoxFolder();
 	    if(MailConnection.getInboxFolder()==null){
 	       return "fail";

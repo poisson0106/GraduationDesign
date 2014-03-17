@@ -1,5 +1,7 @@
 package com.sjw.serviceImpl;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Boolean registerOneUserService(User user) {
+	public Boolean registerOneUserService(User user) throws Exception{
 		return userDao.registerOneUserDao(user);
 	}
 

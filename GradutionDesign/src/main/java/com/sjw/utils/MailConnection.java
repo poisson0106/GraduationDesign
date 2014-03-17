@@ -19,9 +19,8 @@ public class MailConnection {
 	private static IMAPFolder folderSent=null;
 	private static Session session;
 	
-	public static void getConnection() throws Exception{
-		String user = "username@163.com";// 用户名
-        String password = "password"; // 密码   
+	public static void getConnection(String username,String password) throws Exception{
+		String user = username.substring(0, username.indexOf("@"));// 用户名
         Properties prop = System.getProperties();
         prop.put("mail.store.protocol", "imap");    
         prop.put("mail.imap.host", "imap.163.com");
@@ -37,10 +36,11 @@ public class MailConnection {
 		return session;
 	}
 	
-	public static void getConnectionPOP3() throws Exception{
-		
-	}
 	
+	public static IMAPStore getStore() {
+		return store;
+	}
+
 	public static void setIndoxFolder() throws Exception{
 		folder = (IMAPFolder) store.getFolder("INBOX"); // 打开收件箱
         folder.open(Folder.READ_WRITE);

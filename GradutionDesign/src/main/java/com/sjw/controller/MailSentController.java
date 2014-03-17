@@ -24,13 +24,13 @@ public class MailSentController {
 		List<Mail> mail=new ArrayList<Mail>();
 		int total;
 		
-		total=mailSentService.getTotalMailSentCountService();
+		total=mailSentService.getTotalMailSentCountService(request.getSession());
 		
 		if(total==-1){
 			return "error.definition";
 		}
 		else{
-			mail=mailSentService.initialMailSentService();
+			mail=mailSentService.initialMailSentService(request.getSession());
 			if(mail==null){
 				return "error.definition";
 			}

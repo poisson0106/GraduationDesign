@@ -2,12 +2,14 @@ package com.sjw.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.sjw.pojo.Mail;
 
 public interface MailDeletedService {
-	public int getTotalMailDeletedCountService() throws Exception;
+	public int getTotalMailDeletedCountService(HttpSession session) throws Exception;
 	
-	public List<Mail> initialMailDeletedService() throws Exception;
+	public List<Mail> initialMailDeletedService(HttpSession session) throws Exception;
 	
-	public String deleteMailPavemently(String[] messagenum) throws Exception;
+	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception;
 }

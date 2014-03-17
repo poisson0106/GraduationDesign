@@ -1,6 +1,7 @@
 package com.sjw.serviceImpl;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,19 +17,19 @@ public class MailSendServiceImpl implements MailSendService {
 	MailSendDao mailSendDao;
 	
 	@Override
-	public Boolean SendOneEmailService(Mail mail,HttpServletRequest request) throws Exception {
-		return mailSendDao.SendOneEmailDao(mail,request);
+	public Boolean SendOneEmailService(Mail mail,HttpServletRequest request,HttpSession session) throws Exception {
+		return mailSendDao.SendOneEmailDao(mail,request,session);
 	}
 
 	@Override
-	public Boolean uploadAttachmentService(HttpServletRequest request)
+	public Boolean uploadAttachmentService(HttpServletRequest request,HttpSession session)
 			throws Exception {
-		return mailSendDao.uploadAttachmentDao(request);
+		return mailSendDao.uploadAttachmentDao(request,session);
 	}
 
 	@Override
-	public Boolean saveOneEmailService(Mail mail) throws Exception {
-		return mailSendDao.saveOneEmailDao(mail);
+	public Boolean saveOneEmailService(Mail mail,HttpSession session) throws Exception {
+		return mailSendDao.saveOneEmailDao(mail,session);
 	}
 	
 }

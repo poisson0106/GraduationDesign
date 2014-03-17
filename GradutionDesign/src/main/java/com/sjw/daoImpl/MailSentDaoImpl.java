@@ -7,6 +7,7 @@ import java.util.List;
 import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpSession;
 
 import com.sjw.dao.MailSentDao;
 import com.sjw.pojo.Mail;
@@ -16,11 +17,11 @@ import com.sun.mail.imap.IMAPFolder;
 public class MailSentDaoImpl implements MailSentDao {
 
 	@Override
-	public int getMailSentCountDao() throws Exception {
+	public int getMailSentCountDao(HttpSession session) throws Exception {
 		int total = 0;
         
         IMAPFolder folder=null;
-        MailConnection.getConnection();
+        MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
         MailConnection.setSentFolder();
         if(MailConnection.getSentFolder()==null){
         	return -1;
@@ -33,7 +34,7 @@ public class MailSentDaoImpl implements MailSentDao {
 	}
 
 	@Override
-	public List<Mail> initialMailSentDao() throws Exception {
+	public List<Mail> initialMailSentDao(HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total = 0;
 		int end=1;

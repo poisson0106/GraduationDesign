@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,18 +18,18 @@ public class MailDeletedServiceImpl implements MailDeletedService {
 	MailDeletedDao mailDeletedDao;
 	
 	@Override
-	public int getTotalMailDeletedCountService() throws Exception {
-		return mailDeletedDao.getMailDeletedCountDao();
+	public int getTotalMailDeletedCountService(HttpSession session) throws Exception {
+		return mailDeletedDao.getMailDeletedCountDao(session);
 	}
 
 	@Override
-	public List<Mail> initialMailDeletedService() throws Exception {
-		return mailDeletedDao.initialMailDeletedDao();
+	public List<Mail> initialMailDeletedService(HttpSession session) throws Exception {
+		return mailDeletedDao.initialMailDeletedDao(session);
 	}
 
 	@Override
-	public String deleteMailPavemently(String[] messagenum) throws Exception {
-		return mailDeletedDao.deleteMailPavemently(messagenum);
+	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception {
+		return mailDeletedDao.deleteMailPavemently(messagenum,session);
 	}
 
 }

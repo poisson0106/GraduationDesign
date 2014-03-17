@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +17,22 @@ public class ToolBarServiceImpl implements ToolBarService {
 	ToolBarDao toolBarDao;
 	
 	@Override
-	public String setMailSeenService(String[] messagenum) throws Exception {
-		return toolBarDao.setMailSeenDao(messagenum);
+	public String setMailSeenService(String[] messagenum,HttpSession session) throws Exception {
+		return toolBarDao.setMailSeenDao(messagenum,session);
 	}
 
 	@Override
-	public String setMailUnSeenService(String[] messagenum) throws Exception {
-		return toolBarDao.setMailUnSeenDao(messagenum);
+	public String setMailUnSeenService(String[] messagenum,HttpSession session) throws Exception {
+		return toolBarDao.setMailUnSeenDao(messagenum,session);
 	}
 	
 	@Override
-	public List<Mail> listOnePageEmailService(int end,int pagenum,String frompage) throws Exception {
-		return toolBarDao.listOnePageEmail(end,pagenum,frompage);
+	public List<Mail> listOnePageEmailService(int end,int pagenum,String frompage,HttpSession session) throws Exception {
+		return toolBarDao.listOnePageEmail(end,pagenum,frompage,session);
 	}
 
 	@Override
-	public int getOnePageEmailCountService(String frompage) throws Exception {
-		return toolBarDao.getOnePageEmailCountDao(frompage);
+	public int getOnePageEmailCountService(String frompage,HttpSession session) throws Exception {
+		return toolBarDao.getOnePageEmailCountDao(frompage,session);
 	}
 }

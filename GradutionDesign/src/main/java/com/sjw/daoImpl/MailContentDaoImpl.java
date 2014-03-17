@@ -9,6 +9,7 @@ import javax.mail.Part;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sjw.dao.MailContentDao;
 import com.sjw.pojo.Mail;
@@ -18,11 +19,11 @@ import com.sun.mail.imap.IMAPFolder;
 
 public class MailContentDaoImpl implements MailContentDao {
 	@Override
-	public Mail showMailContentDao(int messagenum,String frompage) throws Exception {
+	public Mail showMailContentDao(int messagenum,String frompage,HttpSession session) throws Exception {
 		Mail mail=new Mail();
 		
 		IMAPFolder folder=null;
-		MailConnection.getConnection();
+		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 		if("inboxmenu".equals(frompage)){
 			MailConnection.setIndoxFolder();
 			if(MailConnection.getInboxFolder()==null){
@@ -164,12 +165,12 @@ public class MailContentDaoImpl implements MailContentDao {
 	}
 	
 	@Override
-	public String downloadSelectedAttachmentDao(String fileName,int messagenum,String frompage,HttpServletResponse response)
+	public String downloadSelectedAttachmentDao(String fileName,int messagenum,String frompage,HttpServletResponse response,HttpSession session)
 			throws Exception {
 		MailContentAnalysis.fileName=fileName;
 		
 		IMAPFolder folder=null;
-		MailConnection.getConnection();
+		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 		if("inboxmenu".equals(frompage)){
 			MailConnection.setIndoxFolder();
 			if(MailConnection.getInboxFolder()==null){

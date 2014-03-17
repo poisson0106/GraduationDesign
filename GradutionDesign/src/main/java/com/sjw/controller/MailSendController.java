@@ -36,7 +36,7 @@ public class MailSendController {
 		mail.setSubject(subject);
 		mail.setContent(content);
 		mail.setAttachnames(filenamelist);
-		issend=mailSendService.SendOneEmailService(mail,request);
+		issend=mailSendService.SendOneEmailService(mail,request,request.getSession());
 		if(issend)
 			return "sendsuccess.definition";
 		else
@@ -45,7 +45,7 @@ public class MailSendController {
 	
 	@RequestMapping(value="uploadAttachment",method=RequestMethod.POST)
 	public String UploadAttachment(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		if(mailSendService.uploadAttachmentService(request))
+		if(mailSendService.uploadAttachmentService(request,request.getSession()))
 			return null;
 		else
 			return "senderror.definition";
@@ -66,7 +66,7 @@ public class MailSendController {
 		mail.setContent(content);
 		if(filenamelist!=null)
 			mail.setAttachnames(filenamelist);
-		issaved=mailSendService.saveOneEmailService(mail);
+		issaved=mailSendService.saveOneEmailService(mail,request.getSession());
 		if(issaved)
 			return "sendsuccess.definition";
 		else

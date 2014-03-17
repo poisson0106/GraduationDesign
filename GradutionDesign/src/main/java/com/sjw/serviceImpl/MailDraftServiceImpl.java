@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +17,12 @@ public class MailDraftServiceImpl implements MailDraftService {
 	MailDraftDao mailDraftDao;
 
 	@Override
-	public int getTotalMailDraftCountService() throws Exception {
-		return mailDraftDao.getMailDraftCountDao();
+	public int getTotalMailDraftCountService(HttpSession session) throws Exception {
+		return mailDraftDao.getMailDraftCountDao(session);
 	}
 
 	@Override
-	public List<Mail> initialMailDraftService() throws Exception {
-		return mailDraftDao.initialMailDraftDao();
+	public List<Mail> initialMailDraftService(HttpSession session) throws Exception {
+		return mailDraftDao.initialMailDraftDao(session);
 	}
 }

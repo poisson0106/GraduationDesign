@@ -2,6 +2,8 @@ package com.sjw.serviceImpl;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +17,18 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 	private MailReceiveDao mailReceiveDao;
 	
 	@Override
-	public List<Mail> initialMailReceiveService() throws Exception {
-		return mailReceiveDao.initialMailReceiveDao();
+	public List<Mail> initialMailReceiveService(HttpSession session) throws Exception {
+		return mailReceiveDao.initialMailReceiveDao(session);
 	}
 
 	@Override
-	public int getTotalMailCountService() throws Exception {
-		return mailReceiveDao.getTotalMailCountDao();
+	public int getTotalMailCountService(HttpSession session) throws Exception {
+		return mailReceiveDao.getTotalMailCountDao(session);
 	}
 
 	@Override
-	public String deleteSelectedMailService(String[] messagenum) throws Exception {
-		  return mailReceiveDao.deleteSelectedEmailDao(messagenum);
+	public String deleteSelectedMailService(String[] messagenum,HttpSession session) throws Exception {
+		  return mailReceiveDao.deleteSelectedEmailDao(messagenum,session);
 	}
 
 }

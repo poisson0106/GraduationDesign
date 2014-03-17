@@ -24,12 +24,12 @@ public class MailDraftController {
 		List<Mail> mail=new ArrayList<Mail>();
 		int total;
 		
-		total=mailDraftService.getTotalMailDraftCountService();
+		total=mailDraftService.getTotalMailDraftCountService(request.getSession());
 		if(total==-1){
 			return "message/error";
 		}
 		else{
-			mail=mailDraftService.initialMailDraftService();
+			mail=mailDraftService.initialMailDraftService(request.getSession());
 			if(mail==null){
 				return "message/error";
 			}

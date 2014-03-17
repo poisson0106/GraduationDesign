@@ -26,12 +26,12 @@ public class MailReceiveController {
 		List<Mail> mail=new ArrayList<Mail>();
 		int total;
 		
-		total=mailReceiveService.getTotalMailCountService();
+		total=mailReceiveService.getTotalMailCountService(request.getSession());
 		if(total==-1){
 			return "message/error";
 		}
 		else{
-			mail=mailReceiveService.initialMailReceiveService();
+			mail=mailReceiveService.initialMailReceiveService(request.getSession());
 			if(mail==null){
 				return "message/error";
 			}
@@ -51,7 +51,7 @@ public class MailReceiveController {
 	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
 	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=mailReceiveService.deleteSelectedMailService(messagenum);
+		String result=mailReceiveService.deleteSelectedMailService(messagenum,request.getSession());
 		if(result=="success")
 			return null;
 		else

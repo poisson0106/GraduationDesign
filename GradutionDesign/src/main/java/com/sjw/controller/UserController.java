@@ -37,7 +37,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
-	public String registerOneUser(HttpServletRequest request,HttpServletResponse response){
+	public String registerOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		HttpSession session=request.getSession();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
@@ -51,6 +51,7 @@ public class UserController {
 		//need add this user to the database through the server
 		Boolean flag=userService.registerOneUserService(user);
 		session.setAttribute("username", username+"@usstemail.com");
+		session.setAttribute("password", password);
 		if(flag)
 			return "base.definition";
 		else

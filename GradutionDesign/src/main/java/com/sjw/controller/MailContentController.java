@@ -2,6 +2,7 @@ package com.sjw.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,7 @@ public class MailContentController {
 		String frompage=request.getParameter("from");
 		Mail mail=new Mail();
 		
-		mail=mailContentService.showMailContentService(messagenum,frompage);
+		mail=mailContentService.showMailContentService(messagenum,frompage,request.getSession());
 		//将draftbox的内容转到发送页面
 		if("draftboxmenu".equals(frompage)){
 			String subject=mail.getSubject();
@@ -45,7 +46,7 @@ public class MailContentController {
 		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
 		String frompage=request.getParameter("from");
 		fileName = new String(fileName.getBytes("ISO-8859-1"),"UTF-8");
-		String result=mailContentService.downloadSelectedAttachmentService(fileName,messagenum,frompage,response);
+		String result=mailContentService.downloadSelectedAttachmentService(fileName,messagenum,frompage,response,request.getSession());
 		if(result=="success")
 			return null;
 		else

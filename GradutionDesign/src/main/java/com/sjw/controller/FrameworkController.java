@@ -17,7 +17,7 @@ public class FrameworkController {
 	public String MainFramework(HttpServletRequest request,HttpServletResponse response,HttpSession session) throws Exception{
 		int unreadnum = 0;
         IMAPFolder folder=null;
-        MailConnection.getConnection();
+        MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
         MailConnection.setIndoxFolder();
         if(MailConnection.getInboxFolder()==null){
        	 	return "content/error";

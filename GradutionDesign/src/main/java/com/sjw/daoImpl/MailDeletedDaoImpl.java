@@ -8,6 +8,7 @@ import java.util.List;
 import javax.mail.Flags;
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpSession;
 
 import com.sjw.dao.MailDeletedDao;
 import com.sjw.pojo.Mail;
@@ -17,11 +18,11 @@ import com.sun.mail.imap.IMAPFolder;
 public class MailDeletedDaoImpl implements MailDeletedDao {
 
 	@Override
-	public int getMailDeletedCountDao() throws Exception {
+	public int getMailDeletedCountDao(HttpSession session) throws Exception {
 		int total = 0;
         
         IMAPFolder folder=null;
-        MailConnection.getConnection();
+        MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
         MailConnection.setDelFolder();
         if(MailConnection.getDelFolder()==null){
         	return -1;
@@ -34,7 +35,7 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
 	}
 
 	@Override
-	public List<Mail> initialMailDeletedDao() throws Exception {
+	public List<Mail> initialMailDeletedDao(HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total = 0;
 		int end=1;
@@ -81,12 +82,12 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
 	}
 
 	@Override
-	public String deleteMailPavemently(String[] messagenum) throws Exception {
+	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
 		//IMAPFolder folderDel=null;
-	    MailConnection.getConnection();
+	    MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 	    MailConnection.setDelFolder();
 	    if(MailConnection.getDelFolder()==null){
 	       return "fail";

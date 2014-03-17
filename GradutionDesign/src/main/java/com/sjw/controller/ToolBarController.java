@@ -22,7 +22,7 @@ public class ToolBarController {
 	@RequestMapping(value="setMailSeen",method=RequestMethod.POST)
 	public String SetMailSeen(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=toolBarService.setMailSeenService(messagenum);
+		String result=toolBarService.setMailSeenService(messagenum,request.getSession());
 		if(result=="success")
 			return null;
 		else
@@ -32,7 +32,7 @@ public class ToolBarController {
 	@RequestMapping(value="setMailUnSeen",method=RequestMethod.POST)
 	public String SetMailUnSeen(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=toolBarService.setMailUnSeenService(messagenum);
+		String result=toolBarService.setMailUnSeenService(messagenum,request.getSession());
 		if(result=="success")
 			return null;
 		else
@@ -47,7 +47,7 @@ public class ToolBarController {
 		int end=0;
 		String frompage=request.getParameter("from");
 		
-		total=toolBarService.getOnePageEmailCountService(frompage);
+		total=toolBarService.getOnePageEmailCountService(frompage,request.getSession());
 		if(total==-1){
 			return "message/error";
 		}
@@ -57,7 +57,7 @@ public class ToolBarController {
 			} else {
 				end=total-(pagenum-1)*10-9;
 			}
-			mail = toolBarService.listOnePageEmailService(end, pagenum,frompage);
+			mail = toolBarService.listOnePageEmailService(end, pagenum,frompage,request.getSession());
 			if(mail==null){
 				return "message/error";
 			}
