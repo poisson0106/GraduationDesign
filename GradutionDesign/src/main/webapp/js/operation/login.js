@@ -1,5 +1,7 @@
 $(function(){
-	 $('.carousel').carousel();
+	 $('.carousel').carousel({
+		 pause:"click"
+	 });
                 
         $('#myCarousel').carousel('next');
         
