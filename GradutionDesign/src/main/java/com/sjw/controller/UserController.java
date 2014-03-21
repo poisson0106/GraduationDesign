@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sjw.pojo.User;
 import com.sjw.service.UserService;
+import com.sjw.utils.MD5Util;
 
 @Controller
 public class UserController {
@@ -27,7 +28,11 @@ public class UserController {
 		else{
 			mv.setViewName("/login/login");
 		}*/
-		return "base.definition";
+		String username=request.getParameter("username");
+		if(MD5Util.MD5(request.getParameter("password")).equals(userService.LoginOneUserService(username)))
+			return "base.definition";
+		else
+			return "error.definition";
 		
 	}
 	
