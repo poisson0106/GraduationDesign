@@ -10,7 +10,7 @@
 <script type="text/javascript" src="js/operation/register.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-<title>Insert title here</title>
+<title>用户注册</title>
 <style type="text/css">
 body{
 	background-image:url(img/pic3.jpg);

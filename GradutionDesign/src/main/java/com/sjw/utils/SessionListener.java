@@ -12,10 +12,9 @@ public class SessionListener implements HttpSessionListener {
 	}
 
 	@Override
-	public void sessionDestroyed(HttpSessionEvent arg0) {
+	public void sessionDestroyed(HttpSessionEvent event) {
 		try {
-			MailConnection.closeInboxFolder();
-			MailConnection.closeConnection();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
