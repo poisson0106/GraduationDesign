@@ -16,7 +16,10 @@
 <title>登陆</title>
 <style type="text/css">
 body{
-	background-image:url(img/background3.jpg);
+	overflow:hidden;
+}
+.navbar{
+	margin-bottom: 0px;
 }
 </style>
 </head>
@@ -34,52 +37,78 @@ body{
 		</nav>
 	</div>
 	<div class="row">
-		<div class="col-sm-offset-4 col-sm-4" style="height: 100%;">
+		<div class= "col-sm-12" style="height:150px;">
+			 <div id="myCarousel" class="carousel slide">
+                      <!--   <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+                                <li data-target="#myCarousel" data-slide-to="3" class="active"></li>
+                        </ol> -->
+                        <div class="carousel-inner">
+                                <div class="item">
+                                        <img src="img/pic2.jpg" alt="" width="100%">
+                                </div>
+                                <div class="item">
+                                        <img src="img/pic3.jpg" alt="" width="100%">
+                                </div>
+                                <div class="item">
+                                        <img src="img/pic4.jpg" alt="" width="100%">
+                                </div>
+                                <div class="item active">
+                                        <img src="img/pic5.jpg" alt="" width="100%">
+                                </div>
+                        </div>
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next"></a>
+                </div>
+		</div>
+		<div class="col-sm-offset-7 col-sm-4" style="height: 100%;z-index:100">
 			<div class="panel panel-primary" style="height: 100%">
-				<div class="panel-heading">Login:</div>
+				<div class="panel-heading">用户登录:</div>
 				<div class="panel-body">
 					<c:if test="${not empty flag&&flag=='false' }">
 						<div class="row">
 							<div class="col-sm-12">
-								<p class="text-left text-danger">Password Error!</p>
+								<p class="text-left text-danger">密码错误！</p>
 							</div>
 						</div>
 					</c:if>
 					<form class="form-horizontal" role="form" id="login_info"
 						method="post" action="loginOneUser">
 						<div class="form-group">
-							<label for="username" class="col-sm-3 control-label">Username:</label>
+							<label for="username" class="col-sm-3 control-label">用户名:</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" name="username"
-									id="username" data-content="It can't be blank."
+									id="username" data-content="用户名不能为空"
 									data-placement="left">
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="password" class="col-sm-3 control-label">Password:</label>
+							<label for="password" class="col-sm-3 control-label">密码:</label>
 							<div class="col-sm-8">
 								<input type="password" class="form-control" name="password"
-									id="password" data-content="It can't be blank."
+									id="password" data-content="密码不能为空"
 									data-placement="left">
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-8">
-								<input type="button" class="btn btn-primary" value="login"
+								<input type="button" class="btn btn-primary" value="登陆"
 									id="login_button"> <input type="reset"
-									class="col-sm-offset-1 btn btn-warning" value="reset" />
+									class="col-sm-offset-1 btn btn-warning" value="重置" />
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-12">
 								<span class="glyphicon glyphicon-log-in"> </span> <a
-									href="forgetPassword">Forget password? Please click here</a>
+									href="forgetPassword">忘记密码？</a>
 							</div>
 						</div>
 						<div class="form-group">
 							<div class="col-sm-12">
 								<span class="glyphicon glyphicon-log-in"> </span> <a
-									href="initialUserRegister">Haven't account? Click this to apply</a>
+									href="initialUserRegister">没有账号？快点此来申请！</a>
 							</div>
 						</div>
 					</form>
