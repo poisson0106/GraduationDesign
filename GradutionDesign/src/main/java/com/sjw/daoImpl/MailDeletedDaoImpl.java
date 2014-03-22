@@ -113,7 +113,7 @@ public class MailDeletedDaoImpl implements MailDeletedDao {
 		       int msgnum=Integer.parseInt(msg);
 		       messages[i]=folder.getMessage(msgnum);
 		       messages[i].setFlag(Flags.Flag.DELETED, true);
-		       messages[i].saveChanges();
+		       //messages[i].saveChanges();
 		       i++;
 		}
 	    MailConnection.closeDelFolder();

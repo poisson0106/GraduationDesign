@@ -26,7 +26,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	public List<Mail> initialMailReceiveDao(HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total = 0;
-		int end=100;
+		int end=1;
         
         IMAPFolder folder=null;
         if(MailConnection.getInboxFolder()==null){
@@ -36,10 +36,9 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
        	 	folder=MailConnection.getInboxFolder();
         //取得邮件总数 
         total = folder.getMessageCount();
-        if(total<10&&total!=0)
-        	end=1;
-        else
+        if(total>10){
         	end=total-9;
+        }
         for(int i=total;i>=end;i--){
        	 	Message message = folder.getMessage(i);
        	 	Mail mail = new Mail();
@@ -92,29 +91,29 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
-		//IMAPFolder folderDel=null;
+		IMAPFolder folderDel=null;
 	    MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
 	    MailConnection.setIndoxFolder();
 	    if(MailConnection.getInboxFolder()==null){
 	       return "fail";
 	    }
 	    else{
-	    	//MailConnection.setDelFolder();
-	    	/*if(MailConnection.getDelFolder()==null)
+	    	MailConnection.setDelFolder();
+	    	if(MailConnection.getDelFolder()==null)
 	    		return "fail";
 	    	else{
 	    		folder=MailConnection.getInboxFolder();
 	    		folderDel=MailConnection.getDelFolder();
-	    	}  		*/
+	    	}  		
 	    	folder=MailConnection.getInboxFolder();
 	    }    
-	   /* for(String msg : messagenum){
+	    for(String msg : messagenum){
 	       int msgnum=Integer.parseInt(msg);
 	       messages[i]=folder.getMessage(msgnum);
 	       i++;
 	    }
 	    folder.copyMessages(messages, folderDel);
-	    i=0;*/
+	    i=0;
 	    for(String msg : messagenum){
 		       int msgnum=Integer.parseInt(msg);
 		       messages[i]=folder.getMessage(msgnum);
@@ -122,7 +121,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 		       i++;
 		}
 	    MailConnection.closeInboxFolder();
-	    //MailConnection.closeDelFolder();
+	    MailConnection.closeDelFolder();
 	    MailConnection.closeConnection();
 	    return "success";
 	}
