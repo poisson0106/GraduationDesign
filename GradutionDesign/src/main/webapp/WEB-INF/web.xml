@@ -31,7 +31,7 @@
     <session-timeout>15</session-timeout>
   </session-config>
   <welcome-file-list>
-    <welcome-file>/WEB-INF/views/login/login2.jsp</welcome-file>
+    <welcome-file>/WEB-INF/views/login/login.jsp</welcome-file>
   </welcome-file-list>
   <error-page>
   	<error-code>500</error-code>

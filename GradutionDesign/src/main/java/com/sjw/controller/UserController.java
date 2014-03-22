@@ -29,10 +29,13 @@ public class UserController {
 			mv.setViewName("/login/login");
 		}*/
 		String username=request.getParameter("username");
-		if(MD5Util.MD5(request.getParameter("password")).equals(userService.LoginOneUserService(username)))
+		if(MD5Util.MD5(request.getParameter("password")).equals(userService.LoginOneUserService(username))){
+			request.getSession().setAttribute("username", username+"@usstemail.com");
+			request.getSession().setAttribute("password", request.getParameter("password"));
 			return "base.definition";
+		}
 		else
-			return "error.definition";
+			return "message/error";
 		
 	}
 	
@@ -61,5 +64,12 @@ public class UserController {
 			return "base.definition";
 		else
 			return "message/error";
+	}
+	
+	@RequestMapping(value="logoutOneUser",method=RequestMethod.GET)
+	public String logoutOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		request.getSession().removeAttribute("username");
+		request.getSession().removeAttribute("password");
+		return "login/login";
 	}
 }
