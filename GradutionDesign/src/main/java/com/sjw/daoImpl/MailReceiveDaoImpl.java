@@ -26,6 +26,7 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
 	public List<Mail> initialMailReceiveDao(HttpSession session) throws Exception {
 		List<Mail> requestedmail = new ArrayList<Mail>();
 		int total = 0;
+		int end=100;
         
         IMAPFolder folder=null;
         if(MailConnection.getInboxFolder()==null){
@@ -35,7 +36,11 @@ public class MailReceiveDaoImpl implements MailReceiveDao {
        	 	folder=MailConnection.getInboxFolder();
         //取得邮件总数 
         total = folder.getMessageCount();
-        for(int i=total;i>=total-9;i--){
+        if(total<10&&total!=0)
+        	end=1;
+        else
+        	end=total-9;
+        for(int i=total;i>=end;i--){
        	 	Message message = folder.getMessage(i);
        	 	Mail mail = new Mail();
        	 	if(message.getSentDate()!=null)
