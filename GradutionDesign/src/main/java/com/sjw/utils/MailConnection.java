@@ -47,17 +47,17 @@ public class MailConnection {
 	}
 	
 	public static void setDelFolder() throws Exception{
-		folderDel = (IMAPFolder) store.getFolder("客户端删信"); //打开已删除
+		folderDel = (IMAPFolder) store.getFolder("DELETED"); //打开已删除
 		folderDel.open(Folder.READ_WRITE);
 	}
 	
 	public static void setDraftFolder() throws Exception{
-		folderDraft = (IMAPFolder) store.getFolder("草稿箱"); //打开草稿箱
+		folderDraft = (IMAPFolder) store.getFolder("DRAFT"); //打开草稿箱
 		folderDraft.open(Folder.READ_WRITE);
 	}
 	
 	public static void setSentFolder() throws Exception{
-		folderSent = (IMAPFolder) store.getFolder("已发送"); //打开发件箱
+		folderSent = (IMAPFolder) store.getFolder("SENT"); //打开发件箱
 		folderSent.open(Folder.READ_WRITE);
 	}
 	
