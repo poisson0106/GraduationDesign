@@ -28,7 +28,7 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		//添加验证问题与答案
 		this.getSqlSession().update("registerOneUser", user);
 		//添加文件夹
-		MailConnection.getConnection(user.getUsername(), user.getPassword());
+		MailConnection.getConnection(user.getUsername()+"@usstemail.com", user.getPassword());
 		IMAPStore store=MailConnection.getStore();
 		Folder folder=(IMAPFolder)store.getFolder("DRAFT");
 		if(!folder.exists())

@@ -23,7 +23,7 @@ public class MailConnection {
 		String user = username.substring(0, username.indexOf("@"));// 用户名
         Properties prop = System.getProperties();
         prop.put("mail.store.protocol", "imap");    
-        prop.put("mail.imap.host", "imap.163.com");
+        prop.put("mail.imap.host", "mail.usstemail.com");
      
         session = Session.getInstance(prop);
         
