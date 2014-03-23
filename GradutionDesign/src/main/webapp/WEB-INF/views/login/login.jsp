@@ -47,16 +47,16 @@ body{
                         </ol> -->
                         <div class="carousel-inner">
                                 <div class="item">
-                                        <img src="img/pic2.jpg" alt="" width="100%">
+                                        <img src="img/pic10.jpg" alt="" width="100%">
                                 </div>
                                 <div class="item">
-                                        <img src="img/pic3.jpg" alt="" width="100%">
+                                        <img src="img/pic6.jpg" alt="" width="100%">
                                 </div>
                                 <div class="item">
-                                        <img src="img/pic4.jpg" alt="" width="100%">
+                                        <img src="img/pic7.jpg" alt="" width="100%">
                                 </div>
                                 <div class="item active">
-                                        <img src="img/pic5.jpg" alt="" width="100%">
+                                        <img src="img/pic8.jpg" alt="" width="100%">
                                 </div>
                         </div>
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev"></a>
