@@ -54,6 +54,19 @@ public class MailSendDaoImpl implements MailSendDao {
 			}
 		}
 		email.send();
+		MailConnection.getConnection(username+"@usstemail.com", password);
+		IMAPFolder folderSent;
+		MailConnection.setSentFolder();
+		if(MailConnection.getSentFolder()==null)
+			return false;
+		else
+			folderSent=MailConnection.getSentFolder();
+		email.buildMimeMessage();
+		MimeMessage message[]=new MimeMessage[1];
+		message[0]=email.getMimeMessage();
+		folderSent.appendMessages(message);
+		MailConnection.closeDraftFolder();
+		MailConnection.closeConnection();
 		return true;
 	}
 
