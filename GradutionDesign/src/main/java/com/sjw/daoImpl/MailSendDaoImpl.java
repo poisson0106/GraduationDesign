@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import javax.mail.Flags;
 import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.sjw.dao.MailSendDao;
 import com.sjw.pojo.Mail;
+import com.sjw.utils.MD5Util;
 import com.sjw.utils.MailConnection;
 import com.sjw.utils.MailContentAnalysis;
 import com.sun.mail.imap.IMAPFolder;
@@ -28,10 +30,13 @@ public class MailSendDaoImpl implements MailSendDao {
 
 	@Override
 	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request,HttpSession session) throws Exception {
+		String username=session.getAttribute("username").toString();
+		username=username.substring(0, username.indexOf("@"));
+		String password=session.getAttribute("password").toString();
 		HtmlEmail email = new HtmlEmail();
-		email.setHostName("smtp.163.com");
-		email.setAuthenticator(new DefaultAuthenticator("poisson0106@163.com", "19910106sjw"));
-		email.setSSL(true);
+		email.setHostName("127.0.0.1");
+		email.setSmtpPort(25);
+		email.setAuthenticator(new DefaultAuthenticator(username,password));
 		email.setFrom(mail.getSender());
 		email.setSubject(mail.getSubject());
 		email.setCharset("UTF-8");
@@ -39,12 +44,14 @@ public class MailSendDaoImpl implements MailSendDao {
 		email.addTo(mail.getReceivers());
 		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
 		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
-		for(int i=0;i<mail.getAttachnames().length;i++){
-			EmailAttachment attr=new EmailAttachment();
-			attr.setPath(uploadDir+File.separator+mail.getAttachnames()[i]);
-			attr.setDescription(EmailAttachment.ATTACHMENT);
-			attr.setName(MimeUtility.encodeText(mail.getAttachnames()[i]));
-			email.attach(attr);
+		if(mail.getAttachnames()!=null){
+			for(int i=0;i<mail.getAttachnames().length;i++){
+				EmailAttachment attr=new EmailAttachment();
+				attr.setPath(uploadDir+File.separator+mail.getAttachnames()[i]);
+				attr.setDescription(EmailAttachment.ATTACHMENT);
+				attr.setName(MimeUtility.encodeText(mail.getAttachnames()[i]));
+				email.attach(attr);
+			}
 		}
 		email.send();
 		return true;
@@ -82,7 +89,7 @@ public class MailSendDaoImpl implements MailSendDao {
 			folderDraft=MailConnection.getDraftFolder();
 		HtmlEmail email = new HtmlEmail();
 		email.setCharset("UTF-8");
-		email.setHostName("smtp.163.com");
+		email.setHostName("mail.usstemail.com");
 		email.setSmtpPort(25);
 		email.addTo(mail.getReceivers());
 		email.setSubject(mail.getSubject());

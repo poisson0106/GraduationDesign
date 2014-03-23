@@ -35,7 +35,8 @@ public class MailSendController {
 		mail.setSender(sender);
 		mail.setSubject(subject);
 		mail.setContent(content);
-		mail.setAttachnames(filenamelist);
+		if(!"".equals(filenamelist[0]))
+			mail.setAttachnames(filenamelist);
 		issend=mailSendService.SendOneEmailService(mail,request,request.getSession());
 		if(issend)
 			return "sendsuccess.definition";
