@@ -15,7 +15,7 @@
 	<div class="form-group">
 		<label for="username" class="col-sm-2 control-label">请输入用户名：</label>
 		<div class="col-sm-6">
-			<input type="text" class="form-control" id="username" placeholder="输入用户名" />
+			<input type="text" class="form-control" id="username" placeholder="输入用户名" name="username"/>
 		</div>
 		<div class="col-sm-3">
 			<h4>@usstemail.com</h4>
@@ -30,24 +30,24 @@
 	<div class="form-group">
 		<label for="answer" class="col-sm-2 control-label">答案:</label>
 		<div class="col-sm-9">
-			<input type="text" class="form-control" id="answer" placeholder="请输入答案" />
+			<input type="text" class="form-control" id="answer" placeholder="请输入答案" name="answer"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="password" class="col-sm-2 control-label">更改密码:</label>
 		<div class="col-sm-9">
-			<input type="password" class="form-control" id="password" placeholder="请输入密码" />
+			<input type="password" class="form-control" id="password" placeholder="请输入密码" name="password"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="repassword" class="col-sm-2 control-label">确认密码:</label>
 		<div class="col-sm-9">
-			<input type="password" class="form-control" id="repassword" placeholder="请再次输入密码" />
+			<input type="password" class="form-control" id="repassword" placeholder="请再次输入密码" name="repassword"/>
 		</div>
 	</div>
 	<div class="form-group">
 		<div class="col-sm-2 text-right">
-			<button type="button" class="btn btn-primary" id="submit">提交</button>
+			<button class="btn btn-primary" id="submit">提交</button>
 
 		</div>
 		<div class="col-sm-1">

@@ -12,4 +12,6 @@ public interface UserService {
 	public User checkUsernameRepeatService(String username) throws Exception;
 	
 	public User getPwdQuestionDaoService(String username) throws Exception;
+	
+	public Boolean findOnePasswordService(User user) throws Exception;
 }

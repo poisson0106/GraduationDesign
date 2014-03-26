@@ -97,15 +97,27 @@ public class UserController {
 	public String getPwdQuestion(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String username=request.getParameter("username");
 		User result=userService.getPwdQuestionDaoService(username);
-		JSONArray ja_max=JSONArray.fromObject(result);
-		String json_max=ja_max.toString();
+		String json_max="";
+		if(result!=null){
+			JSONArray ja_max=JSONArray.fromObject(result);
+			json_max=ja_max.toString();
+		}
 		response.getWriter().write(json_max);
 		return null;
 	}
 	
 	@RequestMapping(value="findOnePassword",method=RequestMethod.POST)
 	public String findOnePassword(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		//流程待加
+		String answer=request.getParameter("answer");
+		String password=request.getParameter("password");
+		String username=request.getParameter("username");
+		password=MD5Util.MD5(password);
+		User user=new User();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setAnswer(answer);
+		Boolean flag=userService.findOnePasswordService(user);
+		
 		return null;
 	}
 }

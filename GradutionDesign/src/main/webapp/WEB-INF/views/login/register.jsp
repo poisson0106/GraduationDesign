@@ -58,7 +58,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-2 text-right">
-			<button type="button" class="btn btn-primary" id="submit">提交</button>
+			<button class="btn btn-primary" id="submit">提交</button>
 
 		</div>
 		<div class="col-sm-1">

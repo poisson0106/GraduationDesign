@@ -17,4 +17,12 @@
 	<select id="getPwdQuestion" parameterType="string" resultType="User">
 		SELECT QUESTION FROM JAMESUSER WHERE NAME=#{username}
 	</select>
+	
+	<select id="getPwdAnswer" parameterType="User" resultType="string">
+		SELECT ANSWER FROM JAMESUSER WHERE NAME=#{username}
+	</select>
+	
+	<update id="changePwd" parameterType="User">
+		UPDATE JAMESUSER SET PASSWORD=#{password} WHERE NAME=#{username}
+	</update>
 </mapper>

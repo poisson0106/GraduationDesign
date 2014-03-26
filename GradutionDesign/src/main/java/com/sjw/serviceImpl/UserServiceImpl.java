@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getPwdQuestionDao(username);
 	}
 
+	@Override
+	public Boolean findOnePasswordService(User user) throws Exception {
+		return userDao.findOnePasswordDao(user);
+	}
+
 }

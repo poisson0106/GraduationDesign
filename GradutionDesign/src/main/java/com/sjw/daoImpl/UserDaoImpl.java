@@ -53,4 +53,14 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		return this.getSqlSession().selectOne("getPwdQuestion", username);
 	}
 
+	@Override
+	public Boolean findOnePasswordDao(User user) throws Exception {
+		String answer=this.getSqlSession().selectOne("getPwdAnswer", user);
+		if(answer.equals(user.getAnswer())){
+			this.getSqlSession().update("changePwd", user);
+			System.out.println("OK");
+		}
+		return null;
+	}
+
 }

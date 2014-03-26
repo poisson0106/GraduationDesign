@@ -10,8 +10,12 @@ $(function(){
 			},
 			dataType : "text",
 			success : function(data){
-				var json_s=JSON.parse(data);
-				$("#question").prop("placeholder",json_s[0].question);
+				if(data!=""){
+					var json_s=JSON.parse(data);
+					$("#question").prop("placeholder",json_s[0].question);
+				}
+				else
+					$("#question").prop("placeholder","该用户不存在，请重新检查用户名输入是否正确");
 				
 			},
 			beforeSend : function(){
