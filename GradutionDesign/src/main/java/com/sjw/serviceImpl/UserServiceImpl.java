@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.registerOneUserDao(user);
 	}
 
+	@Override
+	public User checkUsernameRepeatService(String username) throws Exception {
+		return userDao.checkUsernameRepeatDao(username);
+	}
+
 }

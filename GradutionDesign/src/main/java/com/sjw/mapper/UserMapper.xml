@@ -9,4 +9,8 @@
 	<update id="registerOneUser" parameterType="User">
 		UPDATE jamesuser SET question=#{question},answer=#{answer} WHERE name=#{username}
 	</update>
+	
+	<select id="checkUsernameRepeat" parameterType="string" resultType="User">
+		SELECT NAME,PASSOWORD FROM JAMESUSER WHERE NAME=#{username}
+	</select>
 </mapper>

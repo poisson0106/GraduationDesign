@@ -8,4 +8,6 @@ public interface UserDao {
 	public String LoginOneUserDao(String username);
 	
 	public Boolean registerOneUserDao(User user) throws Exception;
+	
+	public User checkUsernameRepeatDao(String username) throws Exception;
 }

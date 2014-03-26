@@ -10,6 +10,7 @@
 <script type="text/javascript" src="js/tools/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
 <title>用户注册</title>
 <style type="text/css">
 body{

@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.sf.json.JSONArray;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -76,5 +78,18 @@ public class UserController {
 		request.getSession().removeAttribute("username");
 		request.getSession().removeAttribute("password");
 		return "login/login";
+	}
+	
+	@RequestMapping(value="checkUsernameRepeat",method=RequestMethod.POST)
+	public String checkUsernameRepeat(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String username=request.getParameter("username");
+		User result=userService.checkUsernameRepeatService(username);
+		String json_max=null;
+		if(result!=null){
+			JSONArray ja_max=JSONArray.fromObject(result);
+			json_max=ja_max.toString();
+		}
+		response.getWriter().write(json_max);
+		return null;
 	}
 }

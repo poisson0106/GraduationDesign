@@ -8,4 +8,6 @@ public interface UserService {
 	public String LoginOneUserService(String username);
 	
 	public Boolean registerOneUserService(User user) throws Exception;
+	
+	public User checkUsernameRepeatService(String username) throws Exception;
 }
