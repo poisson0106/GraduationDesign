@@ -83,7 +83,7 @@ body{
 									id="username" data-content="用户名不能为空"
 									data-placement="left">
 							</div>
-							<div class="col-sm-3">@usstemail.com</div>
+							<div class="col-sm-3"><h5>@usstemail.com</h5></div>
 						</div>
 						<div class="form-group">
 							<label for="password" class="col-sm-3 control-label">密码:</label>

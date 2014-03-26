@@ -84,7 +84,7 @@ public class UserController {
 	public String checkUsernameRepeat(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String username=request.getParameter("username");
 		User result=userService.checkUsernameRepeatService(username);
-		String json_max=null;
+		String json_max="";
 		if(result!=null){
 			JSONArray ja_max=JSONArray.fromObject(result);
 			json_max=ja_max.toString();

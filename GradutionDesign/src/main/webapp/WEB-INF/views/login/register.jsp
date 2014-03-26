@@ -25,7 +25,7 @@
 		<div class="col-sm-1">
 			<span class="fa fa-check-circle fa-2x" style="display:none"></span>
 			<span class="fa fa-times-circle fa-2x" style="display:none"></span> 
-			<span class="fa fa-spinner fa-spin fa-2x" style="display:none"></span>
+			<span class="fa fa-spinner fa-spin fa-2x"style="display:none"></span>
 		</div>
 	</div>
 	<div class="form-group">

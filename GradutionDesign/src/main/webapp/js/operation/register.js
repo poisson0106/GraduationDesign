@@ -23,19 +23,20 @@ $(function(){
 			dataType : "text",
 			success : function(data){
 				//待改，需要增加对于返回json的判断
-				if(data==null){
-					$(".fa fa-spinner fa-spin fa-2x").css("display","none");
-					$(".fa fa-check-circle fa-2x").css("display","inherit");
+				if(data==""){
+					$(".fa-spinner").css("display","none");
+					$(".fa-check-circle").css("display","inherit");
 				}
 				else{
-					$(".fa fa-spinner fa-spin fa-2x").css("display","none");
-					$(".fa fa-times-circle fa-2x").css("display","inherit");
+					$(".fa-spinner").css("display","none");
+					$(".fa-times-circle").css("display","inherit");
 				}
 				
 			},
 			beforeSend : function(){
-				$(".fa fa-check-circle fa-2x").css("display","none");
-				$(".fa fa-spinner fa-spin fa-2x").css("display","inherit");
+				$(".fa-check-circle").css("display","none");
+				$(".fa-times-circle").css("display","none");
+				$(".fa-spinner").css("display","");
 			},
 		});
 	});
