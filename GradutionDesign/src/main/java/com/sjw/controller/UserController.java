@@ -41,7 +41,12 @@ public class UserController {
 	
 	@RequestMapping(value="initialUserRegister",method=RequestMethod.GET)
 	public String initalUserRegister(HttpServletRequest request,HttpServletResponse response){
-		return "login/register";
+		return "registeruser.definition";
+	}
+	
+	@RequestMapping(value="initialFindPassword",method=RequestMethod.GET)
+	public String initialFindPassword(HttpServletRequest request,HttpServletResponse response){
+		return "findpwd.definition";
 	}
 
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)

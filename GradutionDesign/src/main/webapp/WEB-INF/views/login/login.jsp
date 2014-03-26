@@ -103,7 +103,7 @@ body{
 						<div class="form-group">
 							<div class="col-sm-12">
 								<span class="glyphicon glyphicon-log-in"> </span> <a
-									href="forgetPassword">忘记密码？</a>
+									href="initialFindPassword">忘记密码？</a>
 							</div>
 						</div>
 						<div class="form-group">

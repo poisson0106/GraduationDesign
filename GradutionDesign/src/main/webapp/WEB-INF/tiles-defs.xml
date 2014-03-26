@@ -8,6 +8,9 @@
         <put-attribute name="body" value="/WEB-INF/views/content/welcome.jsp" />
     </definition>
     
+    <definition name="userbase.definition" template="/WEB-INF/views/frame/userframe.jsp">
+    </definition>
+    
     <definition name="mailreceive.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/inbox.jsp" />
     </definition>
@@ -42,5 +45,13 @@
     
     <definition name="mailsent.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/sentbox.jsp"/>
+    </definition>
+    
+    <definition name="registeruser.definition" extends="userbase.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/login/register.jsp" />
+    </definition>
+    
+    <definition name="findpwd.definition" extends="userbase.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/login/findpwd.jsp" />
     </definition>
 </tiles-definitions> 
