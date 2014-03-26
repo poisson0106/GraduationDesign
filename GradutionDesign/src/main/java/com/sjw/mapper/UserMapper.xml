@@ -13,4 +13,8 @@
 	<select id="checkUsernameRepeat" parameterType="string" resultType="User">
 		SELECT NAME,PASSOWORD FROM JAMESUSER WHERE NAME=#{username}
 	</select>
+	
+	<select id="getPwdQuestion" parameterType="string" resultType="User">
+		SELECT QUESTION FROM JAMESUSER WHERE NAME=#{username}
+	</select>
 </mapper>

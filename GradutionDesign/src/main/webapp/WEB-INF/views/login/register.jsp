@@ -12,7 +12,7 @@
 	</div>
 </div>
 <form class="form-horizontal" action="registerOneUser" method="post"
-	role="form">
+	role="form" id="registeruser">
 	<div class="form-group">
 		<label for="username" class="col-sm-2 control-label">用户名:</label>
 		<div class="col-sm-5">

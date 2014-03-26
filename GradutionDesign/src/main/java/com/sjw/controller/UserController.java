@@ -92,4 +92,20 @@ public class UserController {
 		response.getWriter().write(json_max);
 		return null;
 	}
+	
+	@RequestMapping(value="getPwdQuestion",method=RequestMethod.POST)
+	public String getPwdQuestion(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String username=request.getParameter("username");
+		User result=userService.getPwdQuestionDaoService(username);
+		JSONArray ja_max=JSONArray.fromObject(result);
+		String json_max=ja_max.toString();
+		response.getWriter().write(json_max);
+		return null;
+	}
+	
+	@RequestMapping(value="findOnePassword",method=RequestMethod.POST)
+	public String findOnePassword(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		//流程待加
+		return null;
+	}
 }

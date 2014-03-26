@@ -45,7 +45,12 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 
 	@Override
 	public User checkUsernameRepeatDao(String username) throws Exception {
-		return this.getSqlSession().selectOne(username);
+		return this.getSqlSession().selectOne("checkUsernameRepeat", username);
+	}
+
+	@Override
+	public User getPwdQuestionDao(String username) throws Exception {
+		return this.getSqlSession().selectOne("getPwdQuestion", username);
 	}
 
 }

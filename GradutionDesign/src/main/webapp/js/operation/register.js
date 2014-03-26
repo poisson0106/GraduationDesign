@@ -3,7 +3,7 @@ $(function(){
 	
 	$("#submit").click(function(){
 		if($("#password").val()==$("#repassword").val()){
-			$("registerOneUser").submit();
+			$("#registeruser").submit();
 		}
 		else{
 			alert("两次输入密码不一致，请重新输入");

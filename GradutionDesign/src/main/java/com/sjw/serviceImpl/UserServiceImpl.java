@@ -30,4 +30,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.checkUsernameRepeatDao(username);
 	}
 
+	@Override
+	public User getPwdQuestionDaoService(String username) throws Exception {
+		return userDao.getPwdQuestionDao(username);
+	}
+
 }

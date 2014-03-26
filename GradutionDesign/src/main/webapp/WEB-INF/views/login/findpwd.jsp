@@ -11,7 +11,7 @@
 		<h1>重置密码</h1>
 	</div>
 </div>
-<form class="form-horizontal" action="findOnePassword" method="post" role="form">
+<form class="form-horizontal" action="findOnePassword" method="post" role="form" id="findpassword">
 	<div class="form-group">
 		<label for="username" class="col-sm-2 control-label">请输入用户名：</label>
 		<div class="col-sm-6">
@@ -47,7 +47,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-2 text-right">
-			<button type="submit" class="btn btn-primary">提交</button>
+			<button type="button" class="btn btn-primary" id="submit">提交</button>
 
 		</div>
 		<div class="col-sm-1">

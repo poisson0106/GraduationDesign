@@ -10,4 +10,6 @@ public interface UserDao {
 	public Boolean registerOneUserDao(User user) throws Exception;
 	
 	public User checkUsernameRepeatDao(String username) throws Exception;
+	
+	public User getPwdQuestionDao(String username) throws Exception;
 }
