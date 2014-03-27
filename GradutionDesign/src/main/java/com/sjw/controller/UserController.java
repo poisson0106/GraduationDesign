@@ -117,7 +117,9 @@ public class UserController {
 		user.setPassword(password);
 		user.setAnswer(answer);
 		Boolean flag=userService.findOnePasswordService(user);
-		
-		return null;
+		if(flag)
+			return "message/pwdsuccess";
+		else
+			return "message/error";
 	}
 }
