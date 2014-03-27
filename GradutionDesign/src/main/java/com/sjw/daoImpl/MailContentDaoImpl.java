@@ -58,7 +58,7 @@ public class MailContentDaoImpl implements MailContentDao {
 		}
         Message message = folder.getMessage(messagenum);
         
-        //ȡ������
+        //去除html部分自带的全局样式
         MailContentAnalysis.setContent();
         MailContentAnalysis.getMailContent((Part) message);
         StringBuffer tempcontent=MailContentAnalysis.getContent();
