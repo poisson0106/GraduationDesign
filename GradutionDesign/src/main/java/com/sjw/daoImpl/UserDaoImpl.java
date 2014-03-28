@@ -58,9 +58,10 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		String answer=this.getSqlSession().selectOne("getPwdAnswer", user);
 		if(answer.equals(user.getAnswer())){
 			this.getSqlSession().update("changePwd", user);
-			System.out.println("OK");
+			return true;
 		}
-		return null;
+		else
+			return false;
 	}
 
 }
