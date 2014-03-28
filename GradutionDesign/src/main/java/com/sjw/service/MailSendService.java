@@ -11,4 +11,6 @@ public interface MailSendService {
 	public Boolean uploadAttachmentService(HttpServletRequest request,HttpSession session) throws Exception;
 	
 	public Boolean saveOneEmailService(Mail mail,HttpSession session) throws Exception;
+	
+	public String findReceiversService(String receiver) throws Exception;
 }

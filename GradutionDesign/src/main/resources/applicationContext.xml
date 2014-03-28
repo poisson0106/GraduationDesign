@@ -46,11 +46,13 @@
     
     <!-- 将sqlSessionFactory注入到SqlSessionDaoSupport里 -->
 	<bean id="userDao" class="com.sjw.daoImpl.UserDaoImpl">
-            <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+        <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    <bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl">
+    	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 	
 	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>
-	<bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl"></bean>
 	<bean id="mailDeletedDao" class="com.sjw.daoImpl.MailDeletedDaoImpl"></bean>
 	<bean id="mailContentDao" class="com.sjw.daoImpl.MailContentDaoImpl"></bean>
 	<bean id="toolBarDao" class="com.sjw.daoImpl.ToolBarDaoImpl"></bean>

@@ -11,5 +11,7 @@ public interface MailSendDao {
 	public Boolean uploadAttachmentDao(HttpServletRequest request,HttpSession session) throws Exception;
 	
 	public Boolean saveOneEmailDao(Mail mail,HttpSession session) throws Exception;
+	
+	public String findReceiversDao(String receiver) throws Exception;
 
 }

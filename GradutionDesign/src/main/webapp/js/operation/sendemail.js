@@ -103,7 +103,21 @@ $(function(){
 	
 	//需要添加关于输入即搜索的功能，ajax实现
 	$("#receiver").keydown(function(){
-		
+		$.ajax({
+			type : "POST",
+			url : "findReceivers",
+			data : {
+				receiver : $("#receiver").val()
+			},
+			dataType : "text",
+			success : function(data){
+				
+			},
+			beforeSend : function(){
+				$("#receiversaddress").empty();
+				$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>正在查询.....</li>");
+			}
+		});
 	});
 });
 

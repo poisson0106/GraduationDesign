@@ -31,5 +31,10 @@ public class MailSendServiceImpl implements MailSendService {
 	public Boolean saveOneEmailService(Mail mail,HttpSession session) throws Exception {
 		return mailSendDao.saveOneEmailDao(mail,session);
 	}
+
+	@Override
+	public String findReceiversService(String receiver) throws Exception {
+		return mailSendDao.findReceiversDao(receiver);
+	}
 	
 }

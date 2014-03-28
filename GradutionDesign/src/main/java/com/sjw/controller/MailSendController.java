@@ -74,4 +74,9 @@ public class MailSendController {
 			return "senderror.definition";
 		
 	}
+	
+	@RequestMapping(value="findReceivers",method=RequestMethod.POST)
+	public String findReceivers(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		return null;
+	}
 }

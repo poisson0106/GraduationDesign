@@ -16,6 +16,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.EmailAttachment;
 import org.apache.commons.mail.HtmlEmail;
+import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -26,7 +27,7 @@ import com.sjw.utils.MailConnection;
 import com.sjw.utils.MailContentAnalysis;
 import com.sun.mail.imap.IMAPFolder;
 
-public class MailSendDaoImpl implements MailSendDao {
+public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao {
 
 	@Override
 	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request,HttpSession session) throws Exception {
@@ -117,6 +118,12 @@ public class MailSendDaoImpl implements MailSendDao {
 		MailConnection.closeConnection();
 		//message.setFlag(Flags.Flag.DRAFT, true);
         return true;
+	}
+
+	@Override
+	public String findReceiversDao(String receiver) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
