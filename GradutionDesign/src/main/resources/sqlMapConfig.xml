@@ -7,5 +7,6 @@
         </typeAliases>
         <mappers>
                 <mapper resource="com/sjw/mapper/UserMapper.xml"/>
+                <mapper resource="com/sjw/mapper/MailSendMapper.xml"/>
         </mappers>
 </configuration>
