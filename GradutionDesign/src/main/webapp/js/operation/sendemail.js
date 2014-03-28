@@ -100,6 +100,11 @@ $(function(){
 	$("#uploadbtn").click(function(){
 		$('#file_upload').uploadify('upload','*');
 	});
+	
+	//需要添加关于输入即搜索的功能，ajax实现
+	$("#receiver").keydown(function(){
+		
+	});
 });
 
 function getRootPath(){
