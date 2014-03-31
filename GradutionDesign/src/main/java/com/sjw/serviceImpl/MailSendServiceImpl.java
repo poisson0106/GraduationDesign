@@ -1,5 +1,8 @@
 package com.sjw.serviceImpl;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,8 +36,8 @@ public class MailSendServiceImpl implements MailSendService {
 	}
 
 	@Override
-	public String findReceiversService(String receiver) throws Exception {
-		return mailSendDao.findReceiversDao(receiver);
+	public List<Map> findReceiversService(Map keywords) throws Exception {
+		return mailSendDao.findReceiversDao(keywords);
 	}
 	
 }

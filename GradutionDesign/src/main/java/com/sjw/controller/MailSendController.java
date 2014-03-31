@@ -1,7 +1,13 @@
 package com.sjw.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import net.sf.json.JSONArray;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,6 +83,23 @@ public class MailSendController {
 	
 	@RequestMapping(value="findReceivers",method=RequestMethod.POST)
 	public String findReceivers(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String words=request.getParameter("words");
+		String username=request.getParameter("username");
+		username=username.substring(0, username.indexOf("@"));
+		if(words.contains("@"))
+			words=words.substring(0, words.indexOf("@"));
+		if("".equals(words))
+			words=words.toLowerCase();
+		Map<String,String> keywords=new HashMap<String,String>();
+		keywords.put("words", words);
+		keywords.put("username", username);
+		List<Map> receivers=mailSendService.findReceiversService(keywords);
+		String json_max="";
+		if(!receivers.isEmpty()){
+			JSONArray ja_max=JSONArray.fromObject(receivers);
+			json_max=ja_max.toString();
+		}
+		response.getWriter().write(json_max);
 		return null;
 	}
 }

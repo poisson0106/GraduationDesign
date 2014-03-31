@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;">收件人:</label>
+		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;" autocomplete="off">收件人:</label>
 		<div class="col-sm-11">
 			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="Receiver" name="receiver" value="${receiver }" data-toggle="dropdown" />
 			<ul class="dropdown-menu col-sm-12" id="receiversaddress">

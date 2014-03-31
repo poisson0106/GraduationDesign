@@ -1,5 +1,8 @@
 package com.sjw.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +15,6 @@ public interface MailSendDao {
 	
 	public Boolean saveOneEmailDao(Mail mail,HttpSession session) throws Exception;
 	
-	public String findReceiversDao(String receiver) throws Exception;
+	public List<Map> findReceiversDao(Map keywords) throws Exception;
 
 }

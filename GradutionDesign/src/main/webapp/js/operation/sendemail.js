@@ -102,22 +102,35 @@ $(function(){
 	});
 	
 	//需要添加关于输入即搜索的功能，ajax实现
-	$("#receiver").keydown(function(){
-		$.ajax({
-			type : "POST",
-			url : "findReceivers",
-			data : {
-				receiver : $("#receiver").val()
-			},
-			dataType : "text",
-			success : function(data){
-				
-			},
-			beforeSend : function(){
-				$("#receiversaddress").empty();
-				$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>正在查询.....</li>");
-			}
-		});
+	$("#receiver").keyup(function(event){
+		if((event.which>=48&&event.which<=57)||(event.which>=65&&event.which<=90)){
+			$.ajax({
+				type : "POST",
+				url : "findReceivers",
+				data : {
+					words : $("#receiver").val(),
+					username : $("#loginname").html()
+				},
+				dataType : "text",
+				success : function(data){
+					$("#receiversaddress").empty();
+					if(data==""){
+						$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>没有该地址，请重新输入！</li>");
+					}
+					else{
+						var json_s=JSON.parse(data);
+						for(i=0;i<json_s.length;i++){
+							var add="<li role='presentation'><a role='menuitem' tabindex='-1' href='#'>"+json_s[i].nickname+"["+json_s[i].username+"@usstemail.com]</a></li>";
+							$("#receiversaddress").append(add);
+						}
+					}
+				},
+				beforeSend : function(){
+					$("#receiversaddress").empty();
+					$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>正在查询.....</li>");
+				}
+			});
+		}
 	});
 });
 

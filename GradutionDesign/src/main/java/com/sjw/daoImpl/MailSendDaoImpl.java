@@ -1,6 +1,7 @@
 package com.sjw.daoImpl;
 
 import java.io.File;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -121,9 +122,8 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 	}
 
 	@Override
-	public String findReceiversDao(String receiver) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Map> findReceiversDao(Map keywords) throws Exception {
+		return this.getSqlSession().selectList("findReceivers", keywords);
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.sjw.service;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,5 +15,5 @@ public interface MailSendService {
 	
 	public Boolean saveOneEmailService(Mail mail,HttpSession session) throws Exception;
 	
-	public String findReceiversService(String receiver) throws Exception;
+	public List<Map> findReceiversService(Map keywords) throws Exception;
 }
