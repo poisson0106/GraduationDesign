@@ -7,7 +7,7 @@
 	</select>
 	
 	<update id="registerOneUser" parameterType="User">
-		UPDATE jamesuser SET question=#{question},answer=#{answer} WHERE name=#{username}
+		UPDATE JAMESUSER SET question=#{question},answer=#{answer} WHERE name=#{username}
 	</update>
 	
 	<select id="checkUsernameRepeat" parameterType="string" resultType="User">
@@ -25,4 +25,12 @@
 	<update id="changePwd" parameterType="User">
 		UPDATE JAMESUSER SET PASSWORD=#{password} WHERE NAME=#{username}
 	</update>
+	
+	<select id="checkFriendnameRepeat" parameterType="string" resultType="User">
+		SELECT * FROM RELATIONS WHERE USERNAME=#{friendname}
+	</select>
+	
+	<insert id="addNewRelations" parameterType="map">
+		INSERT INTO RELATIONS(username,friendname) VALUES (#{username},#{friendname})
+	</insert>
 </mapper>
