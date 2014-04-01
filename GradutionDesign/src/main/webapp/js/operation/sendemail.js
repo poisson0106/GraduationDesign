@@ -132,6 +132,10 @@ $(function(){
 			});
 		}
 	});
+	
+	$("#receiversaddress li a").click(function(){
+		$("#receiver").val($(this).html());
+	});
 });
 
 function getRootPath(){
