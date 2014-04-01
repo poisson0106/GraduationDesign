@@ -26,7 +26,7 @@
 		<div class="col-sm-11">
 			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="Receiver" name="receiver" value="${receiver }" data-toggle="dropdown" />
 			<ul class="dropdown-menu col-sm-12" id="receiversaddress">
-          		
+          		<li role="presentation menuitem" style="margin-left:20px;">请输入需要的查找的收件人地址</li>
         	</ul>
 		</div>
 	</div>

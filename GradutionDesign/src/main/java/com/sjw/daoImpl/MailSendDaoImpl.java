@@ -67,7 +67,7 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		MimeMessage message[]=new MimeMessage[1];
 		message[0]=email.getMimeMessage();
 		folderSent.appendMessages(message);
-		MailConnection.closeDraftFolder();
+		MailConnection.closeSentFolder();
 		MailConnection.closeConnection();
 		return true;
 	}
