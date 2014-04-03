@@ -18,7 +18,7 @@
 		<div class="col-sm-3">
 			<input type="button" class="btn btn-primary" id="send" value="发送" />
 			<input type="button" class="btn btn-success" id="save" value="保存为草稿" />
-			<input type="button" class="btn btn-danger" id="cancel" value="取消">
+			<input type="button" class="btn btn-danger" id="cancel" value="取消" />
 		</div>
 	</div>
 	<div class="form-group">

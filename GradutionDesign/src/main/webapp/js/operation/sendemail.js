@@ -120,7 +120,7 @@ $(function(){
 					else{
 						var json_s=JSON.parse(data);
 						for(i=0;i<json_s.length;i++){
-							var add="<li role='presentation'><a role='menuitem' tabindex='-1' href='#'>"+json_s[i].nickname+"["+json_s[i].username+"@usstemail.com]</a></li>";
+							var add="<li style='cursor:pointer'><a class='selectedaddress' onclick=addaddress('"+json_s[i].username+"@usstemail.com')>"+json_s[i].nickname+"["+json_s[i].username+"@usstemail.com]</a></li>";
 							$("#receiversaddress").append(add);
 						}
 					}
@@ -133,10 +133,14 @@ $(function(){
 		}
 	});
 	
-	$("#receiversaddress li a").click(function(){
-		$("#receiver").val($(this).html());
-	});
+	/*$("#receiversaddress li a").click(function(){
+			$("#receiver").val($(this).html());
+	});*/
 });
+
+function addaddress(address){
+	$("#receiver").val(address);
+}
 
 function getRootPath(){
     //��ȡ��ǰ��ַ���磺 http://localhost:8083/uimcardprj/share/meun.jsp
