@@ -7,9 +7,9 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <listener>
+ <!--  <listener>
     <listener-class>com.sjw.utils.SessionListener</listener-class>
-  </listener>
+  </listener> -->
   <servlet>
     <servlet-name>defaultDispatcher</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -25,16 +25,48 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>defaultDispatcher</servlet-name>
-    <url-pattern>/mainframework</url-pattern>
+    <url-pattern>/initialLoginUser</url-pattern>
   </servlet-mapping>
   <session-config>
-    <session-timeout>15</session-timeout>
+    <session-timeout>1</session-timeout>
   </session-config>
-  <welcome-file-list>
+  <!-- <welcome-file-list>
     <welcome-file>/WEB-INF/views/login/login.jsp</welcome-file>
+  </welcome-file-list> -->
+  <welcome-file-list>
+  	<welcome-file>initialLoginUser</welcome-file>
   </welcome-file-list>
   <error-page>
-  	<error-code>500</error-code>
-  	<location>/WEB-INF/views/message/error.jsp</location>
+    <error-code>500</error-code>
+    <location>/WEB-INF/views/message/error.jsp</location>
   </error-page>
+  
+<!--   以下为过滤器部分 -->
+
+	<filter>
+	<filter-name>encodingFilter</filter-name>
+	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+		<param-name>encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</init-param>
+	<init-param>
+		<param-name>forceEncoding</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>encodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+  <!-- <filter>
+    <display-name>CheckSessionFilter</display-name>
+    <filter-name>CheckSessionFilter</filter-name>
+    <filter-class>com.sjw.utils.CheckSessionFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CheckSessionFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping> -->
 </web-app>

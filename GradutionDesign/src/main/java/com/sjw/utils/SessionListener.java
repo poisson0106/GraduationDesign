@@ -14,7 +14,7 @@ public class SessionListener implements HttpSessionListener {
 	@Override
 	public void sessionDestroyed(HttpSessionEvent event) {
 		try {
-			
+			System.out.print("is runing");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

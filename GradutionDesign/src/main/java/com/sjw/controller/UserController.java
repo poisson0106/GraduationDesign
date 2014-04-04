@@ -50,6 +50,11 @@ public class UserController {
 	public String initialFindPassword(HttpServletRequest request,HttpServletResponse response){
 		return "findpwd.definition";
 	}
+	
+	@RequestMapping(value="initialLoginUser",method=RequestMethod.GET)
+	public String initialLoginUser(HttpServletRequest request,HttpServletResponse response){
+		return "login/login";
+	}
 
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
 	public String registerOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
