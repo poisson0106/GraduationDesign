@@ -32,6 +32,30 @@
 		<beans:property name="order" value="2" />
 	</beans:bean>
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/*"/>
+				<beans:bean class="com.sjw.utils.CheckSessionInterceptor">
+					<beans:property name="excludedUrls">
+						<beans:list>
+							<beans:value>/design/</beans:value>
+							<beans:value>/design/initialLoginUser</beans:value>
+							<beans:value>/design/loginOneUser</beans:value>
+							<beans:value>/design/initialUserRegister</beans:value>
+							<beans:value>/design/initialFindPassword</beans:value>
+							<beans:value>/design/registerOneUser</beans:value>
+							<beans:value>/design/logoutOneUser</beans:value>
+							<beans:value>/design/checkUsernameRepeat</beans:value>
+							<beans:value>/design/getPwdQuestion</beans:value>
+							<beans:value>/design/findOnePassword</beans:value>
+							<beans:value>/design/mainframework</beans:value>
+							<!-- <beans:value>/design/onerror</beans:value> -->
+						</beans:list>
+					</beans:property>
+				</beans:bean>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.sjw.controller" />
 	<context:component-scan base-package="com.sjw.serviceImpl" />
     <context:component-scan base-package="com.sjws.daoImpl" />

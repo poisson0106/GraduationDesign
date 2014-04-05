@@ -44,6 +44,14 @@
         <property name="maxUploadSize" value="50000000"/>  
     </bean>
     
+    <bean id="handlerExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">  
+  		<property name="exceptionMappings">  
+    		<props>  
+      			<prop key="com.sjw.utils.SessionOutException">redirect:/initialLoginUser</prop>  
+    		</props>  
+  		</property>
+  	</bean>
+    
     <!-- 将sqlSessionFactory注入到SqlSessionDaoSupport里 -->
 	<bean id="userDao" class="com.sjw.daoImpl.UserDaoImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
@@ -51,6 +59,7 @@
     <bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl">
     	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    
 	
 	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>
 	<bean id="mailDeletedDao" class="com.sjw.daoImpl.MailDeletedDaoImpl"></bean>
