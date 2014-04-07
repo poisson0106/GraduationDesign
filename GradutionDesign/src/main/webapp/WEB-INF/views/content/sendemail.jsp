@@ -15,7 +15,7 @@
 </div>
 <form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 	<div class="form-group">
-		<div class="col-sm-3">
+		<div class="col-sm-4">
 			<input type="button" class="btn btn-primary" id="send" value="发送" />
 			<input type="button" class="btn btn-success" id="save" value="保存为草稿" />
 			<input type="button" class="btn btn-danger" id="cancel" value="取消" />
@@ -24,16 +24,22 @@
 	<div class="form-group">
 		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;" autocomplete="off">收件人:</label>
 		<div class="col-sm-11">
-			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="Receiver" name="receiver" value="${receiver }" data-toggle="dropdown" />
+			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="请输入收件人地址，只能一人" name="receiver" value="${receiver }" data-toggle="dropdown" />
 			<ul class="dropdown-menu col-sm-12" id="receiversaddress">
           		<li role="presentation menuitem" style="margin-left:20px;">请输入需要的查找的收件人地址</li>
         	</ul>
 		</div>
 	</div>
 	<div class="form-group">
+		<label for="cc" class="col-sm-1 control-label" style="text-align:left;">抄送:</label>
+		<div class="col-sm-11">
+			<input type="text" class="form-control" id="cc" placeholder="请输入抄送地址，多个地址请用逗号分隔" name="cc" value="">
+		</div>
+	</div>
+	<div class="form-group">
 		<label for="subject" class="col-sm-1 control-label" style="text-align:left;">主题:</label>
 		<div class="col-sm-11">
-			<input type="text" class="form-control" id="subject" placeholder="Subject" name="subject" value="${subject }">
+			<input type="text" class="form-control" id="subject" placeholder="请输入主题" name="subject" value="${subject }">
 		</div>
 	</div>
 	<div class="form-group">
@@ -144,7 +150,6 @@
       			</c:if>
 			</div>
 			
-			
-			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:300px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
+			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:260px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
 	</div>
 </div>

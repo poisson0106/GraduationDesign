@@ -18,6 +18,8 @@
     		<p> </p>
     		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>收件人: ${mail.receivers }</h3>
     		<p> </p>
+    		<h3 class="panel-title"><span class="glyphicon glyphicon-user">&nbsp</span>抄送： <c:forEach var="item" items="${mail.cc }"><c:if test="${not empty item }">${item}</c:if></c:forEach></h3>
+    		<p> </p>
     		<h3 class="panel-title"><span class="glyphicon glyphicon-time">&nbsp</span>收件日期: ${mail.date }</h3>
     		<p> </p>
     		<div class="btn-group">

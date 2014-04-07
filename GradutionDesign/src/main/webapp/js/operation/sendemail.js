@@ -115,7 +115,7 @@ $(function(){
 				success : function(data){
 					$("#receiversaddress").empty();
 					if(data==""){
-						$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>没有该地址，请重新输入！</li>");
+						$("#receiversaddress").append("<li role='presentation menuitem' style='margin-left:20px;'>你没有该联系人，你可以重新输入寻找或者继续输入。</li>");
 					}
 					else{
 						var json_s=JSON.parse(data);

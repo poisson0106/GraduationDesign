@@ -14,4 +14,8 @@
 		FROM JAMESUSER LEFT JOIN RELATIONS ON JAMESUSER.NICKNAME=RELATIONS.FRIENDNAME 
 		WHERE RELATIONS.NAME like CONCAT(#{words},"%") -->
 	</select>
+	
+	<!-- <select id="friendIsExist" parameterType="map" resultMap="string">
+		SELECT friendname FROM RELATIONS WHERE FRIENDNAME=#{friendname} AND USERNAME=#{username}
+	</select> -->
 </mapper>

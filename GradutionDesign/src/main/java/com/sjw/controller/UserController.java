@@ -20,7 +20,7 @@ import com.sjw.utils.MD5Util;
 public class UserController {
 	@Autowired
 	private UserService userService;
-		
+	
 	@RequestMapping(value="loginOneUser",method=RequestMethod.POST)
 	public String LoginOneUser(HttpServletRequest request,HttpServletResponse response){
 		/*String username=request.getParameter("username");
@@ -55,7 +55,7 @@ public class UserController {
 	public String initialLoginUser(HttpServletRequest request,HttpServletResponse response){
 		return "login/login";
 	}
-
+	
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
 	public String registerOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		HttpSession session=request.getSession();

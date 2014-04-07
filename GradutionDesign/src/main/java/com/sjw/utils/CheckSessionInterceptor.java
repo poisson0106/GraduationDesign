@@ -26,7 +26,6 @@ public class CheckSessionInterceptor implements HandlerInterceptor{
 	    // intercept  
 	    HttpSession session = request.getSession();  
 	    if (session.getAttribute("username") == null) {  
-	      // see http://stackoverflow.com/questions/12713873/spring-3-1-how-do-you-send-all-exception-to-one-page  
 	      throw new SessionOutException();  
 	    } else {  
 	      return true;  

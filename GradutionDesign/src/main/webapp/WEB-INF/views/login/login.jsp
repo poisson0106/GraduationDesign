@@ -37,7 +37,7 @@ body{
 		</nav>
 	</div>
 	<div class="row">
-		<div class= "col-sm-12" style="height:150px;">
+		<div class= "col-sm-12" style="height:100px;">
 			 <div id="myCarousel" class="carousel slide">
                       <!--   <ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class=""></li>
@@ -114,7 +114,7 @@ body{
 						</div>
 					</form>
 					<div class="col-sm-12">
-						<strong class="text-danger">注意：请使用IE10及以上，firefox或者chrome浏览器访问本系统，否则部分功能无法使用！</strong>
+						<strong class="text-danger">注意：<br>1.请使用IE10及以上，firefox或者chrome浏览器访问本系统，否则部分功能无法使用！</br>2.登陆无动作15分钟自动退出重新登录。</strong>
 					</div>
 				</div>
 			</div>

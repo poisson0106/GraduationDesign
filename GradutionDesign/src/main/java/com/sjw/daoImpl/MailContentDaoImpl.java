@@ -131,6 +131,40 @@ public class MailContentDaoImpl implements MailContentDao {
                 addresslist = addresslist.substring(1);
             }
        mail.setReceivers(addresslist);
+       
+       //获取抄送
+       String cclist="";
+       address=null;
+       
+       address=(InternetAddress[]) message.getRecipients(Message.RecipientType.CC);
+       if (address != null) {  
+           for (int i = 0; i < address.length; i++) {  
+               String emailAddr = address[i].getAddress();  
+               if (emailAddr == null) {  
+                   emailAddr = "";  
+               } 
+               else 
+                   emailAddr = MimeUtility.decodeText(emailAddr);  
+               personal = address[i].getPersonal();  
+               if (personal == null) {  
+                   personal = "";  
+               } 
+               else
+                   personal = MimeUtility.decodeText(personal);
+               String compositeto = personal + ":[" + emailAddr + "]";
+               if(cclist=="")
+            	   cclist=compositeto;
+               else
+            	   cclist += "," + compositeto;  
+           }  
+       }
+       if(cclist.contains(","))
+    	   mail.setCc(cclist.split(","));
+       else{
+    	   String[] tempcontainer=new String[1];
+    	   tempcontainer[0]=cclist;
+    	   mail.setCc(tempcontainer);
+       }
             
        //取得收件日期
        if(!"draftboxmenu".equals(frompage))

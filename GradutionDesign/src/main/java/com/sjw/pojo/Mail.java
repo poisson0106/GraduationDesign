@@ -13,7 +13,15 @@ public class Mail {
 	private boolean withattach;
 	private String[] attachnames;
 	private String frompage;
+	private String[] cc;
 	
+	
+	public String[] getCc() {
+		return cc;
+	}
+	public void setCc(String[] cc) {
+		this.cc = cc;
+	}
 	public String getFrompage() {
 		return frompage;
 	}

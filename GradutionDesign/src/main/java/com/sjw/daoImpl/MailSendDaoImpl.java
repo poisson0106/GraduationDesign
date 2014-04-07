@@ -1,6 +1,7 @@
 package com.sjw.daoImpl;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -32,6 +33,7 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 
 	@Override
 	public Boolean SendOneEmailDao(Mail mail,HttpServletRequest request,HttpSession session) throws Exception {
+		//发送邮件部分
 		String username=session.getAttribute("username").toString();
 		username=username.substring(0, username.indexOf("@"));
 		String password=session.getAttribute("password").toString();
@@ -44,6 +46,9 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		email.setCharset("UTF-8");
 		email.setHtmlMsg(mail.getContent());
 		email.addTo(mail.getReceivers());
+		for(int i=0;i<mail.getCc().length;i++){
+			email.addCc(mail.getCc()[i]);
+		}
 		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
 		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
 		if(mail.getAttachnames()!=null){
@@ -56,6 +61,8 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 			}
 		}
 		email.send();
+		
+		//存入发件箱部分
 		MailConnection.getConnection(username+"@usstemail.com", password);
 		IMAPFolder folderSent;
 		MailConnection.setSentFolder();
@@ -69,6 +76,13 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		folderSent.appendMessages(message);
 		MailConnection.closeSentFolder();
 		MailConnection.closeConnection();
+		
+		//检查联系人，没有就添加联系人
+		/*Map<String,String> info=new HashMap<String,String>();
+		String friendname=mail.getReceivers();
+		
+		info.put("username", username);
+		info.put("friendname", value)*/
 		return true;
 	}
 

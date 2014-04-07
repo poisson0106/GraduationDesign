@@ -31,4 +31,7 @@ $(function(){
 		var from=$("#from").val();
 		window.open("downloadSelectedAttachment?selected="+selected+"&messagenum="+messagenum+"&from="+from);
 	});
+	
+	$("#mailcontent").css("height",$(document).height()-52-20-20-56-184-20);
+	$("#mailcontent").css("overflow","auto");
 });
