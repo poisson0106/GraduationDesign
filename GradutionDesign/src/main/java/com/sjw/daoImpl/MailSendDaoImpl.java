@@ -78,11 +78,22 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		MailConnection.closeConnection();
 		
 		//检查联系人，没有就添加联系人,cc里的不判断
-		/*Map<String,String> info=new HashMap<String,String>();
+		Map<String,String> info=new HashMap<String,String>();
 		String friendname=mail.getReceivers();
+		friendname=friendname.substring(0,friendname.indexOf("@"));
+		String nickname=null;
 		
 		info.put("username", username);
-		info.put("friendname", value)*/
+		info.put("friendname", friendname);
+		String result=this.getSqlSession().selectOne("friendIsExist", info);
+		if(result==null){
+			nickname=this.getSqlSession().selectOne("getNickName", friendname);
+			info.clear();
+			info.put("username", username);
+			info.put("nickname", nickname);
+			this.getSqlSession().insert("addRelations", info);
+		}
+			
 		return true;
 	}
 

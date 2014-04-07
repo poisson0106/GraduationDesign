@@ -15,7 +15,15 @@
 		WHERE RELATIONS.NAME like CONCAT(#{words},"%") -->
 	</select>
 	
-	<!-- <select id="friendIsExist" parameterType="map" resultMap="string">
-		SELECT friendname FROM RELATIONS WHERE FRIENDNAME=#{friendname} AND USERNAME=#{username}
-	</select> -->
+	<select id="friendIsExist" parameterType="map" resultType="string">
+		SELECT FRIENDNAME FROM JAMESUSER AS A LEFT JOIN RELATIONS AS B ON A.NICKNAME=B.FRIENDNAME WHERE A.NAME=#{friendname} AND B.USERNAME=#{username}
+	</select>
+	
+	<select id="getNickName" parameterType="string" resultType="string">
+		SELECT NICKNAME FROM JAMESUSER WHERE NAME=#{friendname}
+	</select>
+	
+	<insert id="addRelations" parameterType="map">
+		INSERT INTO RELATIONS(username,friendname) VALUES(#{username},#{nickname})
+	</insert>
 </mapper>

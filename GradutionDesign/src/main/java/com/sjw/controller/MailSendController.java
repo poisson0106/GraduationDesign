@@ -36,7 +36,7 @@ public class MailSendController {
 		String sender=request.getParameter("sender");
 		String[] filenamelist=request.getParameter("filenamelist").split(",");
 		String[] cclist=null;
-		if(request.getParameter("cc")!=null){
+		if(request.getParameter("cc")!=null&&request.getParameter("cc")==""){
 			if(request.getParameter("cc").contains(","))
 				cclist=request.getParameter("cc").split(",");
 			else
