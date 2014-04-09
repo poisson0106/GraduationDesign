@@ -12,6 +12,7 @@
   			<li id="delboxmenu"><a style="cursor:pointer" id="delbox">已删除</a></li>
   			<li id="draftboxmenu"><a style="cursor:pointer" id="draftbox">草稿箱</a></li>
   			<li id="sentboxmenu"><a style="cursor:pointer" id="sentbox">发件箱</a></li>
+  			<li id="contactmenu"><a style="cursor:pointer" id="contact">联系人管理</a></li>
 		</ul>
 		<input type="hidden" value=${chosed } id="chosed">
   	</div>

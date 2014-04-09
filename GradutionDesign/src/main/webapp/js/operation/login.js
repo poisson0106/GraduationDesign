@@ -21,4 +21,18 @@ $(function(){
                 }
                 $('#login_info').submit();
         });
+        
+        $("#password").keypress(function(event){
+        	alert(event.which);
+        	if(event.which==13){
+        		 $('#login_info').submit();
+        	}
+        });
+        
+        $("#username").keypress(function(event){
+        	alert(event.which);
+        	if(event.which==13){
+        		 $('#login_info').submit();
+        	}
+        });
 });
