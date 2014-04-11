@@ -29,14 +29,24 @@ public class MailContentAnalysis {
 	            // text/plain 类型
 	        	String tempcontent=(String) part.getContent();
 	        	tempcontent=tempcontent.replaceAll("\n", "</br>");
-	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030")||contentType.contains("gb2312"))
+	        	if(contentType.contains("charset=UTF-8")||contentType.contains("GBK")||contentType.contains("GB2312")||contentType.contains("utf-8")||contentType.contains("gb18030")||contentType.contains("gb2312")){
+	        		content.append("纯文本部分:");
+	        		content.append("</br>");
 	        		content.append(tempcontent);
+	        	}
 	        	else{
 	        		String changecode=new String(tempcontent.getBytes("ISO-8859-1"),"GBK");
+	        		content.append("纯文本部分:");
+	        		content.append("</br>");
 	        		content.append(changecode);
 	        	}
 	        } else if (part.isMimeType("text/html") && conName == false) {  
 	            // text/html 类型
+	        	content.append("</br>");
+	        	content.append("---------------------------------------------------------");
+	        	content.append("</br>");
+	        	content.append("HTML富文本部分：");
+	        	content.append("</br>");
 	        	content.append((String) part.getContent());  
 	        } else if (part.isMimeType("multipart/*")) {  
 	            // multipart/*  
