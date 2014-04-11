@@ -22,6 +22,10 @@ $(function(){
 	$("#sentbox").click(function(){
 		window.location="initialMailSent";
 	});
+	
+	$("#contact").click(function(){
+		window.location="initialContact";
+	});
 });
 
 $(function(){
