@@ -54,4 +54,8 @@
     <definition name="findpwd.definition" extends="userbase.definition">
     	<put-attribute name="body" value="/WEB-INF/views/login/findpwd.jsp" />
     </definition>
+    
+    <definition name="contactmanage.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/content/contactmanagement.jsp"/>
+    </definition>
 </tiles-definitions> 

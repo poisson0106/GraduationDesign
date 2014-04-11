@@ -59,6 +59,9 @@
     <bean id="mailSendDao" class="com.sjw.daoImpl.MailSendDaoImpl">
     	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    <bean id="contactDao" class="com.sjw.daoImpl.ContactDaoImpl">
+    	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+    </bean>
     
 	
 	<bean id="mailReceiveDao" class="com.sjw.daoImpl.MailReceiveDaoImpl"></bean>

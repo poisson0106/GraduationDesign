@@ -8,5 +8,6 @@
         <mappers>
                 <mapper resource="com/sjw/mapper/UserMapper.xml"/>
                 <mapper resource="com/sjw/mapper/MailSendMapper.xml"/>
+                <mapper resource="com/sjw/mapper/ContactMapper.xml"/>
         </mappers>
 </configuration>
