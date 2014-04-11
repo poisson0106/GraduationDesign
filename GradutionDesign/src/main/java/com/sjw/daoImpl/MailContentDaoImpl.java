@@ -185,9 +185,12 @@ public class MailContentDaoImpl implements MailContentDao {
        
        //取得从哪个页面跳转过来
        mail.setFrompage(frompage);
-       
-       if("inboxmenu".equals(frompage))
-    	   MailConnection.closeInboxFolder();
+        
+       if("inboxmenu".equals(frompage)){
+    	   //设置未读邮件数
+           session.setAttribute("nummail", folder.getUnreadMessageCount());
+           MailConnection.closeInboxFolder();
+       }
        else if("delboxmenu".equals(frompage))
     	   MailConnection.closeDelFolder();
        else if("draftboxmenu".equals(frompage))
