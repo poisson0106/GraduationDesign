@@ -14,4 +14,12 @@
 	<delete id="deleteSelectedContact" parameterType="string">
 		DELETE FROM RELATIONS WHERE FRIENDNAME IN (#{nickname})
 	</delete>
+	
+	<select id="getTotalContactNum" parameterType="string" resultType="int">
+		SELECT COUNT(USERNAME) FROM RELATIONS WHERE USERNAME=#{username}
+	</select>
+	
+	<select id="getOnePageContact" parameterType="map" resultMap="contactInfo">
+		SELECT NAME,NICKNAME FROM JAMESUSER LEFT JOIN RELATIONS ON JAMESUSER.NICKNAME=RELATIONS.FRIENDNAME WHERE RELATIONS.USERNAME=#{username} LIMIT #{begin},#{end}
+	</select>
 </mapper>

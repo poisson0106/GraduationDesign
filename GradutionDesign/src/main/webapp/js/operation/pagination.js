@@ -92,7 +92,10 @@ $(function(){
 		}
 		else
 		{
-			window.location="listOnePageEmail?page=2"+"&from="+frompage;
+			if(pagenum>2)
+				window.location="listOnePageEmail?page=2"+"&from="+frompage;
+			else
+				alert("This is the last page");
 		}
 	});
 	

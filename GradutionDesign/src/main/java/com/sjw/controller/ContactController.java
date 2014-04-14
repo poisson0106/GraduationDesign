@@ -1,5 +1,6 @@
 package com.sjw.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -46,5 +47,23 @@ public class ContactController {
 		contactService.deleteSelectedContactService(nickname);
 		Thread.sleep(300);
 		return null;
+	}
+	
+	@RequestMapping(value="listOnePageContact",method=RequestMethod.GET)
+	public String listOnePageContact(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		List<Map> contacts=new ArrayList<Map>();
+		String username=request.getSession().getAttribute("username").toString();
+		username=username.substring(0,username.indexOf("@"));
+		int pagenum=Integer.parseInt(request.getParameter("page"));
+		int total=0;
+		int end=1;
+		total=contactService.getTotalContactByUserService(username);
+		if(total>10)
+			end=total/10+1;
+		contacts=contactService.getOnePageContactService(username,pagenum);
+		request.setAttribute("contacts", contacts);
+		request.setAttribute("allpagenum", end);
+		request.setAttribute("page", pagenum);
+		return "contactmanage.definition";
 	}
 }

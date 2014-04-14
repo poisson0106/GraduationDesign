@@ -24,4 +24,14 @@ public class ContactServiceImpl implements ContactService {
 		this.contactDao.deleteSelectedContactDao(nickname);
 	}
 
+	@Override
+	public int getTotalContactByUserService(String username) throws Exception {
+		return contactDao.getTotalContactByUserDao(username);
+	}
+
+	@Override
+	public List<Map> getOnePageContactService(String username,int pagenum) throws Exception {
+		return contactDao.getOnePageContactDao(username,pagenum);
+	}
+
 }

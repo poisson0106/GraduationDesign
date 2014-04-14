@@ -30,7 +30,89 @@ $(function(){
 	}
 	
 	$(".pagination").append("<li><a style='cursor:pointer;' id='next'>&gt;</a></li>");
-	$(".pagination").append("<li><a style='cursor:pointer;border-top-right-radius:4px;border-bottom-right-radius:4px;' id='last'>&raquo;</a></li>");
+	$(".pagination").append("<li><a style='cursor:pointer;border-top-right-radius:4px;border-bottom-right-radius:4px;' id='last'>&raquo;</a></li>");	
+});
+
+$(function(){
+	var pagenum=$("#allpagenum").val();
+	var frompage=$("li.active").attr("id");
 	
+	$(".pagination").children().click(function(){
+		var thispage=$(this).children().html();
+		if(parseInt(thispage)>0)
+			window.location="listOnePageContact?page="+thispage;
+	});
 	
+	$("#previous").click(function(){
+		var page='';
+		var i;
+		var url=window.location.search;
+		if(url.indexOf("?")!=-1)   
+		{   
+		  var str=url.substr(1);   
+		  strs = str.split("&");   
+		  for(i=0;i<strs.length;i++)   
+		  {   
+		    if([strs[i].split("=")[0]]=='page')
+		    	page=unescape(strs[i].split("=")[1]);
+		  }
+		  page--;
+		  if(page<1)
+				alert("This is the first page");
+			else
+				window.location="listOnePageContact?page="+page+"&from="+frompage;
+		}
+		else
+		{
+			alert("This is the first page");
+		}
+	});
+	
+	$("#next").click(function(){
+		var page='';
+		var i;
+		var url=window.location.search;
+		if(url.indexOf("?")!=-1)   
+		{   
+		  var str=url.substr(1);   
+		  strs = str.split("&");   
+		  for(i=0;i<strs.length;i++)   
+		  {   
+		    if([strs[i].split("=")[0]]=='page')
+		    	page=unescape(strs[i].split("=")[1]);
+		  }
+		  page++;
+		  if(page>parseInt($("#allpagenum").val()))
+				alert("This is the last page");
+			else
+				window.location="listOnePageContact?page="+page;
+		}
+		else
+		{
+			if(pagenum>1)
+				window.location="listOnePageContact?page=2";
+			else
+				alert("This is the last page");
+		}
+	});
+	
+	$("#first").click(function(){
+		window.location="listOnePageContact?page=1";
+	});
+	
+	$("#last").click(function(){
+		window.location="listOnePageContact?page="+pagenum;
+	});
+	
+	$('#go').click(function(){
+		var gopagenum=$("#gopagenum").val();
+		if(gopagenum>pagenum||gopagenum<1){
+			alert("You input the wrong page number!");
+			$("#gopagenum").val("");
+			$("#gopagenum").focus();
+		}
+		else
+			window.location="listOnePageContact?page="+gopagenum;
+		
+	});
 });
