@@ -39,16 +39,18 @@
 					<beans:property name="excludedUrls">
 						<beans:list>
 							<beans:value>/design/</beans:value>
-							<beans:value>/design/initialLoginUser</beans:value>
-							<beans:value>/design/loginOneUser</beans:value>
-							<beans:value>/design/initialUserRegister</beans:value>
-							<beans:value>/design/initialFindPassword</beans:value>
-							<beans:value>/design/registerOneUser</beans:value>
-							<beans:value>/design/logoutOneUser</beans:value>
-							<beans:value>/design/checkUsernameRepeat</beans:value>
-							<beans:value>/design/getPwdQuestion</beans:value>
-							<beans:value>/design/findOnePassword</beans:value>
-							<beans:value>/design/mainframework</beans:value>
+							<beans:value>/initialLoginUser</beans:value>
+							<beans:value>/loginOneUser</beans:value>
+							<beans:value>/initialUserRegister</beans:value>
+							<beans:value>/initialFindPassword</beans:value>
+							<beans:value>/registerOneUser</beans:value>
+							<beans:value>/logoutOneUser</beans:value>
+							<beans:value>/checkUsernameRepeat</beans:value>
+							<beans:value>/getPwdQuestion</beans:value>
+							<beans:value>/findOnePassword</beans:value>
+							<beans:value>/mainframework</beans:value>
+							<beans:value>/GradutionDesign</beans:value>
+							<beans:value>/GraduationDesign</beans:value>
 							<!-- <beans:value>/design/onerror</beans:value> -->
 						</beans:list>
 					</beans:property>
