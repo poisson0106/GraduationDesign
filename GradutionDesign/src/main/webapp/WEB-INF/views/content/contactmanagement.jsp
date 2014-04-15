@@ -11,6 +11,7 @@
 		</ol>
 	</div>
 </div>
+<c:if test="${not empty contacts }">
 <div class="row">
 	<div class="col-sm-12">
 		<div class="btn-group">
@@ -21,9 +22,10 @@
 		</div>
 	</div>
 </div>
+</c:if>
 <div class="row">
 	<div class="col-sm-12">
-		<table class="table table-hover" id="inbox">
+		<table class="table table-hover" id="contacts">
 		<c:if test="${not empty contacts }">
 			<thead>
 				<tr>
@@ -43,6 +45,7 @@
 	</table>
 	</div>
 </div>
+<c:if test="${not empty contacts }">
 <div class="row">
 	<div class="col-sm-7 text-right">
 		<ul class="pagination">
@@ -64,6 +67,8 @@
 		</div>
 	</div>
 </div>
+</c:if>
+<c:if test="${empty contacts }"><h1 class="text-center">暂时没有联系人，当你发送邮件时联系人会自动添加！</h1></c:if>
 <div id="deletesuccess" style="display: none; align: center;">删除成功</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

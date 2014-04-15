@@ -39,5 +39,10 @@ public class MailSendServiceImpl implements MailSendService {
 	public List<Map> findReceiversService(Map keywords) throws Exception {
 		return mailSendDao.findReceiversDao(keywords);
 	}
+
+	@Override
+	public Boolean saveDraftAutoService(Mail mail,HttpSession session) throws Exception {
+		return mailSendDao.saveDraftAutoDao(mail,session);
+	}
 	
 }

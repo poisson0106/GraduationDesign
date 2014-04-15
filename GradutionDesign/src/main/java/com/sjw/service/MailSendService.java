@@ -16,4 +16,6 @@ public interface MailSendService {
 	public Boolean saveOneEmailService(Mail mail,HttpSession session) throws Exception;
 	
 	public List<Map> findReceiversService(Map keywords) throws Exception;
+	
+	public Boolean saveDraftAutoService(Mail mail,HttpSession session) throws Exception;
 }

@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Flags;
+import javax.mail.Flags.Flag;
+import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.MimeMessage;
@@ -149,6 +151,47 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 	@Override
 	public List<Map> findReceiversDao(Map keywords) throws Exception {
 		return this.getSqlSession().selectList("findReceivers", keywords);
+	}
+
+	@Override
+	public Boolean saveDraftAutoDao(Mail mail,HttpSession session) throws Exception {
+		String username=session.getAttribute("username").toString();
+		username=username.substring(0, username.indexOf("@"));
+		String password=session.getAttribute("password").toString();
+		Session msession=MailConnection.getSession();
+		MailConnection.getConnection(username, password);
+		IMAPFolder folderDraft;
+		MailConnection.setDraftFolder();
+		if(MailConnection.getDraftFolder()==null)
+			return false;
+		else
+			folderDraft=MailConnection.getDraftFolder();
+		if(mail.getMessagenum()!=0){
+			Message message=folderDraft.getMessage(mail.getMessagenum());
+			message.setFlag(Flags.Flag.DELETED, true);
+			MailConnection.closeDraftFolder();
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null)
+				return false;
+			else
+				folderDraft=MailConnection.getDraftFolder();
+		}
+		HtmlEmail email = new HtmlEmail();
+		email.setCharset("UTF-8");
+		email.setHostName("mail.usstemail.com");
+		email.setSmtpPort(25);
+		email.addTo(mail.getReceivers());
+		email.setSubject(mail.getSubject());
+		email.setFrom(mail.getSender());
+		email.setHtmlMsg(mail.getContent());
+		email.setMailSession(msession);
+		email.buildMimeMessage();
+		MimeMessage message[]=new MimeMessage[1];
+		message[0]=email.getMimeMessage();
+		folderDraft.appendMessages(message);
+		MailConnection.closeDraftFolder();
+		MailConnection.closeConnection();
+		return true;
 	}
 
 }

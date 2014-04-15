@@ -152,4 +152,10 @@
 			
 			<div id="editor" style="border: 1px solid rgb(204, 204, 204);height:260px;overflow:auto"><c:if test="${not empty content }"></br><p>--------forward---------</p>${content }</c:if></div>
 	</div>
+	<div class="col-sm-12">
+		<p id="saving" style="display:none"><span class="fa fa-spinner fa-spin"></span>正在保存中........</p>
+		<p id="saved" style="display:none"><span class="fa fa-check-circle"></span>草稿已自动保存！</p>
+		<p id="savefail" style="display:none"><span class="fa fa-times-circle" style="display:none"></span>草稿保存失败！如有需要请手动保存！</p>
+		<input type="hidden" id="messagenum" value=""/>
+	</div>
 </div>

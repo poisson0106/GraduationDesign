@@ -1,3 +1,9 @@
+//定时保存草稿任务
+$(function(){
+	setInterval("saveDraftAuto()",60000*3); //每3分钟保存一遍草稿
+});
+
+//启用所见即所得编辑器
 $(function(){
 	$("#editor").wysiwyg();
 	
@@ -27,6 +33,7 @@ $(function(){
 	
 });
 
+//页面动作处理
 $(function(){
 	$("#send").click(function(){
 		var content=$("#editor").html();
@@ -140,6 +147,48 @@ $(function(){
 
 function addaddress(address){
 	$("#receiver").val(address);
+}
+
+function saveDraftAuto(){
+	$("#fnamelist li").each(function(){
+		if(filenamelist==null)
+			filenamelist=$(this).html()+",";
+		else
+			filenamelist=filenamelist+$(this).html()+",";
+	});
+	if(filenamelist !=''&&filenamelist!=null)
+		$("#filenamelist").val(filenamelist);
+	$.ajax({
+		type : "POST",
+		url : "saveDraftAuto",
+		data : {
+			receiver : $("#receiver").val(),
+			cc : $("#cc").val(),
+			subject : $("#subject").val(),
+			content : $("#edit").val(),
+			sender : $("#loginname").html(),
+			filenamelist : $("#filenamelist").val(),
+			messagenum : $("#messagenum").val()
+		},
+		dataType : "text",
+		beforeSend : function(){
+			$("#saved").css("display","none");
+			$("#savefail").css("display","none");
+			$("#saving").css("display","inherit");
+		},
+		success : function(data){
+			var json_s=JSON.parse(data);
+			if(json_s[0].flag=="true"){
+				$("#saving").css("display","none");
+				$("#saved").css("display","inherit");
+			}
+			else{
+				$("#saving").css("display","none");
+				$("#savefail").css("display","inherit");
+			}
+			
+		}
+	});
 }
 
 function getRootPath(){

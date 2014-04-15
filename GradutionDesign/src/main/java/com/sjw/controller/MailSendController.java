@@ -111,4 +111,35 @@ public class MailSendController {
 		response.getWriter().write(json_max);
 		return null;
 	}
+	
+	@RequestMapping(value="saveDraftAuto",method=RequestMethod.POST)
+	public String saveDraftAuto(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String receiver=request.getParameter("receiver");
+		String[] cc=request.getParameter("cc").split(",");
+		String subject=request.getParameter("subject");
+		String content=request.getParameter("content");
+		String sender=request.getParameter("sender");
+		String[] filenamelist=request.getParameter("filenamelist").split(",");
+		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
+		Mail mail=new Mail();
+		mail.setReceivers(receiver);
+		mail.setSubject(subject);
+		mail.setContent(content);
+		mail.setSender(sender);
+		mail.setMessagenum(messagenum);
+		if(cc!=null)
+			mail.setCc(cc);
+		if(filenamelist!=null)
+			mail.setAttachnames(filenamelist);
+		Boolean issaved=mailSendService.saveDraftAutoService(mail,request.getSession());
+		if(issaved){
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("flag", "true");
+			String json_max="";
+			JSONArray ja_max=JSONArray.fromObject(map);
+			json_max=ja_max.toString();
+			response.getWriter().write(json_max);	
+		}
+		return null;
+	}
 }
