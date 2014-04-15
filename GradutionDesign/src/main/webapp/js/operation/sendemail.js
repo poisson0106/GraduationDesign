@@ -1,6 +1,6 @@
 //定时保存草稿任务
 $(function(){
-	setInterval("saveDraftAuto()",60000*3); //每3分钟保存一遍草稿
+	setInterval("saveDraftAuto()",60000); //每3分钟保存一遍草稿
 });
 
 //启用所见即所得编辑器
@@ -153,14 +153,17 @@ function addaddress(address){
 }
 
 function saveDraftAuto(){
-	$("#fnamelist li").each(function(){
-		if(filenamelist==null)
-			filenamelist=$(this).html()+",";
-		else
-			filenamelist=filenamelist+$(this).html()+",";
-	});
-	if(filenamelist !=''&&filenamelist!=null)
-		$("#filenamelist").val(filenamelist);
+	var filenamelist=null;
+	if($("#fnamelist").html()!=""&&$("#fnamelist").html()!=null){
+		$("#fnamelist li").each(function(){
+			if(filenamelist==null)
+				filenamelist=$(this).html()+",";
+			else
+				filenamelist=filenamelist+$(this).html()+",";
+		});
+		if(filenamelist !=''&&filenamelist!=null)
+			$("#filenamelist").val(filenamelist);
+	}
 	$.ajax({
 		type : "POST",
 		url : "saveDraftAuto",
@@ -168,7 +171,7 @@ function saveDraftAuto(){
 			receiver : $("#receiver").val(),
 			cc : $("#cc").val(),
 			subject : $("#subject").val(),
-			content : $("#edit").val(),
+			content : $("#editor").html(),
 			sender : $("#loginname").html(),
 			filenamelist : $("#filenamelist").val(),
 			messagenum : $("#messagenum").val()

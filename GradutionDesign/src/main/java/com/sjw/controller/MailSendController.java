@@ -118,13 +118,13 @@ public class MailSendController {
 	@RequestMapping(value="saveDraftAuto",method=RequestMethod.POST)
 	public String saveDraftAuto(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String receiver=request.getParameter("receiver");
-		String[] cc=request.getParameter("cc").split(",");
+		String[] cc=null;
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String sender=request.getParameter("sender");
-		String[] filenamelist=request.getParameter("filenamelist").split(",");
+		String[] filenamelist=null;
 		int messagenum=0;
-		if(request.getParameter("messagenum")!=null)
+		if(request.getParameter("messagenum")!=null&&request.getParameter("messagenum")!="")
 			messagenum=Integer.parseInt(request.getParameter("messagenum"));
 		Mail mail=new Mail();
 		mail.setReceivers(receiver);
@@ -133,6 +133,10 @@ public class MailSendController {
 		mail.setSender(sender);
 		if(messagenum!=0)
 			mail.setMessagenum(messagenum);
+		if(request.getParameter("cc")!=null&&request.getParameter("cc")!="")
+			cc=request.getParameter("cc").split(",");
+		if(request.getParameter("filenamelist")!=null&&request.getParameter("filenamelist")!="")
+			filenamelist=request.getParameter("filenamelist").split(",");
 		if(cc!=null)
 			mail.setCc(cc);
 		if(filenamelist!=null)

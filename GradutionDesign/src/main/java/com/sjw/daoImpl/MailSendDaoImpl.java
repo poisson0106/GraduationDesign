@@ -171,10 +171,9 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 	@Override
 	public Boolean saveDraftAutoDao(Mail mail,HttpSession session) throws Exception {
 		String username=session.getAttribute("username").toString();
-		username=username.substring(0, username.indexOf("@"));
 		String password=session.getAttribute("password").toString();
-		Session msession=MailConnection.getSession();
 		MailConnection.getConnection(username, password);
+		Session msession=MailConnection.getSession();
 		IMAPFolder folderDraft;
 		MailConnection.setDraftFolder();
 		if(MailConnection.getDraftFolder()==null)
@@ -198,8 +197,10 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		email.addTo(mail.getReceivers());
 		email.setSubject(mail.getSubject());
 		email.setFrom(mail.getSender());
-		for(int i=0;i<mail.getCc().length;i++){
-			email.addCc(mail.getCc()[i]);
+		if(mail.getCc()!=null){
+			for(int i=0;i<mail.getCc().length;i++){
+				email.addCc(mail.getCc()[i]);
+			}
 		}
 		email.setHtmlMsg(mail.getContent());
 		email.setMailSession(msession);
