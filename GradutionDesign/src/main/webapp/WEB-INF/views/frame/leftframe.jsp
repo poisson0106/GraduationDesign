@@ -43,7 +43,7 @@
   	<div id="contactsystem" class="panel-collapse collapse">
   		<div class="panel-body">
    			<ul class="nav nav-pills nav-stacked">
-  				<li id="contactmenu"><a style="cursor:pointer" id="contact">联系人管理</a></li>
+  				<li id="contactmenu"><a style="cursor:pointer" id="contact">联系人系统</a></li>
    			</ul>
    		</div>
   	</div>
