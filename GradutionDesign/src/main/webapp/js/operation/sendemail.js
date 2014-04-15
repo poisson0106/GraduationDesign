@@ -10,6 +10,8 @@ $(function(){
 	$("li.active").removeClass();
 	$("#sendemailmenu").addClass("active");
 	
+	$(".panel div.in").collapse();
+	
 	$("#file_upload").uploadify({
         'buttonText'    : 'Add Attach',  
         'swf'           : getRootPath()+'swf/uploadify.swf',  

@@ -61,5 +61,7 @@ $(function(){
 	$("li.active").removeClass();
 	$("#inboxmenu").addClass("active");
 	
+	$(".panel div.in").collapse();
+	
 	$(".mailselected").prop("checked",false);
 });

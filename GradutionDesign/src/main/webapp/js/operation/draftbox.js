@@ -1,13 +1,15 @@
-//ÊÂ¼þ´¦Àí
+//ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 $(function(){
 
 	
 });
 
-//³õÊ¼»¯
+//ï¿½ï¿½Ê¼ï¿½ï¿½
 $(function(){
 	var width=window.screen.width;
 	$("#maincontainer").css("width",width);
+	
+	$(".panel div.in").collapse();
 	
 	$("li.active").removeClass();
 	$("#draftboxmenu").addClass("active");

@@ -1,6 +1,8 @@
 $(function(){
 	$("#contactmenu").addClass("active");
 	
+	$(".panel div.in").collapse();
+	
 	$("#selectall").change(function(){
 		if($("#selectall").prop("checked")==true){
 			$(".contactselected").prop("checked",true);
