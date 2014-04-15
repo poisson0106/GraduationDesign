@@ -123,13 +123,16 @@ public class MailSendController {
 		String content=request.getParameter("content");
 		String sender=request.getParameter("sender");
 		String[] filenamelist=request.getParameter("filenamelist").split(",");
-		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
+		int messagenum=0;
+		if(request.getParameter("messagenum")!=null)
+			messagenum=Integer.parseInt(request.getParameter("messagenum"));
 		Mail mail=new Mail();
 		mail.setReceivers(receiver);
 		mail.setSubject(subject);
 		mail.setContent(content);
 		mail.setSender(sender);
-		mail.setMessagenum(messagenum);
+		if(messagenum!=0)
+			mail.setMessagenum(messagenum);
 		if(cc!=null)
 			mail.setCc(cc);
 		if(filenamelist!=null)
