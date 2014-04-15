@@ -28,9 +28,12 @@ public class MailContentController {
 		if("draftboxmenu".equals(frompage)){
 			String subject=mail.getSubject();
 			String content=mail.getContent();
+			String receiver=mail.getReceivers();
 			request.setAttribute("content", content);
 			request.setAttribute("subject", subject);
+			request.setAttribute("receiver", receiver);
 			request.setAttribute("mail", mail);
+			request.setAttribute("messagenum", messagenum);
 			return "mailsend.definition";
 		}
 		else{

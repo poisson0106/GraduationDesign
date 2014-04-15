@@ -46,6 +46,9 @@
 		<input type="hidden" class="form-control" id="content" name="content">
 		<input type="hidden" class="form-control" id="sender" name="sender">
 		<input type="hidden" class="form-control" id="filenamelist" name="filenamelist">
+		
+		<!-- 此处messagenum专处理自动保存草稿或者草稿箱转来的邮件，messagenum为在草稿箱内的messagenum -->
+		<input type="hidden" id="messagenum" value="${messagenum }" name="messagenum"/>
 	</div>
 </form>
 <div class="row">
@@ -156,6 +159,5 @@
 		<p id="saving" style="display:none"><span class="fa fa-spinner fa-spin"></span>正在保存中........</p>
 		<p id="saved" style="display:none"><span class="fa fa-check-circle"></span>草稿已自动保存！</p>
 		<p id="savefail" style="display:none"><span class="fa fa-times-circle" style="display:none"></span>草稿保存失败！如有需要请手动保存！</p>
-		<input type="hidden" id="messagenum" value=""/>
 	</div>
 </div>
