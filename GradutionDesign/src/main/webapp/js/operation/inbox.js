@@ -62,6 +62,7 @@ $(function(){
 	$("#inboxmenu").addClass("active");
 	
 	$(".panel div.in").collapse();
+	$("#mailsystem").collapse();
 	
 	$(".mailselected").prop("checked",false);
 });

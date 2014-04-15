@@ -2,6 +2,7 @@ $(function(){
 	$("#contactmenu").addClass("active");
 	
 	$(".panel div.in").collapse();
+	$("#contactsystem").collapse();
 	
 	$("#selectall").change(function(){
 		if($("#selectall").prop("checked")==true){

@@ -35,3 +35,7 @@ $(function(){
 	$("#mailcontent").css("height",$(document).height()-52-20-20-56-184-20);
 	$("#mailcontent").css("overflow","auto");
 });
+
+$(function(){
+	$(".panel div.in").collapse();
+})

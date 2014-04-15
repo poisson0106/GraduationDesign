@@ -3,6 +3,7 @@ $(function(){
 	$("#maincontainer").css("width",width);
 	
 	$(".panel div.in").collapse();
+	$("#welcome").collapse();
 	
 	$("li.active").removeClass();
 	$("#homemenu").addClass("active");

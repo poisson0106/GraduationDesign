@@ -11,6 +11,7 @@ $(function(){
 	$("#sendemailmenu").addClass("active");
 	
 	$(".panel div.in").collapse();
+	$("#mailsystem").collapse();
 	
 	$("#file_upload").uploadify({
         'buttonText'    : 'Add Attach',  
