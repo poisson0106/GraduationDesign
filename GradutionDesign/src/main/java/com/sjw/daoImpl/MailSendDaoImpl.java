@@ -64,21 +64,6 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		}
 		email.send();
 		
-		//如果草稿箱不为空的话，删除草稿箱文件
-		if(mail.getMessagenum()!=0){
-			MailConnection.getConnection(username+"@usstemail.com", password);
-			IMAPFolder folderDraft;
-			MailConnection.setDraftFolder();
-			if(MailConnection.getDraftFolder()==null)
-				return false;
-			else 
-				folderDraft=MailConnection.getDraftFolder();
-			Message message=folderDraft.getMessage(mail.getMessagenum());
-			message.setFlag(Flags.Flag.DELETED, true);
-			MailConnection.closeDraftFolder();
-			MailConnection.closeConnection();
-		}
-		
 		//存入发件箱部分
 		MailConnection.getConnection(username+"@usstemail.com", password);
 		IMAPFolder folderSent;
@@ -110,7 +95,21 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 			info.put("nickname", nickname);
 			this.getSqlSession().insert("addRelations", info);
 		}
-			
+		
+		//如果草稿箱不为空的话，删除草稿箱文件（拟考虑将此放在最后，待测试）
+		if(mail.getMessagenum()!=0){
+			MailConnection.getConnection(username+"@usstemail.com", password);
+			IMAPFolder folderDraft;
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null)
+				return false;
+			else 
+				folderDraft=MailConnection.getDraftFolder();
+			Message messagedraft=folderDraft.getMessage(mail.getMessagenum());
+			messagedraft.setFlag(Flags.Flag.DELETED, true);
+			MailConnection.closeDraftFolder();
+			MailConnection.closeConnection();
+		}
 		return true;
 	}
 
