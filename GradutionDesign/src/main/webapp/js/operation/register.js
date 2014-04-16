@@ -2,14 +2,20 @@ $(function(){
 	$("#UserContainer").css("height",$(document).height()-52-20-20);
 	
 	$("#submit").click(function(){
-		if($("#password").val()==$("#repassword").val()){
-			$("#registeruser").submit();
-		}
+		if($("#username").val()=="")
+			alert("用户名不能为空!");
+		if($("#password").val()=="")
+			alert("密码不能为空！");
 		else{
-			alert("两次输入密码不一致，请重新输入");
-			$("#password").val("");
-			$("#repassword").val("");
-			$("#password").focus();
+			if($("#password").val()==$("#repassword").val()){
+				$("#registeruser").submit();
+			}
+			else{
+				alert("两次输入密码不一致，请重新输入");
+				$("#password").val("");
+				$("#repassword").val("");
+				$("#password").focus();
+			}
 		}
 	});
 	
