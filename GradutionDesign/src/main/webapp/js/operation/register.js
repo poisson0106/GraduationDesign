@@ -2,11 +2,23 @@ $(function(){
 	$("#UserContainer").css("height",$(document).height()-52-20-20);
 	
 	$("#submit").click(function(){
-		if($("#username").val()=="")
+		if($("#username").val()==""){
 			alert("用户名不能为空!");
-		if($("#password").val()=="")
+			return false;
+		}
+		if($("#password").val()==""){
 			alert("密码不能为空！");
+			return false;
+		}
 		else{
+			if($("#question").val()==""){
+				alert("问题不能为空，否则无法找回密码！");
+				return false;
+			}
+			if($("#answer").val()==""){
+				alert("答案不能为空，否则无法找回密码！");
+				return false;
+			}
 			if($("#password").val()==$("#repassword").val()){
 				$("#registeruser").submit();
 			}
