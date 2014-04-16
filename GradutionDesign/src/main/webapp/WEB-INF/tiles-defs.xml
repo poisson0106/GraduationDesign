@@ -32,7 +32,7 @@
     </definition>
     
     <definition name="error.definition" extends="base.definition">
-    	<put-attribute name="body" value="/WEB-INF/views/message/error.jsp" />
+    	<put-attribute name="body" value="/WEB-INF/views/message/contenterror.jsp" />
     </definition>
     
     <definition name="maildeleted.definition" extends="base.definition">
