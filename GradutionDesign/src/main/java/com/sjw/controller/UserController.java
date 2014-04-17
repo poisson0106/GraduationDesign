@@ -22,7 +22,7 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping(value="loginOneUser",method=RequestMethod.POST)
-	public String LoginOneUser(HttpServletRequest request,HttpServletResponse response){
+	public String LoginOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		/*String username=request.getParameter("username");
 		if(request.getParameter("password").equals(loginService.LoginOneUserService(username))){
 			mv.setViewName("home");
@@ -34,6 +34,7 @@ public class UserController {
 		if(MD5Util.MD5(request.getParameter("password")).equals(userService.LoginOneUserService(username))){
 			request.getSession().setAttribute("username", username+"@usstemail.com");
 			request.getSession().setAttribute("password", request.getParameter("password"));
+			request.getSession().setAttribute("nickname", userService.getNicknameService(username));
 			return "base.definition";
 		}
 		else
@@ -63,15 +64,18 @@ public class UserController {
 		String password=request.getParameter("password");
 		String question=request.getParameter("question");
 		String answer=request.getParameter("answer");
+		String nickname=request.getParameter("nickname");
 		User user=new User();
 		user.setUsername(username);
 		user.setPassword(password);
 		user.setQuestion(question);
 		user.setAnswer(answer);
+		user.setNickname(nickname);
 		//need add this user to the database through the server
 		Boolean flag=userService.registerOneUserService(user);
 		session.setAttribute("username", username+"@usstemail.com");
 		session.setAttribute("password", password);
+		session.setAttribute("nickname", nickname);
 		if(flag)
 			return "base.definition";
 		else
@@ -82,6 +86,7 @@ public class UserController {
 	public String logoutOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		request.getSession().removeAttribute("username");
 		request.getSession().removeAttribute("password");
+		request.getSession().removeAttribute("nickname");
 		return "login/login";
 	}
 	

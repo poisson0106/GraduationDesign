@@ -14,4 +14,6 @@ public interface UserDao {
 	public User getPwdQuestionDao(String username) throws Exception;
 	
 	public Boolean findOnePasswordDao(User user) throws Exception;
+	
+	public String getNicknameDao(String username) throws Exception;
 }

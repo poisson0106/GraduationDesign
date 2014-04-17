@@ -64,4 +64,9 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 			return false;
 	}
 
+	@Override
+	public String getNicknameDao(String username) throws Exception {
+		return this.getSqlSession().selectOne("getNickname",username);
+	}
+
 }

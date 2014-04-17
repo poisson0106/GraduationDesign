@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.findOnePasswordDao(user);
 	}
 
+	@Override
+	public String getNicknameService(String username) throws Exception {
+		return userDao.getNicknameDao(username);
+	}
+
 }

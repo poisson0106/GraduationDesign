@@ -15,9 +15,9 @@
 	role="form" id="registeruser">
 	<div class="form-group">
 		<label for="username" class="col-sm-2 control-label text-danger">用户名:</label>
-		<div class="col-sm-5">
+		<div class="col-sm-6">
 			<input type="text" class="form-control" id="username" name="username"
-				placeholder="输入用户名" />
+				placeholder="输入用户名，将光标移至密码后稍作等待，如出现勾图标再继续注册" />
 		</div>
 		<div class="col-sm-2">
 			<strong>@usstemail.com</strong>
@@ -54,6 +54,13 @@
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="answer" name="answer"
 				placeholder="输入答案" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="nickname" class="col-sm-2 control-label text-danger">昵称:</label>
+		<div class="col-sm-9">
+			<input type="text" class="form-control" id="nickname"
+				name="nickname" placeholder="输入昵称（注册后不能修改！）" />
 		</div>
 	</div>
 	<div class="form-group">

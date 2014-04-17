@@ -1,6 +1,6 @@
 //定时保存草稿任务
 $(function(){
-	setInterval("saveDraftAuto()",60000); //每3分钟保存一遍草稿
+	setInterval("saveDraftAuto()",60000*3); //每3分钟保存一遍草稿
 });
 
 //启用所见即所得编辑器
@@ -164,37 +164,39 @@ function saveDraftAuto(){
 		if(filenamelist !=''&&filenamelist!=null)
 			$("#filenamelist").val(filenamelist);
 	}
-	$.ajax({
-		type : "POST",
-		url : "saveDraftAuto",
-		data : {
-			receiver : $("#receiver").val(),
-			cc : $("#cc").val(),
-			subject : $("#subject").val(),
-			content : $("#editor").html(),
-			sender : $("#loginname").html(),
-			filenamelist : $("#filenamelist").val(),
-			messagenum : $("#messagenum").val()
-		},
-		dataType : "text",
-		beforeSend : function(){
-			$("#saved").css("display","none");
-			$("#savefail").css("display","none");
-			$("#saving").css("display","inherit");
-		},
-		success : function(data){
-			var json_s=JSON.parse(data);
-			if(json_s[0].flag=="true"){
-				$("#saving").css("display","none");
-				$("#saved").css("display","inherit");
+	if($("#receiver").val()!=""&&$("#subject").val()!=""&&$("#editor").html()!=""){
+		$.ajax({
+			type : "POST",
+			url : "saveDraftAuto",
+			data : {
+				receiver : $("#receiver").val(),
+				cc : $("#cc").val(),
+				subject : $("#subject").val(),
+				content : $("#editor").html(),
+				sender : $("#loginname").html(),
+				filenamelist : $("#filenamelist").val(),
+				messagenum : $("#messagenum").val()
+			},
+			dataType : "text",
+			beforeSend : function(){
+				$("#saved").css("display","none");
+				$("#savefail").css("display","none");
+				$("#saving").css("display","inherit");
+			},
+			success : function(data){
+				var json_s=JSON.parse(data);
+				if(json_s[0].flag=="true"){
+					$("#saving").css("display","none");
+					$("#saved").css("display","inherit");
+				}
+				else{
+					$("#saving").css("display","none");
+					$("#savefail").css("display","inherit");
+				}
+				
 			}
-			else{
-				$("#saving").css("display","none");
-				$("#savefail").css("display","inherit");
-			}
-			
-		}
-	});
+		});
+	}
 }
 
 function getRootPath(){
