@@ -39,11 +39,12 @@
    			</ul>
    		</div>
   	</div>
-  	<div class="panel-footer text-center"> <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#contactsystem">联系人管理</a></div>
+  	<div class="panel-footer text-center"> <a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#contactsystem">人员管理</a></div>
   	<div id="contactsystem" class="panel-collapse collapse">
   		<div class="panel-body">
    			<ul class="nav nav-pills nav-stacked">
-  				<li id="contactmenu"><a style="cursor:pointer" id="contact">联系人系统</a></li>
+  				<li id="contactmenu"><a style="cursor:pointer" id="contact">联系人信息</a></li>
+  				<li id="userinfomenu"><a style="cursor:pointer" id="userinfo">个人信息修改</a></li>
    			</ul>
    		</div>
   	</div>

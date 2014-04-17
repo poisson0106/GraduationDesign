@@ -57,6 +57,11 @@ public class UserController {
 		return "login/login";
 	}
 	
+	@RequestMapping(value="initialUserInfoChange",method=RequestMethod.GET)
+	public String initialUserInfoChange(HttpServletRequest request,HttpServletResponse response){
+		return "userinfo.definition";
+	}
+	
 	@RequestMapping(value="registerOneUser",method=RequestMethod.POST)
 	public String registerOneUser(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		HttpSession session=request.getSession();

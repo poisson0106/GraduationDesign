@@ -26,6 +26,10 @@ $(function(){
 	$("#contact").click(function(){
 		window.location="initialContact";
 	});
+	
+	$("#userinfo").click(function(){
+		window.location="initialUserInfoChange";
+	});
 });
 
 $(function(){
