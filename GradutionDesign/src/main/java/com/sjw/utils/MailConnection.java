@@ -20,7 +20,7 @@ public class MailConnection {
 	private static Session session;
 	
 	public static void getConnection(String username,String password) throws Exception{
-		String user;// 用户名
+		String user;// 用户名,对于james需要不带@形式的用户名
 		if(username.contains("@"))
 			user = username.substring(0, username.indexOf("@"));
 		else
