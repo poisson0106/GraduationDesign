@@ -11,5 +11,7 @@ public interface MailDeletedDao {
 	
 	public List<Mail> initialMailDeletedDao(HttpSession session) throws Exception;
 	
-	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception;
+	public String deleteMailPavementlyDao(String[] messagenum,HttpSession session) throws Exception;
+	
+	public Boolean redoMailByBoxDao(String[] messagenum,String to,HttpSession session) throws Exception;
 }

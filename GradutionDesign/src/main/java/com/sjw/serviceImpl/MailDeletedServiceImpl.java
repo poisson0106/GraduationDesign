@@ -28,8 +28,14 @@ public class MailDeletedServiceImpl implements MailDeletedService {
 	}
 
 	@Override
-	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception {
-		return mailDeletedDao.deleteMailPavemently(messagenum,session);
+	public String deleteMailPavementlyService(String[] messagenum,HttpSession session) throws Exception {
+		return mailDeletedDao.deleteMailPavementlyDao(messagenum,session);
+	}
+
+	@Override
+	public Boolean redoMailByBoxService(String[] messagenum, String to,
+			HttpSession session) throws Exception {
+		return mailDeletedDao.redoMailByBoxDao(messagenum, to, session);
 	}
 
 }

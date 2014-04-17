@@ -18,7 +18,7 @@
 			<button type="button" class="btn btn-default" id="delete"><span class="fa fa-trash-o"></span></button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="Font"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="read"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>
 			<ul class="dropdown-menu">
 				<li><a style="cursor:pointer;" id="readed">标记为已读</a></li>
 				<li><a style="cursor:pointer;" id="unreaded">标记为未读</a></li>
@@ -26,6 +26,14 @@
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default" id="refresh"><span class="fa fa-refresh"></span></button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="mailredo"><span class="fa fa-share-square-o"></span><span class="fa fa-sort-asc"></span></button>
+			<ul class="dropdown-menu">
+				<li><a style="cursor:pointer;" id="redotoinbox">还原到收件箱</a></li>
+				<li><a style="cursor:pointer;" id="redotosentbox">还原到发件箱</a></li>
+				<li><a style="cursor:pointer;" id="redotodraftbox">还原到草稿箱</a></li>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -83,5 +91,6 @@
 	</div>
 </div>
 <div id="deletesuccess" style="display: none; align: center;">邮件已永久删除！</div>
+<div id="redosuccess" style="display:none; align:center" >邮件已还原！</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

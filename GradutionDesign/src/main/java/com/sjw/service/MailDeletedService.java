@@ -11,5 +11,7 @@ public interface MailDeletedService {
 	
 	public List<Mail> initialMailDeletedService(HttpSession session) throws Exception;
 	
-	public String deleteMailPavemently(String[] messagenum,HttpSession session) throws Exception;
+	public String deleteMailPavementlyService(String[] messagenum,HttpSession session) throws Exception;
+	
+	public Boolean redoMailByBoxService(String[] messagenum,String to,HttpSession session) throws Exception;
 }

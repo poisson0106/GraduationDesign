@@ -27,12 +27,12 @@ public class MailDeletedController {
 		total=mailDeletedService.getTotalMailDeletedCountService(request.getSession());
 		
 		if(total==-1){
-			return "message/error";
+			return "error.definition";
 		}
 		else{
 			mail=mailDeletedService.initialMailDeletedService(request.getSession());
 			if(mail==null){
-				return "message/error";
+				return "error.definition";
 			}
 			else{
 				request.setAttribute("mail", mail);
@@ -47,10 +47,21 @@ public class MailDeletedController {
 	@RequestMapping(value="deleteMailPavemently",method=RequestMethod.POST)
 	public String DeleteMailPavemently(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=mailDeletedService.deleteMailPavemently(messagenum,request.getSession());
+		String result=mailDeletedService.deleteMailPavementlyService(messagenum,request.getSession());
 		if(result=="success")
 			return null;
 		else
-			return "message/error";
+			return "error.definition";
+	}
+	
+	@RequestMapping(value="redoMailByBox",method=RequestMethod.POST)
+	public String redoMailByBox(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String to=request.getParameter("to");
+		String[] messagenum=request.getParameter("selected").split(",");
+		Boolean isredo=mailDeletedService.redoMailByBoxService(messagenum, to, request.getSession());
+		if(isredo)
+			return null;
+		else
+			return "error.definition";
 	}
 }
