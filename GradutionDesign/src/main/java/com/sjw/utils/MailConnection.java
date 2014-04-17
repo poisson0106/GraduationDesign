@@ -20,7 +20,11 @@ public class MailConnection {
 	private static Session session;
 	
 	public static void getConnection(String username,String password) throws Exception{
-		String user = username.substring(0, username.indexOf("@"));// 用户名
+		String user;// 用户名
+		if(username.contains("@"))
+			user = username.substring(0, username.indexOf("@"));
+		else
+			user=username;
         Properties prop = System.getProperties();
         prop.put("mail.store.protocol", "imap");    
         prop.put("mail.imap.host", "mail.usstemail.com");
