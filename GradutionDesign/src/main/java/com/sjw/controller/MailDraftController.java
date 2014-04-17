@@ -26,12 +26,12 @@ public class MailDraftController {
 		
 		total=mailDraftService.getTotalMailDraftCountService(request.getSession());
 		if(total==-1){
-			return "message/error";
+			return "error.definition";
 		}
 		else{
 			mail=mailDraftService.initialMailDraftService(request.getSession());
 			if(mail==null){
-				return "message/error";
+				return "error.definition";
 			}
 			else{
 				request.setAttribute("mail", mail);

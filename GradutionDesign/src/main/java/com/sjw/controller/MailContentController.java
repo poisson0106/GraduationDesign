@@ -53,7 +53,7 @@ public class MailContentController {
 		if(result=="success")
 			return null;
 		else
-			return "message/error";
+			return "error.definition";
 	}
 	
 	@RequestMapping(value="replyOneEmail",method=RequestMethod.GET)

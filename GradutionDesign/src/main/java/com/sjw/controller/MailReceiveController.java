@@ -28,12 +28,12 @@ public class MailReceiveController {
 		
 		total=mailReceiveService.getTotalMailCountService(request.getSession());
 		if(total==-1){
-			return "message/error";
+			return "error.definition";
 		}
 		else{
 			mail=mailReceiveService.initialMailReceiveService(request.getSession());
 			if(mail==null){
-				return "message/error";
+				return "error.definition";
 			}
 			else{
 				request.setAttribute("mail", mail);
@@ -55,6 +55,6 @@ public class MailReceiveController {
 		if(result=="success")
 			return null;
 		else
-			return "message/error";
+			return "error.definition";
 	}
 }

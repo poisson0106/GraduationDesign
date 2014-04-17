@@ -26,7 +26,7 @@ public class ToolBarController {
 		if(result=="success")
 			return null;
 		else
-			return "message/error";
+			return "error.definition";
 	}
 	
 	@RequestMapping(value="setMailUnSeen",method=RequestMethod.POST)
@@ -36,7 +36,7 @@ public class ToolBarController {
 		if(result=="success")
 			return null;
 		else
-			return "message/error";
+			return "error.definition";
 	}
 	
 	@RequestMapping(value="listOnePageEmail",method=RequestMethod.GET)
@@ -49,7 +49,7 @@ public class ToolBarController {
 		
 		total=toolBarService.getOnePageEmailCountService(frompage,request.getSession());
 		if(total==-1){
-			return "message/error";
+			return "error.definition";
 		}
 		else {
 			if ((total-pagenum*10)<0) {
@@ -59,7 +59,7 @@ public class ToolBarController {
 			}
 			mail = toolBarService.listOnePageEmailService(end, pagenum,frompage,request.getSession());
 			if(mail==null){
-				return "message/error";
+				return "error.definition";
 			}
 			else{
 				request.setAttribute("mail", mail);

@@ -20,7 +20,7 @@ public class FrameworkController {
         MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
         MailConnection.setIndoxFolder();
         if(MailConnection.getInboxFolder()==null){
-       	 	return "content/error";
+       	 	return "error.definition";
         }
         else
         	folder=MailConnection.getInboxFolder();
