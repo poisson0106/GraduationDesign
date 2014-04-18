@@ -1,7 +1,5 @@
 package com.sjw.service;
 
-import javax.servlet.http.HttpSession;
-
 import com.sjw.pojo.User;
 
 public interface UserService {
@@ -16,4 +14,8 @@ public interface UserService {
 	public Boolean findOnePasswordService(User user) throws Exception;
 	
 	public String getNicknameService(String username) throws Exception;
+	
+	public User initialUserInfoChangeService(String username) throws Exception;
+	
+	public Boolean changeUserInfoService(User user) throws Exception;
 }

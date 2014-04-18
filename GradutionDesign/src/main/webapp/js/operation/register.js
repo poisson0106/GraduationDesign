@@ -49,7 +49,6 @@ $(function(){
 					$(".fa-spinner").css("display","none");
 					$(".fa-times-circle").css("display","inherit");
 				}
-				
 			},
 			beforeSend : function(){
 				$(".fa-check-circle").css("display","none");

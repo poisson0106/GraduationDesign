@@ -1,7 +1,5 @@
 package com.sjw.serviceImpl;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +41,16 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public String getNicknameService(String username) throws Exception {
 		return userDao.getNicknameDao(username);
+	}
+
+	@Override
+	public User initialUserInfoChangeService(String username) throws Exception {
+		return userDao.initialUserInfoChangeDao(username);
+	}
+
+	@Override
+	public Boolean changeUserInfoService(User user) throws Exception {
+		return userDao.changeUserInfoDao(user);
 	}
 
 }

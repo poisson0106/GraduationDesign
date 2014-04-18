@@ -62,4 +62,13 @@
     <definition name="userinfo.definition" extends="base.definition">
     	<put-attribute name="body" value="/WEB-INF/views/content/userinfo.jsp" />
     </definition>
+    
+    <definition name="infosuccess.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/message/updatesuccess.jsp" />
+    </definition>
+    
+    <definition name="infoerror.definition" extends="base.definition">
+    	<put-attribute name="body" value="/WEB-INF/views/message/updateerror.jsp" />
+    </definition>
+    
 </tiles-definitions> 

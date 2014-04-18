@@ -1,5 +1,8 @@
 package com.sjw.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -58,7 +61,12 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="initialUserInfoChange",method=RequestMethod.GET)
-	public String initialUserInfoChange(HttpServletRequest request,HttpServletResponse response){
+	public String initialUserInfoChange(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String username=request.getSession().getAttribute("username").toString();
+		username=username.substring(0,username.indexOf("@"));
+		User user=userService.initialUserInfoChangeService(username);
+		request.setAttribute("question", user.getQuestion());
+		request.setAttribute("answer", user.getAnswer());
 		return "userinfo.definition";
 	}
 	
@@ -136,5 +144,51 @@ public class UserController {
 			return "message/pwdsuccess";
 		else
 			return "message/error";
+	}
+	
+	@RequestMapping(value="checkPasswordOnChange",method=RequestMethod.POST)
+	public String checkPasswordOnChange(HttpServletRequest request,HttpServletResponse response,HttpSession session) throws Exception{
+		String opassword=request.getParameter("opassword");
+		if(session.getAttribute("password").equals(opassword)){
+			Map<String,String> map=new HashMap<String,String>();
+			map.put("flag", "true");
+			String json_max="";
+			JSONArray ja_max=JSONArray.fromObject(map);
+			json_max=ja_max.toString();
+			response.getWriter().write(json_max);
+		}
+		return null;
+		
+	}
+	
+	@RequestMapping(value="changeUserInfo",method=RequestMethod.POST)
+	public String changeUserInfo(HttpServletRequest request,HttpServletResponse response,HttpSession session) throws Exception{
+		String nickname=request.getParameter("nickname");
+		String question=request.getParameter("nquestion");
+		String answer =request.getParameter("nanswer");
+		String ischangepwd=request.getParameter("ischangepwd");
+		String username=request.getSession().getAttribute("username").toString();
+		username=username.substring(0,username.indexOf("@"));
+		User user=new User();
+		if("no".equals(ischangepwd)){
+			user.setNickname(nickname);
+			user.setQuestion(question);
+			user.setAnswer(answer);
+			user.setUsername(username);
+		}
+		else
+		{
+			user.setNickname(nickname);
+			user.setQuestion(question);
+			user.setAnswer(answer);
+			String password=MD5Util.MD5(request.getParameter("npassword"));
+			user.setPassword(password);
+			user.setUsername(username);
+		}
+		Boolean isupdate=userService.changeUserInfoService(user);
+		if(isupdate)
+			return "infosuccess.definition";
+		else
+			return "infoerror.definition";
 	}
 }

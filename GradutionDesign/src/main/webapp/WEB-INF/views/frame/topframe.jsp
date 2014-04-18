@@ -17,7 +17,7 @@
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       <c:if test="${not empty nickname }">
-    	  <li><a>${nickname }:</a></li>
+    	  <li><a>昵称：${nickname }</a></li>
    	  </c:if>
       <li><a id="loginname">${username }</a></li>
       <li><a href="logoutOneUser">登出</a></li>

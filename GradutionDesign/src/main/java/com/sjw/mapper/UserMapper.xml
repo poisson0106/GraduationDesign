@@ -37,4 +37,16 @@
 	<select id="getNickname" parameterType="string" resultType="string">
 		SELECT NICKNAME FROM JAMESUSER WHERE NAME=#{username}
 	</select>
+	
+	<select id="getWholeUserInfo" parameterType="string" resultType="User">
+		SELECT QUESTION,ANSWER FROM JAMESUSER WHERE NAME=#{username}
+	</select>
+	
+	<update id="updateUserWithoutPwd" parameterType="User">
+		UPDATE JAMESUSER SET NICKNAME=#{nickname},QUESTION=#{question},ANSWER=#{answer} WHERE NAME=#{username}
+	</update>
+	
+	<update id="updateUserWithPwd" parameterType="User">
+		UPDATE JAMESUSER SET NICKNAME=#{nickname},QUESTION=#{question},ANSWER=#{answer},PASSWORD=#{password} WHERE NAME=#{username}
+	</update>
 </mapper>

@@ -69,4 +69,22 @@ public class UserDaoImpl extends SqlSessionDaoSupport implements UserDao {
 		return this.getSqlSession().selectOne("getNickname",username);
 	}
 
+	@Override
+	public User initialUserInfoChangeDao(String username) throws Exception {
+		return this.getSqlSession().selectOne("getWholeUserInfo", username);
+	}
+
+	@Override
+	public Boolean changeUserInfoDao(User user) throws Exception {
+		Boolean flag=false;
+		if(user.getPassword()==""||user.getPassword()==null){
+			this.getSqlSession().update("updateUserWithoutPwd",user);
+			flag=true;
+		}
+		else{
+			this.getSqlSession().update("updateUserWithPwd",user);
+			flag=true;
+		}
+		return flag;
+	}
 }

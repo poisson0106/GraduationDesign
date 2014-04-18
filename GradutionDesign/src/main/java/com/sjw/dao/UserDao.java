@@ -1,7 +1,5 @@
 package com.sjw.dao;
 
-import javax.servlet.http.HttpSession;
-
 import com.sjw.pojo.User;
 
 public interface UserDao {
@@ -16,4 +14,8 @@ public interface UserDao {
 	public Boolean findOnePasswordDao(User user) throws Exception;
 	
 	public String getNicknameDao(String username) throws Exception;
+	
+	public User initialUserInfoChangeDao(String username) throws Exception;
+	
+	public Boolean changeUserInfoDao(User user) throws Exception;
 }
