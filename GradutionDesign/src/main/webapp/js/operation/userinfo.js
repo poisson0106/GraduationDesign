@@ -41,18 +41,21 @@ $(function(){
 		});
 	});
 	
-	$("#submit").click(function(){
+	$("#submituserinfo").click(function(){
 		if($(":checked").val()=="yes"){
 			if(($("#npassword").val()==$("#rpassword").val())&&$("#npassword").val()!=""){
 				if("#nquestion".val()!=""&&$("#nanswer").val()!="")
 					$("#changeuserinfo").submit();
 			}
-			else
+			else{
 				alert("两次输入密码不一致，请重新输入！");
+				return false;
+			}
 		}
 		else
 			$("#changeuserinfo").submit();
 	});
+	
 });
 
 $(function(){

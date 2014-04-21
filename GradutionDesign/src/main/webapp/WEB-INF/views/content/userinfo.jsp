@@ -66,8 +66,7 @@
 	</div>
 	<div class="form-group">
 		<div class="col-sm-3 col-sm-offset-7 text-right">
-			<button class="btn btn-primary" id="submit">提交</button>
-			<button class="btn btn-danger" id="discard">放弃</button>
+			<button class="btn btn-primary" id="submituserinfo">提交</button>
 		</div>
 	</div>
 </form>

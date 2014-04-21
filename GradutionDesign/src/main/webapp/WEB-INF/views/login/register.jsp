@@ -60,7 +60,7 @@
 		<label for="nickname" class="col-sm-2 control-label text-danger">昵称:</label>
 		<div class="col-sm-9">
 			<input type="text" class="form-control" id="nickname"
-				name="nickname" placeholder="输入昵称（注册后不能修改！）" />
+				name="nickname" placeholder="输入昵称" />
 		</div>
 	</div>
 	<div class="form-group">
