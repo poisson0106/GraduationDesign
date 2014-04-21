@@ -1,5 +1,6 @@
 package com.sjw.utils;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.PrintWriter;
 
@@ -181,6 +182,12 @@ public class MailContentAnalysis {
             out.write(temp);  
         }  
     	
+    }
+    
+    public static void deleteTempAttachment(String filepath){
+    	File file=new File(filepath);
+    	if(file.isFile()&&file.exists())
+    		file.delete();
     }
     
 	public static StringBuffer getContent(){
