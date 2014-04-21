@@ -126,7 +126,7 @@
       			<div class="btn-group">
       				<button type="button" class="btn btn-default" title="Attachment" id="addattch"><span class="fa fa-paperclip"></span></button>
       				<ul class="dropdown-menu text-center">
-      					<li class="col-sm-12">附件数请小于5个</li>
+      					<li class="col-sm-12">附件数请小于5个,总容量小于10M，服务器每天会清理未发送附件，请尽快发送</li>
       					<li class="col-sm-12">
       						<input type="file" name="uploadify" id="file_upload"/>
       					</li>
