@@ -1,4 +1,10 @@
 $(function(){
+	$("#refresh").click(function(){
+		window.location="initialMailSent";
+	});
+});
+
+$(function(){
 	var width=window.screen.width;
 	$("#maincontainer").css("width",width);
 	

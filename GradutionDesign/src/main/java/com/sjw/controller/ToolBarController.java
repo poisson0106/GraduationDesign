@@ -80,4 +80,15 @@ public class ToolBarController {
 			}
 		}
 	}
+	
+	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
+	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		String[] messagenum=request.getParameter("selected").split(",");
+		String from=request.getParameter("from");
+		String result=toolBarService.deleteSelectedMailService(messagenum,request.getSession(),from);
+		if(result=="success")
+			return null;
+		else
+			return "error.definition";
+	}
 }

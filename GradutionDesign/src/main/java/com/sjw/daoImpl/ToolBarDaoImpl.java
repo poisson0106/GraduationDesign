@@ -43,6 +43,14 @@ public class ToolBarDaoImpl implements ToolBarDao {
 			else
        	 		folder=MailConnection.getDraftFolder();
 		}
+		else if("delboxmenu".equals(from)){
+			MailConnection.setDelFolder();
+			if(MailConnection.getDelFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDelFolder();
+		}
 		else if("sentboxmenu".equals(from)){
 			MailConnection.setSentFolder();
 			if(MailConnection.getSentFolder()==null){
@@ -66,6 +74,8 @@ public class ToolBarDaoImpl implements ToolBarDao {
 	    	MailConnection.closeDraftFolder();
 	    else if("sentboxmenu".equals(from))
 	    	MailConnection.closeSentFolder();
+	    else if("delboxmenu".equals(from))
+	     	   MailConnection.closeDelFolder();
 	    MailConnection.closeConnection();
 		return "success";
 	}
@@ -92,6 +102,14 @@ public class ToolBarDaoImpl implements ToolBarDao {
 			else
 	       	 	folder=MailConnection.getDraftFolder();
 		}
+		else if("delboxmenu".equals(from)){
+			MailConnection.setDelFolder();
+			if(MailConnection.getDelFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDelFolder();
+		}
 		else if("sentboxmenu".equals(from)){
 			MailConnection.setSentFolder();
 			if(MailConnection.getSentFolder()==null){
@@ -115,6 +133,8 @@ public class ToolBarDaoImpl implements ToolBarDao {
 	    	MailConnection.closeDraftFolder();
 	    else if("sentboxmenu".equals(from))
 	    	MailConnection.closeSentFolder();
+	    else if("delboxmenu".equals(from))
+	     	   MailConnection.closeDelFolder();
 	    MailConnection.closeConnection();
 		return "success";
 	}
@@ -246,4 +266,71 @@ public class ToolBarDaoImpl implements ToolBarDao {
 		return total;
 	}
 
+	@Override
+	public String deleteSelectedEmailDao(String[] messagenum,HttpSession session,String from) throws Exception {
+		int i=0;
+		Message[] messages=new Message[messagenum.length];
+		IMAPFolder folder=null;
+		IMAPFolder folderDel=null;
+	    MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
+	    MailConnection.setIndoxFolder();
+	    if("inboxmenu".equals(from)){
+			MailConnection.setIndoxFolder();
+			if(MailConnection.getInboxFolder()==null){
+       	 		return "error";
+			}
+			else
+       	 		folder=MailConnection.getInboxFolder();
+		}
+		else if("draftboxmenu".equals(from)){
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null){
+       	 		return "error";
+			}
+			else
+       	 		folder=MailConnection.getDraftFolder();
+		}
+		else if("sentboxmenu".equals(from)){
+			MailConnection.setSentFolder();
+			if(MailConnection.getSentFolder()==null){
+       	 		return "error";
+			}
+			else
+       	 		folder=MailConnection.getSentFolder();
+		}
+	    
+	    MailConnection.setDelFolder();
+	    if(MailConnection.getDelFolder()==null)
+    		return "error";
+    	else{
+    		folderDel=MailConnection.getDelFolder();
+    	}
+	    
+	    for(String msg : messagenum){
+	       int msgnum=Integer.parseInt(msg);
+	       messages[i]=folder.getMessage(msgnum);
+	       i++;
+	    }
+	    folder.copyMessages(messages, folderDel);
+	    i=0;
+	    for(String msg : messagenum){
+		       int msgnum=Integer.parseInt(msg);
+		       messages[i]=folder.getMessage(msgnum);
+		       messages[i].setFlag(Flags.Flag.DELETED, true);
+		       i++;
+		}
+	    if("inboxmenu".equals(from)){
+	    	//设置未读邮件数
+	        session.setAttribute("nummail", folder.getUnreadMessageCount());
+	        MailConnection.closeInboxFolder();
+	    }
+	    else if("draftboxmenu".equals(from))
+	    	MailConnection.closeDraftFolder();
+	    else if("sentboxmenu".equals(from))
+	    	MailConnection.closeSentFolder();
+	    MailConnection.closeDelFolder();
+	    MailConnection.closeConnection();
+	    return "success";
+	}
+	
 }

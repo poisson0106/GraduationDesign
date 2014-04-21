@@ -82,5 +82,6 @@
 		</div>
 	</div>
 </div>
+<div id="deletesuccess" style="display: none; align: center;">删除成功</div>
 <input type="hidden" value="${allpagenum}" id="allpagenum" />
 <input type="hidden" value="${page }" id="page" />

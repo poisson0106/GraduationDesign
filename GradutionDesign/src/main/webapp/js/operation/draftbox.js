@@ -1,10 +1,10 @@
-//�¼�����
 $(function(){
-
-	
+	$("#refresh").click(function(){
+		window.location="initialDraftBox";
+	});
 });
 
-//��ʼ��
+
 $(function(){
 	var width=window.screen.width;
 	$("#maincontainer").css("width",width);

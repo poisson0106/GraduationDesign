@@ -4,7 +4,7 @@ $(function(){
 		window.location="initialMailDeleted";
 	});
 	
-	$("#delete").click(function(){
+	$("#deletepavement").click(function(){
 		if(confirm("你确定要删除这些邮件么？")){
 			var selected=null;
 			$(".mailselected:checked").each(function(){

@@ -15,7 +15,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="btn-group">
-			<button type="button" class="btn btn-default" id="delete"><span class="fa fa-trash-o"></span></button>
+			<button type="button" class="btn btn-default" id="deletepavement"><span class="fa fa-trash-o"></span></button>
 		</div>
 		<div class="btn-group">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" title="read"><span class="fa fa-tags"></span><span class="fa fa-sort-asc"></span></button>

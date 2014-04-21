@@ -14,4 +14,6 @@ public interface ToolBarDao {
 	public List<Mail> listOnePageEmail(int end,int pagenum,String frompage,HttpSession session) throws Exception;
 	
 	public int getOnePageEmailCountDao(String frompage,HttpSession session) throws Exception ;
+	
+	public String deleteSelectedEmailDao(String[] messagenum,HttpSession session,String from) throws Exception;
 }

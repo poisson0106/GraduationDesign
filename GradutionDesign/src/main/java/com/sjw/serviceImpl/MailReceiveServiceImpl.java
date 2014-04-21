@@ -25,10 +25,4 @@ public class MailReceiveServiceImpl implements MailReceiveService {
 	public int getTotalMailCountService(HttpSession session) throws Exception {
 		return mailReceiveDao.getTotalMailCountDao(session);
 	}
-
-	@Override
-	public String deleteSelectedMailService(String[] messagenum,HttpSession session) throws Exception {
-		  return mailReceiveDao.deleteSelectedEmailDao(messagenum,session);
-	}
-
 }

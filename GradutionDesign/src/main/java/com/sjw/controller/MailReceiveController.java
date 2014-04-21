@@ -46,15 +46,4 @@ public class MailReceiveController {
 		}
 		
 	}
-	
-	
-	@RequestMapping(value="deleteSelectedEmail",method=RequestMethod.POST)
-	public String DeleteSelectedEmail(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		String[] messagenum=request.getParameter("selected").split(",");
-		String result=mailReceiveService.deleteSelectedMailService(messagenum,request.getSession());
-		if(result=="success")
-			return null;
-		else
-			return "error.definition";
-	}
 }

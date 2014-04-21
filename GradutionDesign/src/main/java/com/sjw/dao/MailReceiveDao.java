@@ -12,5 +12,4 @@ public interface MailReceiveDao {
 	
 	public int getTotalMailCountDao(HttpSession session) throws Exception;
 	
-	public String deleteSelectedEmailDao(String[] messagenum,HttpSession session) throws Exception;
 }

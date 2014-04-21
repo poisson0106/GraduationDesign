@@ -12,6 +12,4 @@ public interface MailReceiveService {
 	
 	public int getTotalMailCountService(HttpSession session) throws Exception;
 	
-	public String deleteSelectedMailService(String[] messagenum,HttpSession session) throws Exception;
-	
 }

@@ -35,4 +35,9 @@ public class ToolBarServiceImpl implements ToolBarService {
 	public int getOnePageEmailCountService(String frompage,HttpSession session) throws Exception {
 		return toolBarDao.getOnePageEmailCountDao(frompage,session);
 	}
+	
+	@Override
+	public String deleteSelectedMailService(String[] messagenum,HttpSession session,String from) throws Exception {
+		  return toolBarDao.deleteSelectedEmailDao(messagenum,session,from);
+	}
 }

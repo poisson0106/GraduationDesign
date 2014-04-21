@@ -14,4 +14,6 @@ public interface ToolBarService {
 	public List<Mail> listOnePageEmailService(int end,int pagenum,String frompage,HttpSession session) throws Exception;
 	
 	public int getOnePageEmailCountService(String frompage,HttpSession session) throws Exception;
+	
+	public String deleteSelectedMailService(String[] messagenum,HttpSession session,String from) throws Exception;
 }
