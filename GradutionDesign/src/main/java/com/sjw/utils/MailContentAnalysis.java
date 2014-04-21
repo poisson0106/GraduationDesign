@@ -42,13 +42,13 @@ public class MailContentAnalysis {
 	        	}
 	        } else if (part.isMimeType("text/html") && conName == false) {  
 	            // text/html 类型
-	        	if(content!=null){
+	        	if(content.length()>0){
 	        		content.append("</br>");
 	        		content.append("---------------------------------------------------------");
 		        	content.append("</br>");
+		        	content.append("HTML富文本部分：");
+		        	content.append("</br>");
 	        	}
-	        	content.append("HTML富文本部分：");
-	        	content.append("</br>");
 	        	content.append((String) part.getContent());  
 	        } else if (part.isMimeType("multipart/*")) {  
 	            // multipart/*  

@@ -48,8 +48,10 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		email.setCharset("UTF-8");
 		email.setHtmlMsg(mail.getContent());
 		email.addTo(mail.getReceivers());
-		for(int i=0;i<mail.getCc().length;i++){
-			email.addCc(mail.getCc()[i]);
+		if(mail.getCc()!=null){
+			for(int i=0;i<mail.getCc().length;i++){
+				email.addCc(mail.getCc()[i]);
+			}
 		}
 		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
 		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
@@ -168,7 +170,8 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 	}
 
 	@Override
-	public Boolean saveDraftAutoDao(Mail mail,HttpSession session) throws Exception {
+	public int saveDraftAutoDao(Mail mail,HttpSession session) throws Exception {
+		int result=0;
 		String username=session.getAttribute("username").toString();
 		String password=session.getAttribute("password").toString();
 		MailConnection.getConnection(username, password);
@@ -176,7 +179,7 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 		IMAPFolder folderDraft;
 		MailConnection.setDraftFolder();
 		if(MailConnection.getDraftFolder()==null)
-			return false;
+			return -1;
 		else
 			folderDraft=MailConnection.getDraftFolder();
 		if(mail.getMessagenum()!=0){
@@ -185,7 +188,7 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 			MailConnection.closeDraftFolder();
 			MailConnection.setDraftFolder();
 			if(MailConnection.getDraftFolder()==null)
-				return false;
+				return -1;
 			else
 				folderDraft=MailConnection.getDraftFolder();
 		}
@@ -201,15 +204,18 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 				email.addCc(mail.getCc()[i]);
 			}
 		}
+		email.setHtmlMsg(" ");
 		email.setHtmlMsg(mail.getContent());
 		email.setMailSession(msession);
 		email.buildMimeMessage();
 		MimeMessage message[]=new MimeMessage[1];
 		message[0]=email.getMimeMessage();
 		folderDraft.appendMessages(message);
+		Message getmessage=folderDraft.getMessage(folderDraft.getMessageCount());
+		result=getmessage.getMessageNumber();
 		MailConnection.closeDraftFolder();
 		MailConnection.closeConnection();
-		return true;
+		return result;
 	}
 
 }

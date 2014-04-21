@@ -41,7 +41,7 @@ public class MailSendServiceImpl implements MailSendService {
 	}
 
 	@Override
-	public Boolean saveDraftAutoService(Mail mail,HttpSession session) throws Exception {
+	public int saveDraftAutoService(Mail mail,HttpSession session) throws Exception {
 		return mailSendDao.saveDraftAutoDao(mail,session);
 	}
 	

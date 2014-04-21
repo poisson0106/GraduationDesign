@@ -17,6 +17,6 @@ public interface MailSendDao {
 	
 	public List<Map> findReceiversDao(Map keywords) throws Exception;
 	
-	public Boolean saveDraftAutoDao(Mail mail,HttpSession session) throws Exception; 
+	public int saveDraftAutoDao(Mail mail,HttpSession session) throws Exception; 
 
 }

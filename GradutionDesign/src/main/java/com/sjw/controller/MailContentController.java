@@ -29,9 +29,21 @@ public class MailContentController {
 			String subject=mail.getSubject();
 			String content=mail.getContent();
 			String receiver=mail.getReceivers();
+			String cc=null;
+			String[] cclist=mail.getCc();
+			for(String str : cclist){
+				if(str.contains("["))
+					str=str.substring(str.indexOf("[")+1,str.indexOf("]"));
+				if(cc==null)
+					cc=str;
+				else
+					cc=cc+","+str;
+			}
+			receiver=receiver.substring(receiver.indexOf("[")+1,receiver.indexOf("]"));
 			request.setAttribute("content", content);
 			request.setAttribute("subject", subject);
 			request.setAttribute("receiver", receiver);
+			request.setAttribute("cc", cc);
 			request.setAttribute("mail", mail);
 			request.setAttribute("messagenum", messagenum);
 			return "mailsend.definition";

@@ -22,18 +22,16 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;" autocomplete="off">收件人:</label>
-		<div class="col-sm-11">
-			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="请输入收件人地址，只能一人" name="receiver" value="${receiver }" data-toggle="dropdown" />
+		<label for="receiver" class="col-sm-1 control-label" style="text-align:left;">收件人:</label>
+		<div class="col-sm-5">
+			<input type="text" class="form-control dropdown-toggle" id="receiver" placeholder="请输入收件人地址，只能一人" name="receiver" value="${receiver }" data-toggle="dropdown" autocomplete="off"/>
 			<ul class="dropdown-menu col-sm-12" id="receiversaddress">
           		<li role="presentation menuitem" style="margin-left:20px;">请输入需要的查找的收件人地址</li>
         	</ul>
 		</div>
-	</div>
-	<div class="form-group">
 		<label for="cc" class="col-sm-1 control-label" style="text-align:left;">抄送:</label>
-		<div class="col-sm-11">
-			<input type="text" class="form-control" id="cc" placeholder="请输入抄送地址，多个地址请用逗号分隔" name="cc" value="">
+		<div class="col-sm-5">
+			<input type="text" class="form-control" id="cc" placeholder="请输入抄送地址，多个地址请用逗号分隔" name="cc" value="${cc }">
 		</div>
 	</div>
 	<div class="form-group">

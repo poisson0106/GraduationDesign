@@ -141,10 +141,10 @@ public class MailSendController {
 			mail.setCc(cc);
 		if(filenamelist!=null)
 			mail.setAttachnames(filenamelist);
-		Boolean issaved=mailSendService.saveDraftAutoService(mail,request.getSession());
-		if(issaved){
+		int getmessagenum=mailSendService.saveDraftAutoService(mail,request.getSession());
+		if(getmessagenum!=-1){
 			Map<String,String> map=new HashMap<String,String>();
-			map.put("flag", "true");
+			map.put("messagenum",String.valueOf(getmessagenum));
 			String json_max="";
 			JSONArray ja_max=JSONArray.fromObject(map);
 			json_max=ja_max.toString();

@@ -186,6 +186,10 @@ public class UserController {
 			user.setUsername(username);
 		}
 		Boolean isupdate=userService.changeUserInfoService(user);
+		if(user.getPassword()!=null||user.getPassword()!=""){
+			session.removeAttribute("password");
+			session.setAttribute("password",request.getParameter("npassword"));
+		}
 		if(isupdate)
 			return "infosuccess.definition";
 		else

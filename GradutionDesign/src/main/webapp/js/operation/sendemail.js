@@ -1,6 +1,6 @@
 //定时保存草稿任务
 $(function(){
-	setInterval("saveDraftAuto()",60000*3); //每3分钟保存一遍草稿
+	setInterval("saveDraftAuto()",60000*1); //每3分钟保存一遍草稿
 });
 
 //启用所见即所得编辑器
@@ -184,8 +184,11 @@ function saveDraftAuto(){
 				$("#saving").css("display","inherit");
 			},
 			success : function(data){
-				var json_s=JSON.parse(data);
-				if(json_s[0].flag=="true"){
+				if(data!=""){
+					var json_s=JSON.parse(data);
+					for(i=0;i<json_s.length;i++){
+						$("#messagenum").val(json_s[i].messagenum);
+					}
 					$("#saving").css("display","none");
 					$("#saved").css("display","inherit");
 				}
