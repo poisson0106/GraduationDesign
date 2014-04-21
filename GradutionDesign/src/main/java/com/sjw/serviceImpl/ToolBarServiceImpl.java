@@ -17,13 +17,13 @@ public class ToolBarServiceImpl implements ToolBarService {
 	ToolBarDao toolBarDao;
 	
 	@Override
-	public String setMailSeenService(String[] messagenum,HttpSession session) throws Exception {
-		return toolBarDao.setMailSeenDao(messagenum,session);
+	public String setMailSeenService(String[] messagenum,HttpSession session,String from) throws Exception {
+		return toolBarDao.setMailSeenDao(messagenum,session,from);
 	}
 
 	@Override
-	public String setMailUnSeenService(String[] messagenum,HttpSession session) throws Exception {
-		return toolBarDao.setMailUnSeenDao(messagenum,session);
+	public String setMailUnSeenService(String[] messagenum,HttpSession session,String from) throws Exception {
+		return toolBarDao.setMailUnSeenDao(messagenum,session,from);
 	}
 	
 	@Override

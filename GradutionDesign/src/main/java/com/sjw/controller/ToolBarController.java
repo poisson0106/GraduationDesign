@@ -22,7 +22,8 @@ public class ToolBarController {
 	@RequestMapping(value="setMailSeen",method=RequestMethod.POST)
 	public String SetMailSeen(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=toolBarService.setMailSeenService(messagenum,request.getSession());
+		String from=request.getParameter("from");
+		String result=toolBarService.setMailSeenService(messagenum,request.getSession(),from);
 		if(result=="success")
 			return null;
 		else
@@ -32,7 +33,8 @@ public class ToolBarController {
 	@RequestMapping(value="setMailUnSeen",method=RequestMethod.POST)
 	public String SetMailUnSeen(HttpServletRequest request,HttpServletResponse response) throws Exception{
 		String[] messagenum=request.getParameter("selected").split(",");
-		String result=toolBarService.setMailUnSeenService(messagenum,request.getSession());
+		String from=request.getParameter("from");
+		String result=toolBarService.setMailUnSeenService(messagenum,request.getSession(),from);
 		if(result=="success")
 			return null;
 		else

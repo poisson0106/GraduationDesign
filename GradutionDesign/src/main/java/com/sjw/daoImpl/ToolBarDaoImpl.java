@@ -22,49 +22,99 @@ import com.sun.mail.imap.IMAPFolder;
 
 public class ToolBarDaoImpl implements ToolBarDao {
 	@Override
-	public String setMailSeenDao(String[] messagenum,HttpSession session) throws Exception {
+	public String setMailSeenDao(String[] messagenum,HttpSession session,String from) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
 		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
-	    MailConnection.setIndoxFolder();
-	    if(MailConnection.getInboxFolder()==null){
-	       return "fail";
-	    }
-	    else{
-	    	folder=MailConnection.getInboxFolder();
-	    }
+	    if("inboxmenu".equals(from)){
+			MailConnection.setIndoxFolder();
+			if(MailConnection.getInboxFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getInboxFolder();
+		}
+		else if("draftboxmenu".equals(from)){
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getDraftFolder();
+		}
+		else if("sentboxmenu".equals(from)){
+			MailConnection.setSentFolder();
+			if(MailConnection.getSentFolder()==null){
+       	 		return null;
+			}
+			else
+       	 		folder=MailConnection.getSentFolder();
+		}
 	    for(String msg : messagenum){
 		       int msgnum=Integer.parseInt(msg);
 		       messages[i]=folder.getMessage(msgnum);
 		       messages[i].setFlag(Flags.Flag.SEEN, true);
 		       i++;
 		}
-	    MailConnection.closeInboxFolder();
+	    if("inboxmenu".equals(from)){
+	    	//设置未读邮件数
+	        session.setAttribute("nummail", folder.getUnreadMessageCount());
+	        MailConnection.closeInboxFolder();
+	    }
+	    else if("draftboxmenu".equals(from))
+	    	MailConnection.closeDraftFolder();
+	    else if("sentboxmenu".equals(from))
+	    	MailConnection.closeSentFolder();
 	    MailConnection.closeConnection();
 		return "success";
 	}
 
 	@Override
-	public String setMailUnSeenDao(String[] messagenum,HttpSession session) throws Exception {
+	public String setMailUnSeenDao(String[] messagenum,HttpSession session,String from) throws Exception {
 		int i=0;
 		Message[] messages=new Message[messagenum.length];
 		IMAPFolder folder=null;
 		MailConnection.getConnection(session.getAttribute("username").toString(),session.getAttribute("password").toString());
-	    MailConnection.setIndoxFolder();
-	    if(MailConnection.getInboxFolder()==null){
-	       return "fail";
-	    }
-	    else{
-	    	folder=MailConnection.getInboxFolder();
-	    }
+		if("inboxmenu".equals(from)){
+			MailConnection.setIndoxFolder();
+			if(MailConnection.getInboxFolder()==null){
+	       	 	return null;
+			}
+			else
+	       	 	folder=MailConnection.getInboxFolder();
+		}
+		else if("draftboxmenu".equals(from)){
+			MailConnection.setDraftFolder();
+			if(MailConnection.getDraftFolder()==null){
+	       	 	return null;
+			}
+			else
+	       	 	folder=MailConnection.getDraftFolder();
+		}
+		else if("sentboxmenu".equals(from)){
+			MailConnection.setSentFolder();
+			if(MailConnection.getSentFolder()==null){
+	       	 	return null;
+			}
+			else
+	       	 	folder=MailConnection.getSentFolder();
+		}
 	    for(String msg : messagenum){
 		       int msgnum=Integer.parseInt(msg);
 		       messages[i]=folder.getMessage(msgnum);
 		       messages[i].setFlag(Flags.Flag.SEEN, false);
 		       i++;
 		}
-	    MailConnection.closeInboxFolder();
+	    if("inboxmenu".equals(from)){
+	    	//设置未读邮件数
+	        session.setAttribute("nummail", folder.getUnreadMessageCount());
+	        MailConnection.closeInboxFolder();
+	    }
+	    else if("draftboxmenu".equals(from))
+	    	MailConnection.closeDraftFolder();
+	    else if("sentboxmenu".equals(from))
+	    	MailConnection.closeSentFolder();
 	    MailConnection.closeConnection();
 		return "success";
 	}

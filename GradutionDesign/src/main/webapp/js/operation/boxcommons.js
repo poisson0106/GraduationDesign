@@ -29,7 +29,8 @@ $(function(){
 			type:"POST",
 			url:"setMailSeen",
 			data:{
-				selected:selected
+				selected:selected,
+				from:$("li.active").attr("id")
 			},
 			dataType:"text",
 			success:function(data){
@@ -71,7 +72,8 @@ $(function(){
 			type:"POST",
 			url:"setMailUnSeen",
 			data:{
-				selected:selected
+				selected:selected,
+				from:$("li.active").attr("id")
 			},
 			dataType:"text",
 			success:function(data){
