@@ -26,8 +26,9 @@ $(function(){
         'onUploadStart' : function(file) {
             $("#filenamelist").val($("#filenamelist").val()+file.name+",");
         },
-        'onUploadComplete':function(){  
-        	$(this).parent().parent().removeClass("dropdown open");
+        'onQueueComplete':function(){  
+        	//$("#addattch").parent().removeClass("dropdown open");
+        	setTimeout("$('#addattch').parent().removeClass('dropdown open');",5000);
         },
         'onUploadSuccess':function(file){
         	
