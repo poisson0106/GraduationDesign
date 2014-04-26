@@ -24,7 +24,10 @@ $(function(){
         'uploadLimit' : 5, 
         'formData'      : {'foldername':$("#loginname").html()},
         'onUploadStart' : function(file) {
-            $("#filenamelist").val($("#filenamelist").val()+file.name+",");
+        	if($("#filenamelist").val()=="")
+        		$("#filenamelist").val(file.name);
+        	else
+        		$("#filenamelist").val($("#filenamelist").val()+","+file.name);
         },
         'onQueueComplete':function(){  
         	//$("#addattch").parent().removeClass("dropdown open");
@@ -109,7 +112,22 @@ $(function(){
 	});
 	
 	$("#uploadbtn").click(function(){
-		$('#file_upload').uploadify('upload','*');
+		if(confirm("上传这些附件将无法删除，你确定上传么？")){
+			if($("#filenamelist").val()=="")
+				$('#file_upload').uploadify('upload','*');
+			else{
+				var filelist=$("#filenamelist").val();
+				var list=filelist.split(",");
+				var length=parseInt(list.length);
+				var hasfilelength=$(".uploadify-queue-item").length;
+				var filelengthcount=parseInt(hasfilelength);
+				if(filelengthcount+length>5){
+					alert("你已上传了"+length+"个附件，再上传"+filelengthcount+"个附件将超过限制！");
+					return false;
+				}
+				$('#file_upload').uploadify('upload','*');
+			}
+		}
 	});
 	
 	//需要添加关于输入即搜索的功能，ajax实现
