@@ -54,7 +54,8 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 			}
 		}
 		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
-		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
+		//String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
+		String uploadDir="c:/tmp"+File.separator+foldername;
 		if(mail.getAttachnames()!=null){
 			for(int i=0;i<mail.getAttachnames().length;i++){
 				EmailAttachment attr=new EmailAttachment();
@@ -119,8 +120,9 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 	public Boolean uploadAttachmentDao(HttpServletRequest request,HttpSession session)
 			throws Exception {
 		String foldername=request.getParameter("foldername").substring(0,request.getParameter("foldername").indexOf("@"));
-		String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername; //poisson֮��Ҫ�ӵ�½���������session����
-    	MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+		//String uploadDir=request.getSession().getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername; //poisson֮��Ҫ�ӵ�½���������session����
+    	String uploadDir="c:/tmp"+File.separator+foldername;
+		MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
     	Map<String,MultipartFile> filemap=multipartRequest.getFileMap();
     	File dirPath = new File(uploadDir);
         if (!dirPath.exists()) {

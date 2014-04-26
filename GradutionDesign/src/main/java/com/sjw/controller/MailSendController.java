@@ -34,7 +34,9 @@ public class MailSendController {
 		String subject=request.getParameter("subject");
 		String content=request.getParameter("content");
 		String sender=request.getParameter("sender");
-		int messagenum=Integer.parseInt(request.getParameter("messagenum"));
+		int messagenum=0;
+		if(!"".equals(request.getParameter("messagenum")))
+			messagenum=Integer.parseInt(request.getParameter("messagenum"));
 		String[] filenamelist=request.getParameter("filenamelist").split(",");
 		String[] cclist=null;
 		if(request.getParameter("cc")!=null&&request.getParameter("cc")==""){
