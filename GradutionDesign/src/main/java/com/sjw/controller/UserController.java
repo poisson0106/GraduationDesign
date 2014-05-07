@@ -62,11 +62,11 @@ public class UserController {
 	
 	@RequestMapping(value="initialUserInfoChange",method=RequestMethod.GET)
 	public String initialUserInfoChange(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		String username=request.getSession().getAttribute("username").toString();
+		/*String username=request.getSession().getAttribute("username").toString();
 		username=username.substring(0,username.indexOf("@"));
 		User user=userService.initialUserInfoChangeService(username);
 		request.setAttribute("question", user.getQuestion());
-		request.setAttribute("answer", user.getAnswer());
+		request.setAttribute("answer", user.getAnswer());*/
 		return "userinfo.definition";
 	}
 	
@@ -171,10 +171,16 @@ public class UserController {
 		username=username.substring(0,username.indexOf("@"));
 		User user=new User();
 		if("no".equals(ischangepwd)){
-			user.setNickname(nickname);
-			user.setQuestion(question);
-			user.setAnswer(answer);
-			user.setUsername(username);
+			if(question==null||question==""||answer==""||answer==null){
+				user.setNickname(nickname);
+				user.setUsername(username);
+			}
+			else{
+				user.setNickname(nickname);
+				user.setQuestion(question);
+				user.setAnswer(answer);
+				user.setUsername(username);
+			}
 		}
 		else
 		{
@@ -186,10 +192,12 @@ public class UserController {
 			user.setUsername(username);
 		}
 		Boolean isupdate=userService.changeUserInfoService(user);
-		if(user.getPassword()!=null||user.getPassword()!=""){
+		if(user.getPassword()!=null&&user.getPassword()!=""){
 			session.removeAttribute("password");
 			session.setAttribute("password",request.getParameter("npassword"));
 		}
+		session.removeAttribute("nickname");
+		session.setAttribute("nickname", nickname);
 		if(isupdate)
 			return "infosuccess.definition";
 		else

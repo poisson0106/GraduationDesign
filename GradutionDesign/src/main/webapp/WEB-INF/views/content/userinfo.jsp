@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<label class="control-label col-sm-2" for="ischangepwd">是否要更改密码:</label>
+		<label class="control-label col-sm-2" for="ischangepwd">是否要更改保密信息:</label>
 		<div class="col-sm-10">
 			<label class="radio-inline">
 				<input type="radio" name="ischangepwd" class="ischangepwd" value="yes" checked/>是
@@ -57,11 +57,11 @@
 	<div class="form-group">
 		<label class="control-label col-sm-2" for="npassword">请输入新问题：</label>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" id="nquestion" name="nquestion" value="${question }">
+			<input type="text" class="form-control" id="nquestion" name="nquestion" value="" disabled="disabled">
 		</div>
 		<label class="control-label col-sm-2" for="nanswer">请再输入新答案：</label>
 		<div class="col-sm-3">
-			<input type="text" class="form-control" id="nanswer" name="nanswer" value="${answer }">
+			<input type="text" class="form-control" id="nanswer" name="nanswer" value="" disabled="disabled">
 		</div>
 	</div>
 	<div class="form-group">

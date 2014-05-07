@@ -43,10 +43,20 @@
 	</select>
 	
 	<update id="updateUserWithoutPwd" parameterType="User">
-		UPDATE JAMESUSER SET NICKNAME=#{nickname},QUESTION=#{question},ANSWER=#{answer} WHERE NAME=#{username}
+		UPDATE JAMESUSER SET NICKNAME=#{nickname} WHERE NAME=#{username}
 	</update>
 	
 	<update id="updateUserWithPwd" parameterType="User">
-		UPDATE JAMESUSER SET NICKNAME=#{nickname},QUESTION=#{question},ANSWER=#{answer},PASSWORD=#{password} WHERE NAME=#{username}
+		UPDATE JAMESUSER SET NICKNAME=#{nickname}
+		<if test="question!=null and question!=''">
+			,QUESTION=#{question}
+		</if>
+		<if test="answer!=null and answer!=''">
+			,ANSWER=#{answer}
+		</if>
+		<if test="password!=null and password!=''">
+			,PASSWORD=#{password}
+		</if>
+		 WHERE NAME=#{username}
 	</update>
 </mapper>

@@ -28,6 +28,8 @@ $(function(){
 					$(".fa-check-circle").css("display","inherit");
 					$("#npassword").removeAttr("disabled");
 					$("#rpassword").removeAttr("disabled");
+					$("#nquestion").removeAttr("disabled");
+					$("#nanswer").removeAttr("disabled");
 				}
 				else{
 					$(".fa-spinner").css("display","none");
@@ -36,6 +38,8 @@ $(function(){
 					$("#rpassword").val("");
 					$("#npassword").attr("disabled","disabled");
 					$("#rpassword").attr("disabled","disabled");
+					$("#nquestion").removeAttr("disabled","disabled");
+					$("#nanswer").removeAttr("disabled","disabled");
 				}
 			},
 		});
@@ -53,7 +57,10 @@ $(function(){
 			}
 		}
 		else
-			$("#changeuserinfo").submit();
+			if($("#nickname").val()!="")
+				$("#changeuserinfo").submit();
+			else
+				alert("昵称不能为空!");
 	});
 	
 });
