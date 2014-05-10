@@ -6,7 +6,7 @@ $(function(){
 	$(".pagination").append("<li><a style='cursor:pointer' id='first'>&laquo;</a></li>");
 	$(".pagination").append("<li><a style='cursor:pointer' id='previous'>&lt;</a></li>");
 	
-	if(pagenum<=10){
+	if(pagenum<10){
 		for(i=1;i<=pagenum;i++){
 			$(".pagination").append("<li><a style='cursor:pointer'>"+i+"</a></li>");
 		}

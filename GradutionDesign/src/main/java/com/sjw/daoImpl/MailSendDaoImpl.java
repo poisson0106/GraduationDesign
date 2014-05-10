@@ -207,7 +207,8 @@ public class MailSendDaoImpl extends SqlSessionDaoSupport implements MailSendDao
 			}
 		}
 		String foldername=mail.getSender().substring(0,mail.getSender().indexOf("@"));
-		String uploadDir=session.getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
+		//String uploadDir=session.getServletContext().getRealPath("/")+File.separator+"tmp"+File.separator+foldername;
+		String uploadDir="c:/tmp"+File.separator+foldername;
 		if(mail.getAttachnames()!=null){
 			for(int i=0;i<mail.getAttachnames().length;i++){
 				EmailAttachment attr=new EmailAttachment();
